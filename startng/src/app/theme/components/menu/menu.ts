@@ -1,17 +1,34 @@
 import { Menu } from './menu.model';
 
 export const verticalMenuItems = [ 
-    new Menu (1, 'ADMIN_NAV.DASHBOARD', '/', null, 'tachometer', null, false, 0),
+
+    new Menu (1, 'My Customers', '/customers', null, 'users', null, false, 0),
+    new Menu (2, 'Chat', '/chats', null, 'comments', null, false, 0), 
+    new Menu (3, 'Contacts', '/contracts', null, 'file', null, false, 0), 
+    new Menu (4, 'Provisions', '/provisions', null, 'laptop', null, false, 0),   
+    new Menu (5, 'Sinisters', '/sinisters', null, 'warning', null, false,0 ),  
+    new Menu (6, 'Credits', null, null, 'euro', null, true, 0), 
+    new Menu (7, 'Our Banks', '/credits/banks', null, 'warning', null, false,6 ),  
+    new Menu (8, 'Our Agents', '/credits/agents', null, 'euro', null, false, 6), 
+    new Menu (9, 'Loan Simulation', '/credits/loansimulation', null, 'gift', null, false, 6),
+    new Menu (10, 'Our Credits', '/credits/credits', null, 'file-text-o', null, false, 6),
+    new Menu (11, 'Our Transactions', '/credits/transactions', null, 'file-text-o', null, false, 6), 
+    new Menu (12, 'Offers', '/offers', null, 'gift', null, false, 0),
+    new Menu (13, 'Claims', '/claims', null, 'file-text-o', null, false, 0),
+
+    //new Menu (8, 'Icons', '/ui/icons', null, 'font-awesome', null, false, 0), 
+
+  /*   new Menu (1, 'ADMIN_NAV.DASHBOARD', '/', null, 'tachometer', null, false, 0),
     new Menu (2, 'ADMIN_NAV.MEMBERSHIP', '/membership', null, 'users', null, false, 0), 
     new Menu (3, 'ADMIN_NAV.UI_FEATURES', null, null, 'laptop', null, true, 0),   
     new Menu (4, 'Buttons', '/ui/buttons', null, 'keyboard-o', null, false, 3),  
     new Menu (5, 'Cards', '/ui/cards', null, 'address-card-o', null, false, 3), 
     new Menu (6, 'Components', '/ui/components', null, 'creative-commons', null, false, 3),
-    new Menu (7, 'Icons', '/ui/icons', null, 'font-awesome', null, false, 3), 
+    new Menu (7, 'Icons', '/ui/icons', null, 'font-awesome', null, false, 0), 
     new Menu (8, 'List Group', '/ui/list-group', null, 'th-list', null, false, 3), 
     new Menu (9, 'Media Objects', '/ui/media-objects', null, 'object-group', null, false, 3), 
     new Menu (10, 'Tabs & Accordions', '/ui/tabs-accordions', null, 'server', null, false, 3),
-    new Menu (11, 'Typography', '/ui/typography', null, 'font', null, false, 3),
+    new Menu (11, 'Typography', '/ui/typography', null, 'font', null, false, 3), 
     new Menu (15, 'ADMIN_NAV.DYNAMIC_MENU', '/dynamic-menu', null, 'list-ul', null, false, 0),    
     new Menu (16, 'ADMIN_NAV.MAILBOX', '/mailbox', null, 'envelope-o', null, false, 0),
     new Menu (20, 'ADMIN_NAV.FORM_ELEMENTS', null, null, 'pencil-square-o', null, true, 0), 
@@ -48,12 +65,26 @@ export const verticalMenuItems = [
     new Menu (141, 'Level 2', null, null, 'folder-open-o', null, true, 140),
     new Menu (142, 'Level 3', null, null, 'folder-open-o', null, true, 141),
     new Menu (143, 'Level 4', null, null, 'folder-open-o', null, true, 142),
-    new Menu (144, 'Level 5', null, null, 'folder-o', null, false, 143),
+    new Menu (144, 'Level 5', null, null, 'folder-o', null, false, 143),*/
     new Menu (200, 'ADMIN_NAV.EXTERNAL_LINK', null, 'http://themeseason.com', 'external-link', '_blank', false, 0)
 ]
 
-export const horizontalMenuItems = [ 
-    new Menu (1, 'ADMIN_NAV.DASHBOARD', '/', null, 'tachometer', null, false, 0),
+export const horizontalMenuItems = [  
+new Menu (1, 'My Customers', '/customers', null, 'users', null, false, 0),
+new Menu (2, 'Chat', '/chats', null, 'comments', null, false, 0), 
+new Menu (3, 'Contacts', '/contracts', null, 'file', null, false, 0), 
+new Menu (4, 'Provisions', '/provisions', null, 'laptop', null, false, 0),   
+new Menu (5, 'Sinisters', '/sinisters', null, 'warning', null, false,0 ),  
+new Menu (6, 'Credits', null, null, 'euro', null, false, 0), 
+new Menu (7, 'Our Banks', '/credits/banks', null, 'warning', null, false,7 ),  
+new Menu (8, 'Our Agents', '/credits/agents', null, 'euro', null, false, 7), 
+new Menu (9, 'Loan Simulation', '/credits/loansimulation', null, 'gift', null, false, 7),
+new Menu (10, 'Our Credits', '/credits/credits', null, 'file-text-o', null, false, 7),
+new Menu (11, 'Our Transactions', '/credits/transactions', null, 'file-text-o', null, false, 7), 
+new Menu (12, 'Offers', '/offers', null, 'gift', null, false, 0),
+new Menu (13, 'Claims', '/claims', null, 'file-text-o', null, false, 0),
+
+    /* new Menu (1, 'ADMIN_NAV.DASHBOARD', '/', null, 'tachometer', null, false, 0),
     new Menu (2, 'ADMIN_NAV.MEMBERSHIP', '/membership', null, 'users', null, false, 0), 
     new Menu (3, 'ADMIN_NAV.UI_FEATURES', null, null, 'laptop', null, true, 0),   
     new Menu (4, 'Buttons', '/ui/buttons', null, 'keyboard-o', null, false, 3),  
@@ -96,5 +127,5 @@ export const horizontalMenuItems = [
     new Menu (71, 'Bar Charts', '/charts/bar', null, 'bar-chart', null, false, 70),
     new Menu (72, 'Pie Charts', '/charts/pie', null, 'pie-chart', null, false, 70),
     new Menu (73, 'Line Charts', '/charts/line', null, 'line-chart', null, false, 70),
-    new Menu (74, 'Bubble Charts', '/charts/bubble', null, 'comment-o', null, false, 70)
+    new Menu (74, 'Bubble Charts', '/charts/bubble', null, 'comment-o', null, false, 70) */
 ]

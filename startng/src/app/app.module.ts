@@ -48,6 +48,18 @@ import { FavoritesComponent } from './theme/components/favorites/favorites.compo
 import { BlankComponent } from './pages/blank/blank.component';
 import { SearchComponent } from './pages/search/search.component';
 import { NotFoundComponent } from './pages/errors/not-found/not-found.component';
+import { CustomersComponent } from './pages/customers/customers.component';
+import { OffersComponent } from './pages/offers/offers.component';
+import { ClaimsComponent } from './pages/claims/claims.component';
+import { ChatsComponent } from './pages/chats/chats.component';
+import { ContractsComponent } from './pages/contracts/contracts.component';
+import { ProvisionsComponent } from './pages/provisions/provisions.component';
+import { SinistersComponent } from './pages/sinisters/sinisters.component';
+import { BanksComponent } from './pages/credits/banks/banks.component';
+import { AgentsComponent } from './pages/credits/agents/agents.component';
+import { LoanSimulationsComponent } from './pages/credits/loan-simulations/loan-simulations.component';
+import { CreditsComponent } from './pages/credits/credits/credits.component';
+import { TransactionsComponent } from './pages/credits/transactions/transactions.component';
  
 
 @NgModule({  
@@ -96,7 +108,19 @@ import { NotFoundComponent } from './pages/errors/not-found/not-found.component'
     FavoritesComponent,
     BlankComponent,
     SearchComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    CustomersComponent,
+    OffersComponent,
+    ClaimsComponent,
+    ChatsComponent,
+    ContractsComponent,
+    ProvisionsComponent,
+    SinistersComponent,
+    BanksComponent,
+    AgentsComponent,
+    LoanSimulationsComponent,
+    CreditsComponent,
+    TransactionsComponent
   ],
   providers: [ 
     AppSettings,
