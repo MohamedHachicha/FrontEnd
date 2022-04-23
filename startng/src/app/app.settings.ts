@@ -15,7 +15,7 @@ export class AppSettings {
             sidebarIsFixed: true,
             showSideChat: false,
             sideChatIsHoverable: true,
-            skin:'combined'  //light , dark, blue, green, combined, purple, orange, brown, grey, pink          
+            skin:'green'  //light , dark, blue, green, combined, purple, orange, brown, grey, pink          
         }
     )
 }

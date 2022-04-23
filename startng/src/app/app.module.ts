@@ -55,11 +55,8 @@ import { ChatsComponent } from './pages/chats/chats.component';
 import { ContractsComponent } from './pages/contracts/contracts.component';
 import { ProvisionsComponent } from './pages/provisions/provisions.component';
 import { SinistersComponent } from './pages/sinisters/sinisters.component';
-import { BanksComponent } from './pages/credits/banks/banks.component';
-import { AgentsComponent } from './pages/credits/agents/agents.component';
-import { LoanSimulationsComponent } from './pages/credits/loan-simulations/loan-simulations.component';
-import { CreditsComponent } from './pages/credits/credits/credits.component';
-import { TransactionsComponent } from './pages/credits/transactions/transactions.component';
+
+
  
 
 @NgModule({  
@@ -116,11 +113,7 @@ import { TransactionsComponent } from './pages/credits/transactions/transactions
     ContractsComponent,
     ProvisionsComponent,
     SinistersComponent,
-    BanksComponent,
-    AgentsComponent,
-    LoanSimulationsComponent,
-    CreditsComponent,
-    TransactionsComponent
+    
   ],
   providers: [ 
     AppSettings,

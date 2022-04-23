@@ -6,16 +6,21 @@ import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { DragulaModule } from 'ng2-dragula';
 import { ResizableModule } from 'angular-resizable-element';
 import { DirectivesModule } from '../../theme/directives/directives.module';
-import { DragDropComponent } from './drag-drop/drag-drop.component';
-import { ToasterComponent } from './toaster/toaster.component';
-import { ResizableComponent } from './resizable/resizable.component';
+import { BanksComponent } from './banks/banks.component';
+import { AgentsComponent } from './agents/agents.component';
+import { LoanSimulationsComponent } from './loan-simulations/loan-simulations.component';
+import { TransactionsComponent } from './transactions/transactions.component';
+import { CreditsComponent } from './credits/credits.component';
+
 
 
 export const routes = [
-  { path: '', redirectTo: 'drag-drop', pathMatch: 'full'},
-  { path: 'drag-drop', component: DragDropComponent, data: { breadcrumb: 'Drag and Drop' } },
-  { path: 'resizable', component: ResizableComponent, data: { breadcrumb: 'Resizable' } },
-  { path: 'toaster', component: ToasterComponent, data: { breadcrumb: 'Toaster' } }  
+  { path: '', redirectTo: 'banks', pathMatch: 'full'},
+  { path: 'banks', component: BanksComponent },
+  { path: 'agents', component: AgentsComponent},
+  { path: 'credits', component: CreditsComponent},
+  { path: 'loansimulations', component: LoanSimulationsComponent },
+  { path: 'transactions', component: TransactionsComponent } 
 ];
 
 @NgModule({
@@ -29,9 +34,11 @@ export const routes = [
     DirectivesModule
   ],
   declarations: [
-    DragDropComponent, 
-    ToasterComponent, 
-    ResizableComponent
+    BanksComponent,
+    AgentsComponent,
+    CreditsComponent,
+    LoanSimulationsComponent,
+    TransactionsComponent,
   ]
 })
 export class ToolsModule { }
