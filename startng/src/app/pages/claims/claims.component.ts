@@ -15,7 +15,7 @@ export class ClaimsComponent implements OnInit {
 }*/
 import { Component, OnInit } from '@angular/core';
 import { Claim } from 'src/app/shared/model/claim';
-import { ClaimService } from 'src/app/shared/service/claim-service';
+import { ClaimService } from 'src/app/shared/services/claim-service';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { IMultiSelectOption, IMultiSelectSettings, IMultiSelectTexts } from 'angular-2-dropdown-multiselect';
 
