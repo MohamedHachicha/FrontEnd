@@ -13,21 +13,9 @@ import { MenuService } from '../menu/menu.service';
 export class SidebarComponent implements OnInit {  
   public settings: Settings;
   public menuItems:Array<any>;
-    private home;
   constructor(public appSettings:AppSettings, public menuService:MenuService) {
       this.settings = this.appSettings.settings;
-     let role = localStorage.getItem("role")
-
-      if (role === 'Employee') {
-          this.menuItems = this.menuService.getMenuItemsEmployee();
-          this.home = "/responsable-commercial";
-      }else   if (role === 'Customer') {
-          this.menuItems = this.menuService.getMenuItemsCustomer();
-          this.home = "/Customers";
-      }
-
-
-      // this.menuItems = this.menuService.getVerticalMenuItems();
+      this.menuItems = this.menuService.getVerticalMenuItems();
   }
 
   ngOnInit() {     

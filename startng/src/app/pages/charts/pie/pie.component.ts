@@ -8,32 +8,7 @@ import { single, multi } from './../charts.data';
 })
 export class PieComponent {
   
-  public single: any[]=[
-    {
-      name: 'Germany',
-      value: 40632
-    },
-    {
-      name: 'United States',
-      value: 49737
-    },
-    {
-      name: 'France',
-      value: 36745
-    },
-    {
-      name: 'United Kingdom',
-      value: 36240
-    },
-    {
-      name: 'Spain',
-      value: 33000
-    },
-    {
-      name: 'Italy',
-      value: 35800
-    }
-  ]
+  public single: any[];
   public multi: any[];
  
   public showLegend = true;

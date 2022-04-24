@@ -25,9 +25,9 @@ export class MenuService {
     }
 
     ngOnInit(): void {
-        // this.token = localStorage.getItem('token');
-        // const tokenInfo = this.getDecodedAccessToken(this.token);
-        // console.log(tokenInfo.sub)
+        this.token = localStorage.getItem('token');
+        const tokenInfo = this.getDecodedAccessToken(this.token);
+        console.log(tokenInfo.sub)
 
 
     }
@@ -40,7 +40,7 @@ export class MenuService {
   public getVerticalMenuItems():Array<Menu> {
       this.token = localStorage.getItem('token');
       const tokenInfo = this.getDecodedAccessToken(this.token);
-     // if (tokenInfo.roles[0].authority==="Employee"){
+    //  if (tokenInfo.roles[0].authority==="Employee"){
           return verticalMenuItems;
     //  }
   }

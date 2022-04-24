@@ -17,8 +17,34 @@ export class CustomersComponent implements OnInit {
   public colorScheme = {
     domain: ['#2F3E9E', '#D22E2E', '#378D3B', '#0096A6', '#F47B00', '#606060']
   };
-  public single: any[]=[]
+  public single: any[]=[
+    {
+      name: 'Germany',
+      value: 40632
+    },
+    {
+      name: 'United States',
+      value: 49737
+    },
+    {
+      name: 'France',
+      value: 36745
+    },
+    {
+      name: 'United Kingdom',
+      value: 36240
+    },
+    {
+      name: 'Spain',
+      value: 33000
+    },
+    {
+      name: 'Italy',
+      value: 35800
+    }
+  ]
   constructor(private customerService: CustomerService, private modalService: NgbModal) {
+    //Object.assign(this, {single});
 
   }
   public onSelect(event) {
@@ -27,26 +53,14 @@ export class CustomersComponent implements OnInit {
   ngOnInit(): void {
 
     this.getAllCustomers();
-    this.getStatique()
 
   }
 
   public getAllCustomers() {
-    this.customerService.showCustomers().subscribe(res=> {
-      this.listCustomers = res
-
-    })
-  }
-  getStatique(){
-    this.customerService.customerscorestat().subscribe(res=> {
-      console.log("ressss",res)
-      res.forEach(element =>{
-        this.single.push({"name":element.scoreTypeName,"value":element.percent})
-      })
-      console.log("this.single",this.single)
-    })
+    this.customerService.showCustomers().subscribe(res=> this.listCustomers =res);
   }
   public editCustomer(customer: TemplateRef<any>){
+    console.log("customer ",customer)
     this.customerService.editCustomer(customer).subscribe();
   }
   update(e){

@@ -1,14 +1,14 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormGroup, FormControl, AbstractControl, FormBuilder, Validators} from '@angular/forms'; 
+import { FormGroup, FormControl, AbstractControl, FormBuilder, Validators} from '@angular/forms';
 import { EmailValidators } from 'ngx-validators'
 import {LoginService} from "./login.service";
 import jwt_decode from 'jwt-decode';
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
-  encapsulation: ViewEncapsulation.None
+    selector: 'app-login',
+    templateUrl: './login.component.html',
+    styleUrls: ['./login.component.scss'],
+    encapsulation: ViewEncapsulation.None
 })
 export class LoginComponent {public authForm = this.fb.group({
     username: ['', Validators.required],

@@ -55,12 +55,13 @@ import { ChatsComponent } from './pages/chats/chats.component';
 import { ContractsComponent } from './pages/contracts/contracts.component';
 import { ProvisionsComponent } from './pages/provisions/provisions.component';
 import { SinistersComponent } from './pages/sinisters/sinisters.component';
+
 import { BanksComponent } from './pages/credits/banks/banks.component';
 import { AgentsComponent } from './pages/credits/agents/agents.component';
 import { LoanSimulationsComponent } from './pages/credits/loan-simulations/loan-simulations.component';
 import { CreditsComponent } from './pages/credits/credits/credits.component';
 import { TransactionsComponent } from './pages/credits/transactions/transactions.component';
-import {DxDataGridModule} from "devextreme-angular";
+import {DevExtremeModule} from "devextreme-angular";
 import {PieChartModule} from "@swimlane/ngx-charts";
 import { ClaimsCustomerComponent } from './pages/claims-customer/claims-customer.component';
 import { ClaimsEmployeeComponent } from './pages/claims-employee/claims-employee.component';
@@ -70,34 +71,34 @@ import { UpdateclaimComponent } from './pages/updateclaim/updateclaim.component'
 
 
 @NgModule({
-    imports: [
-        DxDataGridModule,
-        BrowserModule,
-        BrowserAnimationsModule,
-        FormsModule,
-        PerfectScrollbarModule,
-        NgbModule,
-        MultiselectDropdownModule,
-        AgmCoreModule.forRoot({
-            apiKey: 'AIzaSyAO7Mg2Cs1qzo_3jkKkZAKY6jtwIlm41-I'
-        }),
-        CalendarModule.forRoot({
-            provide: DateAdapter,
-            useFactory: adapterFactory
-        }),
-        ToastrModule.forRoot(),
-        PipesModule,
-        AppRoutingModule,
-        HttpClientModule,
-        TranslateModule.forRoot({
-            loader: {
-                provide: TranslateLoader,
-                useFactory: HttpLoaderFactory,
-                deps: [HttpClient]
-            }
-        }),
-        PieChartModule
-    ],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    PerfectScrollbarModule,
+    NgbModule,
+    MultiselectDropdownModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyAO7Mg2Cs1qzo_3jkKkZAKY6jtwIlm41-I'
+    }),
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory
+    }),
+    ToastrModule.forRoot(),
+    PipesModule,
+    AppRoutingModule,
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    }),
+    DevExtremeModule,
+    PieChartModule
+  ],
   declarations: [
     AppComponent,
     PagesComponent,
@@ -136,4 +137,4 @@ import { UpdateclaimComponent } from './pages/updateclaim/updateclaim.component'
   ],
   bootstrap: [ AppComponent ]
 })
-export class AppModule { }
+export class AppModule { } 

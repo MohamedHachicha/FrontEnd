@@ -35,7 +35,4 @@ export class CustomerService {
   editCustomer(Customer:any){
     return this.http.put("http://localhost:8087/PIDEV_GARANTIA/updateCustomer",Customer,{headers: new HttpHeaders().append("Authorization",localStorage.getItem('token'))})
   }
-  customerscorestat(): Observable<any> {
-    return this.http.get("http://localhost:8087/PIDEV_GARANTIA/customerscorestat");
-  }
 }

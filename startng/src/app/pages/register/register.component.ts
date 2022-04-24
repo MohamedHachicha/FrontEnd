@@ -34,7 +34,7 @@ export class RegisterComponent implements OnInit{
 
         if (this.registrationForm.valid) {
             this.loginService.registrationCustomer(values).subscribe(data => {
-                this.router.navigate(['login']);
+                this.router.navigate(['login' ]);
             });
         }
     }
