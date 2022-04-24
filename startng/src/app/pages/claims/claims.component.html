@@ -1,287 +1,161 @@
 <div class="card-header transparent border-0 text-muted px-1">
 
 <h2>Reclamation</h2>
-<p class="text-muted">Please fill out the form below, customer service will get back to you as soon as possible.</p>
 
-<div class="row ">
-    <div class="col-lg-6 mb-4  ">
+<div class="row mb-4 align-items-star">
+    <div class="col-lg-8 order-first  ">
         <div widget class="card border-0 box-shadow">
             <div class="card-header transparent border-0 text-muted ">
+                            <div class="card-body pt-0 widget-body "> 
+                                <p class="text-muted">Please fill out the form below, customer service will get back to you as soon as possible.</p>
+
+                            <!-- <p class="text-left fs-13 text-gray">Basic Form Input with diffrent elements and styles.</p> -->               
+                                    <div class="relative w-full mb-3">
+                                    <label
+                                        class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                                        htmlFor="grid-password"
+                                    >
+                                    Contract Type
+                                    </label><br>	
+                                    <!-- automobile,vie,Habitation,epargne,Retraite,Chefdefamille,Santé,avenirdemesenfants,materielinformatique; -->
+
+                                    <select id="exampleSelect1" [(ngModel)]="claim.claim_contrat_type" class="form-control">
+                                        <option>automobile</option>
+                                        <option>vie</option>
+                                        <option>Habitation</option>
+                                        <option>epargne</option>
+                                        <option>Retraite</option>
+                                        <option>Chefdefamille</option>
+                                        <option>Santé</option>
+                                        <option>avenirdemesenfants</option>
+                                        <option>materielinformatique</option>
+                                        
+                                    </select>
+                                       
+                                    </div>
+                                    {{claim.claim_contrat_type}}
+                                    <div class="relative w-full mb-3">
+
+                                    <label
+                                        class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                                        htmlFor="grid-password"
+                                    >
+                                    Claim Type
+                                    </label><br>
+                                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                        <label class="btn btn-primary">
+                                            <input type="radio" name="options" id="option1" autocomplete="off" [(ngModel)]="claim.claim_type" value="Reclamation"> Reclamation
+                                        </label>
+                                        <label class="btn btn-primary active">
+                                            <input type="radio" name="options" id="option2" autocomplete="off" checked [(ngModel)]="claim.claim_type" value="Complaint"> Complaint
+                                        </label>
+                                    </div>
+                                    {{claim.claim_type}}<br>
+
+                                    <div class="relative w-full mb-3">
+                                        <label
+                                            class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                                            htmlFor="grid-password"
+                                        >
+                                        Message
+                                        </label>
+                                        <textarea id="textarea-input" name="textarea-input" rows="9" class="form-control" placeholder="Content.." [(ngModel)]="claim.claim_description"></textarea>
+                                    </div>
+                                    {{claim.claim_description}}<br>
+                                    <input type="text" id="input-1" class="form-control" [(ngModel)]="id">
+                                    {{id}}
+                                    <button type="button" (click)=" deleteClaim(id)" class="btn btn-success btn-rounded w-100p mb-1 mr-1">Send</button>                
+                                    <button type="button" class="btn btn-info btn-rounded w-100p mb-1 mr-1"routerLink="/claimscustomer">My Claims</button>
+                                    <button type="button" class="btn btn-info btn-rounded w-100p mb-1 mr-1"routerLink="/claimsemployee">Display claims</button>
+                                    <button type="button"  (click)="addclaim(claim)"class="btn btn-success btn-rounded w-100p mb-1 mr-1">Send</button> 
+                                    <button type="button" class="btn btn-info btn-rounded w-100p mb-1 mr-1"routerLink="/updateclaim">update claim</button>
                
-               <!--  <div class="widget-controls"> 
-                    <a data-widgster="expand" href="#" class="transition"><i class="fa fa-chevron-down"></i></a>
-                    <a data-widgster="collapse" href="#" class="transition"><i class="fa fa-chevron-up"></i></a>
-                    <a data-widgster="close" href="#" class="transition"><i class="fa fa-times"></i></a>
 
-            </div> -->
-            <div class="card-body pt-0 widget-body "> 
-              <!-- <p class="text-left fs-13 text-gray">Basic Form Input with diffrent elements and styles.</p> -->
-               
-                <form>               
-                    <div class="relative w-full mb-3">
-                    <label
-                        class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                        htmlFor="grid-password"
-                    >
-                    Contract Type
-                    </label><br>
-                    <div>   
-                        <ss-multiselect-dropdown class="custom-multiselect" [options]="thirdControlOptions" [texts]="thirdControlTexts" [settings]="thirdControlSettings" [(ngModel)]="thirdControlModel"></ss-multiselect-dropdown>
-                    </div> 
-                </div>
-                <div class="relative w-full mb-3">
+                                </div>
+        </div>
+        </div>
+    </div>
 
-                <label
-                        class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                        htmlFor="grid-password"
-                    >
-                    Claim Type
-                    </label><br>
-                <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                    <label class="btn btn-primary">
-                        <input type="radio" name="options" id="option1" autocomplete="off"> Reclamation
-                    </label>
-                    <label class="btn btn-primary active">
-                        <input type="radio" name="options" id="option2" autocomplete="off" checked> Complaint
-                    </label>
-                   
-                </div>
-            </div>
+    </div>
 
-                <div class="relative w-full mb-3">
-                    <label
-                        class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                        htmlFor="grid-password"
-                    >
-                     Message
-                    </label>
-                    <textarea id="textarea-input" name="textarea-input" rows="9" class="form-control" placeholder="Content.."></textarea>
-                </div>
-            
+
+    <div class="col-lg-4 order-last" style="height: 50%;">
+        <div widget class="card border-0 box-shadow">
+            <div class=" py-4 field--name-bp-text field--type-text-long field--label-hidden field--item"><div class="bloc-sidebar-contact bloc-sidebar-contact-2">
+                <div class="paragraph__column">
     
-                <button type="button" class="btn btn-success btn-rounded w-100p mb-1 mr-1">Send</button>                </form> 
+    
+                    <div class="field field--name-bp-text field--type-text-long field--label-hidden field--item"><div class="bloc-sidebar-contact bloc-sidebar-contact-3">
+        <h5><i class="fa fa-map-marker" aria-hidden="true"></i> <span>Nos services</span></h5>
+        <p><span>Direction générale</span><br> <a style="color: rgb(23, 23, 156);">dg@Garantía.tn</a></p>
+        <p><span>Département Marketing</span><br> <a style="color: rgb(23, 23, 156);">marketing@Garantía.tn</a></p>
+        <p><span>Service réassurance</span> <br><a style="color: rgb(23, 23, 156);">reassurance@Garantía.tn</a></p>
+        <p><span>Département ressources humaines</span> <br><a style="color: rgb(23, 23, 156);">grh@Garantía.tn</a></p>
+        <p><span>Service formation et Recrutement</span><br> <a style="color: rgb(23, 23, 156);">formation@Garantía.tn</a></p>
+        
+        
+        <p><span>Département financier</span> <br><a style="color: rgb(23, 23, 156);">financier@Garantía.tn</a></p>
+        <p><span>Département commercial</span> <br><a style="color: rgb(23, 23, 156);">departement.commercial@Garantía.tn</a></p>
+        <p><span>Délégué de protection de données (DPO)</span><br> <a style="color: rgb(23, 23, 156);">dpo@Garantía.tn</a></p>
+        </div></div>
+              
+          </div>
             </div>
         </div>
     </div>
-    <div class="col-lg-6 mb-4">
-        <div widget class="card border-0 box-shadow">
-           <!--  <div class="card-header transparent border-0 text-muted">
-                <h5 class="mb-0">Input group</h5>
-                <div class="widget-controls"> 
-                    <a data-widgster="expand" href="#" class="transition"><i class="fa fa-chevron-down"></i></a>
-                    <a data-widgster="collapse" href="#" class="transition"><i class="fa fa-chevron-up"></i></a>
-                    <a data-widgster="close" href="#" class="transition"><i class="fa fa-times"></i></a>
-                </div>        
-            </div>
-            <div class="card-body pt-0 widget-body">
-                <p class="text-left fs-13 text-gray">Easily extend form controls by adding text, buttons, or button groups on either side of textual <code>&lt;input&gt;</code>s.</p>
-               
-                 <div class="form-group">
-                     <div class="input-group">
-                        <input type="text" class="form-control">
-                        <div class="input-group-append">
-                            <span class="input-group-text"><i class="fa fa-user"></i></span>
-                        </div>
-                    </div>
-                </div>
-
-                 <div class="form-group">
-                    <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
-                    <div class="input-group">
-                        <div class="input-group-prepend"><span class="input-group-text">$</span></div>
-                            <input type="text" class="form-control">
-                        <div class="input-group-append"><span class="input-group-text">.00</span></div>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="input-group">
-                        <input type="email" class="form-control" placeholder="email">
-                        <span class="input-group-append">
-                            <span class="input-group-text text-primary">@domain.com</span>
-                        </span>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search for...">
-                        <span class="input-group-append">
-                            <button type="button" class="btn btn-info">Go!</button>
-                        </span>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="input-group">
-                        <div class="input-group-prepend"><span class="input-group-text">$</span></div>
-                        <div class="input-group-prepend"><span class="input-group-text">0.00</span></div>
-                        <input type="text" class="form-control">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="input-group">
-                        <span class="input-group-prepend">
-                            <span class="input-group-text"><input type="checkbox"></span>
-                        </span>
-                        <input type="text" class="form-control">
-                    </div>
-                </div>
-              
-                <div class="form-group">
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action</button>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="javascript:void(0);">Action</a>
-                                <a class="dropdown-item" href="javascript:void(0);">Another action</a>
-                            </div>
-                        </div>
-                        <input type="text" class="form-control">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <button type="button" class="btn btn-secondary">Action</button>
-                            <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="sr-only">Toggle Dropdown</span>
-                            </button>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="javascript:void(0);">Action</a>
-                                <a class="dropdown-item" href="javascript:void(0);">Another action</a>
-                            </div>
-                        </div>
-                        <input type="text" class="form-control">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="input-group">                        
-                        <input type="text" class="form-control">
-                        <div class="input-group-append">
-                            <button type="button" class="btn btn-secondary">Action</button>
-                            <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="sr-only">Toggle Dropdown</span>
-                            </button>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="javascript:void(0);">Action</a>
-                                <a class="dropdown-item" href="javascript:void(0);">Another action</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="input-group">
-                        <div class="input-group-prepend dropright">
-                            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Dropright
-                            </button>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="javascript:void(0);">Action</a>
-                                <a class="dropdown-item" href="javascript:void(0);">Another action</a>
-                            </div>
-                        </div>
-                        <input type="text" class="form-control">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="input-group">                        
-                        <input type="text" class="form-control">
-                        <div class="input-group-append dropleft">
-                            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Dropleft
-                            </button>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="javascript:void(0);">Action</a>
-                                <a class="dropdown-item" href="javascript:void(0);">Another action</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>                
-
-                <div class="form-group">
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <button class="btn btn-danger" type="button">Hate it</button>
-                        </div>
-                        <input type="text" class="form-control" placeholder="Product name">
-                        <div class="input-group-append">
-                            <button class="btn btn-success" type="button">Love it</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="input-group input-group-sm">                        
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fa fa-paperclip"></i></span>
-                        </div>
-                        <input type="text" class="form-control">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="input-group input-group-lg">
-                         <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fa fa-paperclip"></i></span>
-                        </div>
-                        <input type="text" class="form-control">
-                    </div>
-                </div>               
-
-                <h5 class="text-left mt-4">Input colors</h5>
-
-                <div class="form-group has-success">
-                    <label class="form-control-label" for="inputSuccess1">Input with success</label>
-                    <input type="text" class="form-control form-control-success" id="inputSuccess1">
-                </div>
-
-                <div class="form-group has-warning">
-                    <label class="form-control-label" for="inputWarning1">Input with warning</label>
-                    <input type="text" class="form-control form-control-warning" id="inputWarning1">
-                </div>
-
-                <div class="form-group has-danger">
-                    <label class="form-control-label" for="inputDanger1">Input with danger</label>
-                    <input type="text" class="form-control form-control-danger" id="inputDanger1">
-                </div>
-
-                 <div class="form-group">
-                    <label for="input-primary" class="text-primary">Primary input</label>
-                    <input type="text" class="form-control bg-primary text-white" id="input-primary">
-                </div>
-
-                <div class="form-group">
-                    <label for="input-success" class="text-success">Success input</label>
-                    <input type="text" class="form-control bg-success text-white" id="input-success">
-                </div>
-
-                <div class="form-group">
-                    <label for="input-info" class="text-info">Info input</label>
-                    <input type="text" class="form-control bg-info text-white" id="input-info">
-                </div>
-
-                <div class="form-group">
-                    <label for="input-warning" class="text-warning">Warning input</label>
-                    <input type="text" class="form-control bg-warning text-white" id="input-warning">
-                </div>
-
-                <div class="form-group">
-                    <label for="input-danger" class="text-danger">Danger input</label>
-                    <input type="text" class="form-control bg-danger text-white" id="input-danger">
-                </div>   
-
-            </div>
-        </div> -->
     </div>
 </div>
+<h2>Horaires d’ouverture</h2>
 
-<!-- <div class="row">
+<div class="container">
+    <div class="row">
+      <div class="col order-last">
+        <h4>Hiver</h4>
+        <p><strong>Lundi-Vendredi</strong></p>
+        <p>08:00-12:00 <br> 
+        13:00-17:30</p>
+        <p><strong>Samedi</strong></p>
+        <p>08:00-12:00</p>      </div>
+      <div class="col">
+        <h4>été</h4>
+        <p><strong>Lundi-Vendredi</strong></p>
+        <p>07:00-13:00</p>
+        <p><strong>Samedi</strong></p>
+        <p>08:00-12:00</p>      </div>
+      <div class="col order-first">
+        <h4>ramadan</h4>
+        <p><strong>Lundi-Vendredi</strong></p>
+        <p>08:00-14:00</p>
+        <p><strong>Samedi</strong></p>
+        <p>08:00-12:00</p>      </div>
+    </div>
+  </div>
+<div class="paragraph paragraph--type--bp-simple paragraph--view-mode--default " style="background-color: aliceblue;">
+    <div class="paragraph__column">
+      
+      
+<div class="field field--name-bp-text field--type-text-long field--label-hidden field--item"><div class="bloc-sidebar-contact bloc-sidebar-contact-1">
+  <h5><i aria-hidden="true" class="fa fa-map-marker"></i> <span>Adresse</span></h5>
+  
+  <h4>Siège des assurances Garantía</h4>
+  
+  <p> 18, rue de l'Usine - ZI Aéroport Charguia II 2035 Ariana Tunisie</p>
+  
+  <p>Tél. : (+216) 71 94 15 41 (LG)</p>
+  
+  <p>Fax : (+216) 71 94 18 89</p>
+  
+  <p>Email: <a href="mailto:Garantiaentreprise@gmail.com">Garantiaentreprise@gmail.com</a></p>
+  </div>
+  </div>
+        
+    </div>
+  </div>
+  </div>
+ 
+
+<!-- 
+ <div class="row">
     <div class="col-12 mb-4">
         <div widget class="card border-0 box-shadow">
             <div class="card-header transparent border-0 text-muted">

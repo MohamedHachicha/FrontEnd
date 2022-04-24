@@ -55,6 +55,9 @@ import { ChatsComponent } from './pages/chats/chats.component';
 import { ContractsComponent } from './pages/contracts/contracts.component';
 import { ProvisionsComponent } from './pages/provisions/provisions.component';
 import { SinistersComponent } from './pages/sinisters/sinisters.component';
+import { ClaimsCustomerComponent } from './pages/claims-customer/claims-customer.component';
+import { ClaimsEmployeeComponent } from './pages/claims-employee/claims-employee.component';
+import { UpdateclaimComponent } from './pages/updateclaim/updateclaim.component';
 
 
  
@@ -113,6 +116,9 @@ import { SinistersComponent } from './pages/sinisters/sinisters.component';
     ContractsComponent,
     ProvisionsComponent,
     SinistersComponent,
+    ClaimsCustomerComponent,
+    ClaimsEmployeeComponent,
+    UpdateclaimComponent,
     
   ],
   providers: [ 

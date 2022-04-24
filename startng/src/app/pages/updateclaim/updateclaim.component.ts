@@ -1,31 +1,16 @@
-/*import { Component, OnInit } from '@angular/core';
-
-@Component({
-  selector: 'app-claims',
-  templateUrl: './claims.component.html',
-  styleUrls: ['./claims.component.scss']
-})
-export class ClaimsComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
-}*/
 import { Component, OnInit } from '@angular/core';
+import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Claim } from 'src/app/shared/model/claim';
 import { ClaimService } from 'src/app/shared/service/claim-service';
-import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
-  selector: 'app-claims',
-  templateUrl: './claims.component.html',
-  styleUrls: ['./claims.component.scss']
+  selector: 'app-updateclaim',
+  templateUrl: './updateclaim.component.html',
+  styleUrls: ['./updateclaim.component.scss']
 })
+export class UpdateclaimComponent implements OnInit {
 
-export class ClaimsComponent implements OnInit {
- id!:any;
+  id!:any;
   listClaims:any;
   form : boolean = false;
    claim!: Claim;
@@ -33,7 +18,15 @@ export class ClaimsComponent implements OnInit {
    lng: number = -75.697193;
    zoom: number = 7;
    closeResult! : string;
-  
+  listclaim=[
+    {
+        "claim_id": 3,
+        "claim_description": "error 5",
+        "claim_state": "Treated",
+        "claim_type": "Complaint",
+        "claim_contrat_type": "Habitation",
+        "claim_visibility": true,
+        "claim_date": "2022-04-08"}]
   constructor(private claimService : ClaimService, private modalService:NgbModal) { }
 
   ngOnInit(): void {
@@ -49,15 +42,16 @@ export class ClaimsComponent implements OnInit {
     claim_date!:null,
     }
   }
+  getAllClaims(){
+    this.claimService.getAllClaims().subscribe(res => this.listClaims = res)
+  }
   addclaim(p: Claim){
     this.claimService.addClaim(p).subscribe(() => {
       this.getAllClaims();
      // this.form = false;
     });
   }
-  getAllClaims(){
-    this.claimService.getAllClaims().subscribe(res => this.listClaims = res)
-  }
+
   editClaim(claim : Claim){
     this.claimService.editClaim(claim).subscribe();
   }
@@ -87,6 +81,6 @@ export class ClaimsComponent implements OnInit {
   cancel(){
     this.form = false;
   }
-}
 
- 
+
+}

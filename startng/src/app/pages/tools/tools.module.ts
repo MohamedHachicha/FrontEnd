@@ -9,8 +9,8 @@ import { DirectivesModule } from '../../theme/directives/directives.module';
 import { BanksComponent } from './banks/banks.component';
 import { AgentsComponent } from './agents/agents.component';
 import { LoanSimulationsComponent } from './loan-simulations/loan-simulations.component';
-import { TransactionsComponent } from './transactions/transactions.component';
 import { CreditsComponent } from './credits/credits.component';
+import { TransactionsComponent } from '../credits/transactions/transactions.component';
 
 
 

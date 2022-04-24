@@ -1,31 +1,16 @@
-/*import { Component, OnInit } from '@angular/core';
-
-@Component({
-  selector: 'app-claims',
-  templateUrl: './claims.component.html',
-  styleUrls: ['./claims.component.scss']
-})
-export class ClaimsComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
-}*/
 import { Component, OnInit } from '@angular/core';
+import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Claim } from 'src/app/shared/model/claim';
 import { ClaimService } from 'src/app/shared/service/claim-service';
-import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
-  selector: 'app-claims',
-  templateUrl: './claims.component.html',
-  styleUrls: ['./claims.component.scss']
+  selector: 'app-claims-customer',
+  templateUrl: './claims-customer.component.html',
+  styleUrls: ['./claims-customer.component.scss']
 })
+export class ClaimsCustomerComponent implements OnInit {
 
-export class ClaimsComponent implements OnInit {
- id!:any;
+  id!:any;
   listClaims:any;
   form : boolean = false;
    claim!: Claim;
@@ -87,6 +72,5 @@ export class ClaimsComponent implements OnInit {
   cancel(){
     this.form = false;
   }
-}
 
- 
+}

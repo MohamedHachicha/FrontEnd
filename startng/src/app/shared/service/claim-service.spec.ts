@@ -1,7 +1,25 @@
-import { ClaimService } from './claim-service';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ClaimsComponent } from 'src/app/pages/claims/claims.component';
 
-describe('ClaimService', () => {
-  it('should create an instance', () => {
-    expect(new ClaimService()).toBeTruthy();
+
+describe('ClaimssComponent', () => {
+  let component: ClaimsComponent;
+  let fixture: ComponentFixture<ClaimsComponent>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      declarations: [ ClaimsComponent ]
+    })
+    .compileComponents();
+  });
+
+  beforeEach(() => {
+    fixture = TestBed.createComponent(ClaimsComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
   });
 });
