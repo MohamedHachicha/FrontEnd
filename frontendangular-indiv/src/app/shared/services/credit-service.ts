@@ -26,7 +26,7 @@ export class CreditService {
   
     verifCredit(idCustomerAccount: number, idCredit : number): Observable<string>  {
   
-      return this.httpClient.put<string>(this.apiURL+'/confirm-credit/'+idCustomerAccount+'/'+idCredit,idCustomerAccount);
+      return this.httpClient.put<string>(this.apiURL+'/confirm-credit/'+idCustomerAccount+'/'+idCredit,idCredit);
     }
 
     /////////////////////UPDATE WITH CONTROL///////////////////////////////////////////
@@ -38,7 +38,7 @@ export class CreditService {
 //////////////////////////GET ALL CREDITS ////////////////////////
   
     retrieveAllCredits(): Observable<Credit[]> {
-      return this.httpClient.get<Credit[]>(this.apiURL+'/retrieve-all-credits');
+      return this.httpClient.get<Credit[]>(this.apiURL+'/retrieve-all-credits/');
     }
 
 //////////////////////////GET CREDIT BY ID CREDIT/////////////////////////////

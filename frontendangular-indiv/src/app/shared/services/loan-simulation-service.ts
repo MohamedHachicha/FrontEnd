@@ -19,48 +19,62 @@ export class LoanSimulationService {
   
     Simulate(idOffer : number, nameBank: string, nbrAnnee : number, salaire : number): Observable<LoanSimulation> {
   
-      return this.httpClient.post<LoanSimulation>(this.apiURL+'//'+idCustomerAccount );
+      return this.httpClient.post<LoanSimulation>(this.apiURL+'/simulate/'+idOffer+'/'+nameBank +'/'+nbrAnnee+ '/'+ salaire, LoanSimulation );
     }
   
-/////////////////////////////////////////VERIFICATION CREDIT////////////////////////////////////////////
+///////////////////////////////Add simulation with sending mails////////////////////////////
   
-    verifCredit(idCustomerAccount: number, idCredit : number): Observable<string>  {
+  pdf(idLoan : number): Observable<LoanSimulation> {
   
-      return this.httpClient.put<string>(this.apiURL+'/confirm-credit/'+idCustomerAccount+'/'+idCredit,idCustomerAccount);
+  return this.httpClient.post<LoanSimulation>(this.apiURL+'/pdf/'+ idLoan, LoanSimulation);
+  }
+
+  EmailWithPdfpdf(idLoan : number): Observable<LoanSimulation> {
+    
+    return this.httpClient.post<LoanSimulation>(this.apiURL+'/mail/'+ idLoan, LoanSimulation)
+  }
+
+  //Add simulation
+  addSimulation(idOffer : number, idCustomer: number, nameBank: string, nbrAnnee : number, salaire : number): Observable<LoanSimulation> {
+  
+    return this.httpClient.post<LoanSimulation>(this.apiURL+'/addSimulation/'+idOffer+'/'+ idCustomer +'/'+nameBank +'/'+nbrAnnee+ '/'+ salaire, LoanSimulation );
+  }
+
+///////////////////////////////////////////CONFIRMATION//////////////////////////////
+
+  confirmSimulation(idLoan : number): Observable<LoanSimulation>  {
+  
+      return this.httpClient.put<LoanSimulation>(this.apiURL+'/confirmSimulation/'+idLoan, LoanSimulation);
     }
 
-    /////////////////////UPDATE WITH CONTROL///////////////////////////////////////////
-
-    refreshCredit(c: LoanSimulation, idCredit : number): Observable<LoanSimulation>  {
+    unconfirmSimulation(idLoan : number): Observable<LoanSimulation>  {
   
-      return this.httpClient.put<LoanSimulation>(this.apiURL+'/update-credit/'+idCredit, c);
-    }
-//////////////////////////GET ALL CREDITS ////////////////////////
-  
-    retrieveAllCredits(): Observable<LoanSimulation[]> {
-      return this.httpClient.get<LoanSimulation[]>(this.apiURL+'/retrieve-all-credits');
+      return this.httpClient.put<LoanSimulation>(this.apiURL+'/unconfirmSimulation/'+idLoan, LoanSimulation);
     }
 
-//////////////////////////GET CREDIT BY ID CREDIT/////////////////////////////
-    retrieveCredit(idCredit: number): Observable<LoanSimulation> {
-      return this.httpClient.get<LoanSimulation>(this.apiURL+'/retrieve-credit/'+idCredit);
+  /////////////////////////////////////Retrieve data from DB///////////////////////////////////////////////////////////
   
+    getAllSimulations(): Observable<LoanSimulation[]> {
+      return this.httpClient.get<LoanSimulation[]>(this.apiURL+'/getAllSimulations');
     }
-///////////////////GET ALL CREDITS BY ID CUSTOMER////////////////////////////////////
 
-    retrieveCreditByCustomer(idCustomerAccount: number): Observable<LoanSimulation> {
-      return this.httpClient.get<LoanSimulation>(this.apiURL+'/retrieve-credit-customer-id/'+idCustomerAccount);
+    getAllSimulationsByCin(cin: number): Observable<LoanSimulation[]> {
+      return this.httpClient.get<LoanSimulation[]>(this.apiURL+'/getAllSimulationsByCin/'+cin);
+  
+    }
+
+    getAllSimulationsByNameBank(nameBank: string): Observable<LoanSimulation[]> {
+      return this.httpClient.get<LoanSimulation[]>(this.apiURL+'/getAllSimulationsByNameBank/'+nameBank);
   
     }
   
-///////////////////DELETE WITH CONTROL//////////////////////////////////
+///////////////////DELETE/////////////////////////////////
   
-    suppCredit(idCredit: number) {
-      return this.httpClient.delete<LoanSimulation>(this.apiURL+'/supp-credit/'+idCredit)
+    deleteSimulationById(id: number) {
+      return this.httpClient.delete<LoanSimulation>(this.apiURL+'/deleteSimulationById/'+id)
     }
-////////////////////////////CLOSE CREDIT///////////////////////////////////////
-    closeCredit(idCredit : number): Observable<string>  {
-  
-     return this.httpClient.put<string>(this.apiURL+'/close-credit/'+idCredit, idCredit);
+    //scheduling
+    deleteOrNotifSimulationInScheduling() {
+      return this.httpClient.delete<LoanSimulation>(this.apiURL+'/deleteOrNotif')
     }
-}
+  }
