@@ -18,12 +18,21 @@ export class ClaimsCustomerComponent implements OnInit {
    lng: number = -75.697193;
    zoom: number = 7;
    closeResult! : string;
-  
+   type!:string;
+  listclaim=[
+    {
+        "claim_id": 3,
+        "claim_description": "error 5",
+        "claim_state": "Treated",
+        "claim_type": "Complaint",
+        "claim_contrat_type": "Habitation",
+        "claim_visibility": true,
+        "claim_date": "2022-04-08"}]
   constructor(private claimService : ClaimService, private modalService:NgbModal) { }
 
   ngOnInit(): void {
     this.getAllClaims();
-
+    this.type="vie";
     this.claim = {
       claim_id!:null,
     claim_description!:null,
@@ -34,15 +43,20 @@ export class ClaimsCustomerComponent implements OnInit {
     claim_date!:null,
     }
   }
+  getAllClaims(){
+    this.claimService.getAllClaims().subscribe(res => this.listClaims = res)
+    /*for(var i= 0; i < this.listClaims.length; i++)
+{
+  this.listClaims[i].;
+}*/
+  }
   addclaim(p: Claim){
     this.claimService.addClaim(p).subscribe(() => {
       this.getAllClaims();
      // this.form = false;
     });
   }
-  getAllClaims(){
-    this.claimService.getAllClaims().subscribe(res => this.listClaims = res)
-  }
+
   editClaim(claim : Claim){
     this.claimService.editClaim(claim).subscribe();
   }
@@ -72,5 +86,4 @@ export class ClaimsCustomerComponent implements OnInit {
   cancel(){
     this.form = false;
   }
-
 }
