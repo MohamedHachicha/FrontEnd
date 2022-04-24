@@ -1,6 +1,7 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, AbstractControl, FormBuilder, Validators} from '@angular/forms';
+import {LoginService} from "../login/login.service";
 
 @Component({
   selector: 'app-register',
@@ -8,40 +9,50 @@ import { FormGroup, FormControl, AbstractControl, FormBuilder, Validators} from 
   styleUrls: ['./register.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class RegisterComponent {
-    public router: Router;
-    public form:FormGroup;
-    public name:AbstractControl;
-    public email:AbstractControl;
-    public password:AbstractControl;
-    public confirmPassword:AbstractControl;
-    
-    constructor(router:Router, fb:FormBuilder){
-        this.router = router;
-        this.form = fb.group({
-            name: ['', Validators.compose([Validators.required, Validators.minLength(3)])],
-            email: ['', Validators.compose([Validators.required, emailValidator])],
-            password: ['', Validators.required],
-            confirmPassword: ['', Validators.required]
-        },{validator: matchingPasswords('password', 'confirmPassword')});
+export class RegisterComponent implements OnInit{
+    public registrationForm = this.fb.group({
+        firstName: ['', Validators.required],
+        lastName: ['', Validators.required],
+        phoneNumber: ['', Validators.required],
+        governorate: ['', Validators.required],
+        cin: ['', Validators.required],
+        job: ['', Validators.required],
+        monthlyIncome: ['', Validators.required],
+        birthDate: ['', Validators.required],
+        gender: ['', Validators.required],
+        email: ['', Validators.required],
+        password: ['', Validators.required],
+    });
 
-        this.name = this.form.controls['name'];
-        this.email = this.form.controls['email'];
-        this.password = this.form.controls['password'];
-        this.confirmPassword = this.form.controls['confirmPassword'];
+    constructor(private loginService: LoginService,private fb: FormBuilder, private router: Router) {}
+
+    ngOnInit(): void {}
+
+    RegisterCustomer() {
+        let values = this.registrationForm.value
+        console.log("infor", values)
+
+        if (this.registrationForm.valid) {
+            this.loginService.registrationCustomer(values).subscribe(data => {
+                this.router.navigate(['login']);
+            });
+        }
     }
 
-     public onSubmit(values:Object):void {
+
+    /* public onSubmit(values:Object):void {
         if (this.form.valid) {
             console.log(values);
             this.router.navigate(['/login']);
         }
-    }
+    }*/
 
     ngAfterViewInit(){
         document.getElementById('preloader').classList.add('hide');
     }
 }
+
+
 
 export function emailValidator(control: FormControl): {[key: string]: any} {
     var emailRegexp = /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/;    

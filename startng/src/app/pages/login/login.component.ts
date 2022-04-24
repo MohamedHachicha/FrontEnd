@@ -2,38 +2,60 @@ import { Component, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, AbstractControl, FormBuilder, Validators} from '@angular/forms'; 
 import { EmailValidators } from 'ngx-validators'
-
+import {LoginService} from "./login.service";
+import jwt_decode from 'jwt-decode';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class LoginComponent {
-  public router: Router;
-  public form:FormGroup;
-  public email:AbstractControl;
-  public password:AbstractControl;
+export class LoginComponent {public authForm = this.fb.group({
+    username: ['', Validators.required],
+    password: ['', Validators.required],
+});
+    token: string;
 
-  constructor(router:Router, fb:FormBuilder) {
-      this.router = router;
-      this.form = fb.group({
-          'email': ['', Validators.compose([Validators.required, EmailValidators.normal])],
-          'password': ['', Validators.compose([Validators.required, Validators.minLength(6)])]
-      });
+    constructor(private loginService: LoginService, private fb: FormBuilder, private router: Router) {
+    }
 
-      this.email = this.form.controls['email'];
-      this.password = this.form.controls['password'];
-  }
+    getDecodedAccessToken(token: string): any {
+        try {
+            return jwt_decode(token);
+        } catch(Error) {
+            return null;
+        }
+    }
+    ngOnInit(): void {
+    }
 
-  public onSubmit(values:Object):void {
-      if (this.form.valid) {
-          this.router.navigate(['/']);
-      }
-  }
+    OnSubmit() {
+        let values = this.authForm.value
+        console.log("infor", values)
 
-  ngAfterViewInit(){
-      document.getElementById('preloader').classList.add('hide');                 
-  }
-
+        if (this.authForm.valid) {
+            this.loginService.login(values).subscribe(
+                data => {
+                    /*Cas de succes*/
+                    this.token=data.body
+                    localStorage.setItem('token',this.token );
+                    /*A chaque fois on besoin du token */
+                    localStorage.getItem('token')
+                    const tokenInfo = this.getDecodedAccessToken(this.token);
+                    localStorage.setItem('role',tokenInfo.roles[0].authority);
+                    localStorage.setItem('mail',tokenInfo.sub);
+                    console.log(tokenInfo)
+                    if (tokenInfo.roles[0].authority==="Employee")
+                        this.router.navigate(['customers' ]);
+                    else if (tokenInfo.roles[0].authority==="Customer"){
+                        this.router.navigate(['profile/projects' ]);
+                    }
+                    console.log( this.token)
+                    console.log(data)
+                }, error => {
+                    console.log(error)/*Notication d'errur*/
+                }
+            )
+        }
+    }
 }

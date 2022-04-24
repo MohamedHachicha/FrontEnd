@@ -2,9 +2,10 @@ import { Injectable, Renderer2 } from '@angular/core';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { Menu } from './menu.model';
-import { verticalMenuItems } from './menu';
+import {menuItemsCustomer, menuItemsEmployee, verticalMenuItems} from './menu';
 import { horizontalMenuItems } from './menu';
 import { TranslateService } from '@ngx-translate/core';
+import jwt_decode from "jwt-decode";
 
 @Injectable()
 export class MenuService {
@@ -12,11 +13,36 @@ export class MenuService {
   constructor(private location:Location, 
               private renderer2:Renderer2,
               private router:Router,
-              public translateService: TranslateService){ } 
+              public translateService: TranslateService){ }
+
+    token: string;
+    getDecodedAccessToken(token: string): any {
+        try {
+            return jwt_decode(token);
+        } catch(Error) {
+            return null;
+        }
+    }
+
+    ngOnInit(): void {
+        // this.token = localStorage.getItem('token');
+        // const tokenInfo = this.getDecodedAccessToken(this.token);
+        // console.log(tokenInfo.sub)
 
 
+    }
+    public getMenuItemsEmployee():Array<Menu> {
+        return menuItemsEmployee;
+    }
+    public getMenuItemsCustomer():Array<Menu> {
+        return menuItemsCustomer;
+    }
   public getVerticalMenuItems():Array<Menu> {
-    return verticalMenuItems;
+      this.token = localStorage.getItem('token');
+      const tokenInfo = this.getDecodedAccessToken(this.token);
+     // if (tokenInfo.roles[0].authority==="Employee"){
+          return verticalMenuItems;
+    //  }
   }
 
   public getHorizontalMenuItems():Array<Menu> {

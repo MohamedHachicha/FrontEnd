@@ -118,7 +118,7 @@ let chats = [
 let talks = [
     new SideChat(
         'assets/img/users/user.jpg',
-        'Emilio Verdines', 
+        'Emilio Verdineshgggggg',
         'Online',
         'Hi, StartNG is a fully responsive, organized folder structure, clean & customizable code, easy to use and much more...',
         new Date(year, month, day-2, hour, minute+2),
