@@ -33,10 +33,6 @@ export class OffersComponent implements OnInit {
   }
   getAllOffers(){
     this.offerService.getAllOffers().subscribe(res => this.listOffers = res)
-    /*for(var i= 0; i < this.listOffers.length; i++)
-{
-  this.listOffers[i].;
-}*/
   }
   addoffer(p: Offer){
     this.offerService.addOffer(p).subscribe(() => {
