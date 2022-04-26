@@ -1,15 +1,161 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { IMultiSelectOption, IMultiSelectSettings, IMultiSelectTexts } from 'angular-2-dropdown-multiselect';
+import { SinisterService } from 'src/app/shared/sinister.service';
+import { MenuService } from '../../theme/components/menu/menu.service';
+import { FormGroup, FormControl, FormBuilder, Validators} from '@angular/forms';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Sinister } from 'src/app/shared/model/sinister';
+
+
 
 @Component({
   selector: 'app-sinisters',
   templateUrl: './sinisters.component.html',
-  styleUrls: ['./sinisters.component.scss']
+  styleUrls: ['./sinisters.component.scss'],
+  encapsulation: ViewEncapsulation.None,
+  providers: [ SinisterService,MenuService ]
 })
 export class SinistersComponent implements OnInit {
+  public firstControlModel: number[];
+    public firstControlOptions: IMultiSelectOption[] = [
+        { id: 1, name: 'Option 1' },
+        { id: 2, name: 'Option 2' },
+        { id: 3, name: 'Option 3' }
+    ];
 
-  constructor() { }
+    public secondControlModel: number[];
+    public secondControlSettings: IMultiSelectSettings = {
+        checkedStyle: 'fontawesome',
+        buttonClasses: 'btn btn-secondary btn-block',
+        dynamicTitleMaxItems: 3,
+        displayAllSelectedText: true,
+        showCheckAll: true,
+        showUncheckAll: true
+    };
+    public secondControlTexts: IMultiSelectTexts = {
+        checkAll: 'Select all',
+        uncheckAll: 'Unselect all',
+        checked: 'item selected',
+        checkedPlural: 'items selected',
+        searchPlaceholder: 'Find',
+        defaultTitle: 'Select countries',
+        allSelected: 'All selected',
+    };
+    public secondControlOptions: IMultiSelectOption[] = [
+      //automobile,vie,Habitation,epargne,Retraite,Chefdefamille,Santé,avenirdemesenfants,materielinformatique;
 
+        { id: 1, name: 'Ariana'},
+        { id: 2, name: 'Béja' },
+        { id: 3, name: 'Ben Arous' },
+        { id: 4, name: 'Bizerte' },
+        { id: 5, name: 'Gabès'},
+        { id: 6, name: 'Gafsa' },
+        { id: 7, name: 'Jendouba' },
+        { id: 8, name: 'Kairouan' },
+        { id: 9, name: 'Kasserine' },
+        { id: 10, name: 'Kébili' },
+        { id: 11, name: 'Kef' },
+        { id: 12, name: 'Mahdia' },
+        { id: 13, name: 'Manouba' },
+        { id: 14, name: 'Médenine' },
+        { id: 15, name: 'Monastir' },
+        { id: 16, name: 'Nabeul' },
+        { id: 17, name: 'Sfax' },
+        { id: 18, name: 'Sidi Bouzid' },
+        { id: 19, name: 'Siliana' },
+        { id: 20, name: 'Sousse' },
+        { id: 21, name: 'Tataouine' },
+        { id: 22, name: 'Tozeur' },
+        { id: 23, name: 'Tunis' },
+        { id: 24, name: 'Zaghouan ' },
+
+    ];
+
+
+    public thirdControlModel: number[];
+    public thirdControlSettings: IMultiSelectSettings = {
+        enableSearch: true,
+        checkedStyle: 'checkboxes',
+        buttonClasses: 'btn btn-secondary btn-block',
+        dynamicTitleMaxItems: 3,
+        displayAllSelectedText: true
+    };
+    public thirdControlTexts: IMultiSelectTexts = {
+        checkAll: 'Select all',
+        uncheckAll: 'Unselect all',
+        checked: 'item selected',
+        checkedPlural: 'items selected',
+        searchPlaceholder: 'Find...',
+        defaultTitle: 'Select contract type',
+        allSelected: 'All selected',
+    };
+    public thirdControlOptions: IMultiSelectOption[] = [
+      { id: 1, name: 'Ariana'},
+      { id: 2, name: 'Béja' },
+      { id: 3, name: 'Ben Arous' },
+      { id: 4, name: 'Bizerte' },
+      { id: 5, name: 'Gabès'},
+      { id: 6, name: 'Gafsa' },
+      { id: 7, name: 'Jendouba' },
+      { id: 8, name: 'Kairouan' },
+      { id: 9, name: 'Kasserine' },
+      { id: 10, name: 'Kébili' },
+      { id: 11, name: 'Kef' },
+      { id: 12, name: 'Mahdia' },
+      { id: 13, name: 'Manouba' },
+      { id: 14, name: 'Médenine' },
+      { id: 15, name: 'Monastir' },
+      { id: 16, name: 'Nabeul' },
+      { id: 17, name: 'Sfax' },
+      { id: 18, name: 'Sidi Bouzid' },
+      { id: 19, name: 'Siliana' },
+      { id: 20, name: 'Sousse' },
+      { id: 21, name: 'Tataouine' },
+      { id: 22, name: 'Tozeur' },
+      { id: 23, name: 'Tunis' },
+      { id: 24, name: 'Zaghouan ' }
+
+    ];
+  Sinister: { id: any; sinisterStatus: any; sinisterPlace: any; declarationDate: any; sinisterDate: any; delaiDeclaration: any; IndemnisationDate: any; sinisterDescription: any; chargeSinister: any; causeRejet: any; sinisterType: any; };
+  id!:any;
+  listSinisters:any;
+  form : boolean = false;
+   sinister: Sinister;
+   lat: number = 45.421530 ;
+   lng: number = -75.697193;
+   zoom: number = 7;
+   closeResult! : string;
+
+  constructor(private sinisterService : SinisterService, private modalService:NgbModal) { }
   ngOnInit(): void {
+     this.getAllSinister();
+     this.Sinister={
+      id: null ,
+      sinisterStatus: null ,
+      sinisterPlace: null ,
+      declarationDate:null ,
+      sinisterDate:null ,
+  
+      delaiDeclaration:null ,
+      IndemnisationDate:null ,
+      sinisterDescription:null ,
+      chargeSinister:null ,
+      causeRejet:null ,
+      sinisterType:null ,
+     }
+
+  
+
   }
+  getAllSinister() {
+    this.sinisterService.getAllSinister().subscribe(res => this.listSinisters = res);
+  }
+  addSinister(s: Sinister){
+    this.sinisterService.addSinister(s).subscribe(() => {
+      this.getAllSinister();
+     // this.form = false;
+    });
+  }
+  
 
 }
