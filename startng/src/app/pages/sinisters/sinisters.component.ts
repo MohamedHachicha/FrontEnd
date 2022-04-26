@@ -3,7 +3,7 @@ import { IMultiSelectOption, IMultiSelectSettings, IMultiSelectTexts } from 'ang
 import { SinisterService } from 'src/app/shared/sinister.service';
 import { MenuService } from '../../theme/components/menu/menu.service';
 import { FormGroup, FormControl, FormBuilder, Validators} from '@angular/forms';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Sinister } from 'src/app/shared/model/sinister';
 
 
@@ -128,7 +128,9 @@ export class SinistersComponent implements OnInit {
 
   constructor(private sinisterService : SinisterService, private modalService:NgbModal) { }
   ngOnInit(): void {
+   
      this.getAllSinister();
+     //console.log(this.listSinisters);
      this.Sinister={
       id: null ,
       sinisterStatus: null ,
@@ -148,14 +150,43 @@ export class SinistersComponent implements OnInit {
 
   }
   getAllSinister() {
-    this.sinisterService.getAllSinister().subscribe(res => this.listSinisters = res);
+    this.sinisterService.getAllSinister().subscribe(res => this.listSinisters = res), console.log(this.listSinisters);
   }
   addSinister(s: Sinister){
-    this.sinisterService.addSinister(s).subscribe(() => {
-      this.getAllSinister();
+    this.sinisterService.addSinister(s).subscribe(() => {this.getAllSinister(),
      // this.form = false;
-    });
+    console.log(s)});
   }
+  editSinisterSinister(sinister : Sinister){
+    this.sinisterService.editSinister(sinister).subscribe();
+  }
+  deleteSinister(idSinister : Number){
+    this.sinisterService.deleteSinister(idSinister).subscribe(() => this.getAllSinister())
+  }
+  
+  open(content: any) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+    }
+    private getDismissReason(reason: any): string {
+      if (reason === ModalDismissReasons.ESC) {
+        return 'by pressing ESC';
+      } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+        return 'by clicking on a backdrop';
+      } else {
+        return  `with: ${reason}`;
+      }
+      return null;
+    }
+    closeForm(){
+  
+    }
+    cancel(){
+      this.form = false;
+    }
   
 
 }

@@ -12,6 +12,7 @@ import { ContractsComponent } from './pages/contracts/contracts.component';
 import { ProvisionsComponent } from './pages/provisions/provisions.component';
 import { SinistersComponent } from './pages/sinisters/sinisters.component';
 
+
 export const routes: Routes = [
   {
     path: '', 

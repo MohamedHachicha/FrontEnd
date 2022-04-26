@@ -3,7 +3,7 @@
     <div class="col-lg-6 mb-4">
         <div widget class="card border-0 box-shadow">
             <div class="card-header transparent border-0 text-muted">
-                <h2 class="mb-0">Sinister managment</h2>
+                <h2 class="mb-0">Sinister mangment</h2>
                 <div class="widget-controls"> 
                     <a data-widgster="expand" href="#" class="transition"><i class="fa fa-chevron-down"></i></a>
                     <a data-widgster="collapse" href="#" class="transition"><i class="fa fa-chevron-up"></i></a>
@@ -23,17 +23,20 @@
                         <h6>Select Sinsiter place </h6>
                         <ss-multiselect-dropdown class="custom-multiselect" [options]="thirdControlOptions" [texts]="thirdControlTexts" [settings]="thirdControlSettings" [(ngModel)]="thirdControlModel"></ss-multiselect-dropdown>
                     </div> 
-                   
-                    <br>   
-                   
+                    <div class="form-group">
+                        <label for="input-6">With help text</label>
+                        <input type="text" class="form-control" id="input-6">
+                        <small class="text-muted">A block of help text that breaks onto a new line and may extend beyond one line.</small>
+                    </div>
                     <div class="form-group">
                         <label for="input-7">Delai declaration </label>
                         <input type="email" class="form-control" id="input-7" disabled value="it should not exceed 2 days">
-                    </div>                
+                    </div>                    
                     <div class="form-group">
                         <label for="textarea-1">Sinister's Description</label>
                         <textarea class="form-control" id="textarea-1"></textarea>
                     </div>
+                    
                    
                     <div class="form-group">
                         <label for="input-12">Declaration Date</label>
@@ -51,13 +54,36 @@
                         <label for="input-14">Week</label>
                         <input type="week" class="form-control" value="2011-W33" id="input-14">
                     </div>
+                    
                     <div class="form-group">
-                        <button class="btn btn-success btn-block" type="submit">Accept</button>
+                        <button (click)="addSinister(sinister)" class="btn btn-info w-100p mb-1 mr-1" type="button"  >Accept</button>
                     </div> 
-                   
+                    
                 </form>
             </div>
         </div>
     </div>
+    <div class="card-body pt-0 widget-body"> 
+        <p class="text-left fs-13 text-gray">Please fill out the form below,we kindly ask you to send us the requested information.</p>
+        <table class="table">
+            <thead class="thead-light">
+              <tr>
+                
+                <th scope="col">date</th>
+                <th scope="col">object</th>
+                <th scope="col">credit</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor='let p of listSinisters'>
+                
+                <td>{{p.sinisterDescription}}</td>
+                <td>{{p.declarationDate}}</td>
+               
+              </tr>
+            </tbody>
+          </table>
+          </div>
     
-    
+
+            

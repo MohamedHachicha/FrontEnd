@@ -8,37 +8,37 @@ import { Sinister } from './model/sinister';
 })
 export class SinisterService {
 
-  readonly API_URL = 'http://localhost:8087/PIDEV_GARANTIA/Sinister';
+  readonly API_URL = '/api/PIDEV_GARANTIA';
   
   constructor(private httpClient: HttpClient) { }
 
   getAllSinister() {
-    return this.httpClient.get(`${this.API_URL}/retrieve-all-sinisters`)
+    return this.httpClient.get(`${this.API_URL}/Sinister/retrieve-all-sinisters`);
   }
-  getSinisterbuId() {
-    return this.httpClient.get(`${this.API_URL}/retrieve-sinister`)
+  getSinisterbyId() {
+    return this.httpClient.get(`${this.API_URL}/Sinister/retrieve-sinister`);
   }
   addSinister(  sinister : Sinister) {
-    return this.httpClient.post(`${this.API_URL}/add-sinister`,   sinister)
+    return this.httpClient.post(`${this.API_URL}/Sinister/add-sinister`,   sinister);
   }
   editSinister(  sinister : Sinister){
-    return this.httpClient.put(`${this.API_URL}/update-Sinister/`,sinister)
+    return this.httpClient.put(`${this.API_URL}/Sinister/update-Sinister/`,sinister);
   }
   deleteSinister(idSinister : Number):Observable<Object>{
-    return  this.httpClient.delete(`${this.API_URL}/delete-Sinister/${idSinister}`)
+    return  this.httpClient.delete(`${this.API_URL}/Sinister/delete-Sinister/${idSinister}`);
   }
 
   treatSinister(idSinister : any): Observable<Object>{
-    return this.httpClient.get(`${this.API_URL}  /traiterSinistre`, idSinister)
+    return this.httpClient.get(`${this.API_URL}  /Sinister/traiterSinistre`, idSinister);
   }
   suivreSinister(idSinister : any): Observable<Object>{
-    return this.httpClient.get(`${this.API_URL}  /suivreSinistre`, idSinister)
+    return this.httpClient.get(`${this.API_URL}  /Sinister/suivreSinistre`, idSinister);
   }
   verfiferDelay (idSinister : any): Observable<Object>{
-    return this.httpClient.get(`${this.API_URL}  /verificationSinisterDelay`, idSinister)
+    return this.httpClient.get(`${this.API_URL}  /Sinister/verificationSinisterDelay`, idSinister);
   }
   calculRapidité (idSinister : any): Observable<Object>{
-    return this.httpClient.get(`${this.API_URL}  /calcul-Rapidité`, idSinister)
+    return this.httpClient.get(`${this.API_URL}  /Sinister/calcul-Rapidité`, idSinister);
   }
 
 
