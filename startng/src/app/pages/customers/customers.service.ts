@@ -30,9 +30,13 @@ export class CustomerService {
   }
 
   showCustomers(): Observable<any> {
-    return this.http.get("http://localhost:8087/PIDEV_GARANTIA/customersList");
+    return this.http.get("http://localhost:8087/PIDEV_GARANTIA/customersList",
+        {headers: new HttpHeaders().append("Authorization","Bearer "+localStorage.getItem('token'))});
   }
   editCustomer(Customer:any){
     return this.http.put("http://localhost:8087/PIDEV_GARANTIA/updateCustomer",Customer,{headers: new HttpHeaders().append("Authorization",localStorage.getItem('token'))})
+  }
+  showCustomersStat(): Observable<any> {
+    return this.http.get("http://localhost:8087/PIDEV_GARANTIA/customerscorestat");
   }
 }

@@ -40,9 +40,12 @@ export class MenuService {
   public getVerticalMenuItems():Array<Menu> {
       this.token = localStorage.getItem('token');
       const tokenInfo = this.getDecodedAccessToken(this.token);
-    //  if (tokenInfo.roles[0].authority==="Employee"){
-          return verticalMenuItems;
-    //  }
+    if (localStorage.getItem("role")=="Employee"){
+       console.log('ddddd')
+          return menuItemsEmployee;
+      }
+    else
+        return menuItemsCustomer;
   }
 
   public getHorizontalMenuItems():Array<Menu> {

@@ -133,7 +133,7 @@
         </div>
         <div class="card-body widget-body">
             <div class="w-100 h-300p">
-                <ngx-charts-pie-grid
+                <ngx-charts-pie-grid *ngIf="single!=[]"
                         [scheme]="colorScheme"
                         [results]="single"
                         (select)="onSelect($event)">

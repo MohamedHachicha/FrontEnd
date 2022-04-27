@@ -1,14 +1,31 @@
 import { Menu } from './menu.model';
 
 export const menuItemsEmployee=[
-    new Menu (11, 'Our Transactions', '/credits/transactions', null, 'file-text-o', null, false, 6),
+  new Menu (1, 'My Customers', '/customers', null, 'users', null, false, 0),
+  new Menu (11, 'Our Transactions', '/credits/transactions', null, 'file-text-o', null, false, 6),
     new Menu (12, 'Offers', '/offers', null, 'gift', null, false, 0),
     new Menu (13, 'Claims', '/claims', null, 'file-text-o', null, false, 0),
+  new Menu (2, 'Chat', '/chats', null, 'comments', null, false, 0),
+  new Menu (3, 'Contacts', '/contracts', null, 'file', null, false, 0),
+  new Menu (4, 'Provisions', '/provisions', null, 'laptop', null, false, 0),
+  new Menu (5, 'Sinisters', '/sinisters', null, 'warning', null, false,0 ),
+  new Menu (6, 'credits', null, null, 'euro', null, true, 0),
+  new Menu (7, 'Our Banks', '/tools/banks', null, 'warning', null, false,6 ),
+  new Menu (8, 'Our Agents', '/tools/agents', null, 'euro', null, false, 6),
+  new Menu (10, 'Our Credits', '/tools/credits', null, 'file-text-o', null, false, 6),
 ]
 export const menuItemsCustomer=[
-    new Menu (1, 'My Customers', '/customers', null, 'users', null, false, 0),
-    new Menu (2, 'Chat', '/chats', null, 'comments', null, false, 0),
-    new Menu (3, 'Contacts', '/contracts', null, 'file', null, false, 0),
+  new Menu (2, 'Chat', '/chats', null, 'comments', null, false, 0),
+  new Menu (3, 'Contacts', '/contracts', null, 'file', null, false, 0),
+  new Menu (4, 'Provisions', '/provisions', null, 'laptop', null, false, 0),
+  new Menu (5, 'Sinisters', '/sinisters', null, 'warning', null, false,0 ),
+  new Menu (6, 'credits', null, null, 'euro', null, true, 0),
+  new Menu (7, 'Our Banks', '/tools/banks', null, 'warning', null, false,6 ),
+  new Menu (8, 'Our Agents', '/tools/agents', null, 'euro', null, false, 6),
+  new Menu (10, 'Our Credits', '/tools/credits', null, 'file-text-o', null, false, 6),
+  new Menu (11, 'Our Transactions', '/tools/transactions', null, 'file-text-o', null, false, 6),
+  new Menu (12, 'Offers', '/offers', null, 'gift', null, false, 0),
+  new Menu (13, 'Claims', '/claims', null, 'file-text-o', null, false, 0),
 ]
 
 
@@ -22,7 +39,6 @@ export const verticalMenuItems = [
     new Menu (6, 'credits', null, null, 'euro', null, true, 0),
     new Menu (7, 'Our Banks', '/tools/banks', null, 'warning', null, false,6 ),
     new Menu (8, 'Our Agents', '/tools/agents', null, 'euro', null, false, 6),
-    new Menu (9, 'Loan Simulation', '/tools/loansimulations', null, 'gift', null, false, 6),
     new Menu (10, 'Our Credits', '/tools/credits', null, 'file-text-o', null, false, 6),
     new Menu (11, 'Our Transactions', '/tools/transactions', null, 'file-text-o', null, false, 6),
     new Menu (12, 'Offers', '/offers', null, 'gift', null, false, 0),

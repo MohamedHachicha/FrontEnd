@@ -3,8 +3,14 @@
       <div class="card border-0 box-shadow mb-4">
         <img class="card-img-top w-100" src="assets/img/users/user-orig.jpg" alt="user">
         <div class="card-body"> 
-            <h4 class="card-title text-center">Emilio Verdines</h4>
-            <h5 class="card-title text-center text-info">Web Developer</h5>
+            <h4 class="card-title text-center">First name: {{user.firstName}}</h4>
+            <h4 class="card-title text-center">Last name: {{user.lastName}}</h4>
+            <h4 class="card-title text-center">Birth date: {{user.birthDate}}</h4>
+            <h4 class="card-title text-center">National ID number: {{user.cin}}</h4>
+            <h4 class="card-title text-center">Governorate: {{user.governorate}}</h4>
+            <h4 class="card-title text-center">Email: {{user.email}}</h4>
+
+            <h5 class="card-title text-center text-info">Job: {{user.job}}</h5>
             <h6 class="card-subtitle text-muted">About:</h6>
             <p class="card-text text-justify">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
             <button class="btn btn-outline-info btn-sm btn-rounded float-right mb-3 px-4">More <i class="fa fa-long-arrow-right"></i></button>                                       
