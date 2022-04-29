@@ -13,7 +13,7 @@
             <h5 class="card-title text-center text-info">Job: {{user.job}}</h5>
             <h6 class="card-subtitle text-muted">About:</h6>
             <p class="card-text text-justify">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <button class="btn btn-outline-info btn-sm btn-rounded float-right mb-3 px-4">More <i class="fa fa-long-arrow-right"></i></button>                                       
+            <button (click)="update()"class="btn btn-outline-info btn-sm btn-rounded float-right mb-3 px-4">Update <i class="fa fa-long-arrow-right"></i></button>
            <div class="dropdown-divider w-100"></div>
             <div class="row">
               <div class="col-md-8 text-left">Followers:</div>
@@ -58,3 +58,13 @@
 </div>
 
 
+<dx-popup
+        [showTitle]="true"
+        [width]="700"
+        [height]="700"
+        title="Update"
+        [dragEnabled]="true"
+        [closeOnOutsideClick]="true"
+        [(visible)]="popupUpdate">
+test
+</dx-popup>

@@ -66,6 +66,7 @@ import {PieChartModule} from "@swimlane/ngx-charts";
 import { ClaimsCustomerComponent } from './pages/claims-customer/claims-customer.component';
 import { ClaimsEmployeeComponent } from './pages/claims-employee/claims-employee.component';
 import { UpdateclaimComponent } from './pages/updateclaim/updateclaim.component';
+import { AddComponent } from './pages/customers/add/add.component';
 
 
 
@@ -129,6 +130,7 @@ import { UpdateclaimComponent } from './pages/updateclaim/updateclaim.component'
     ClaimsCustomerComponent,
     ClaimsEmployeeComponent,
     UpdateclaimComponent,
+    AddComponent,
 
   ],
   providers: [ 

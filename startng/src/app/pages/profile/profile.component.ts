@@ -18,5 +18,9 @@ export class ProfileComponent implements OnInit {
         }
     );
   }
+  popupUpdate=false
+    update(){
+      this.popupUpdate=true
+    }
   ngOnInit(){}
 }

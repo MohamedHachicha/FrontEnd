@@ -2,6 +2,7 @@ import {Component, OnInit, TemplateRef} from '@angular/core';
 import {Customer} from "./customer";
 import {CustomerService} from "./customers.service";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -19,7 +20,8 @@ export class CustomersComponent implements OnInit {
     domain: ['#2F3E9E', '#D22E2E', '#378D3B', '#0096A6', '#F47B00', '#606060']
   };
   public single: any[]=[]
-  constructor(private customerService: CustomerService, private modalService: NgbModal) {
+  constructor(private customerService: CustomerService, private modalService: NgbModal,private router: Router) {
+    this.iconClick = this.iconClick.bind(this);
 
 /*
     this.customerService.showCustomersStat().subscribe(res=> {
@@ -50,9 +52,16 @@ export class CustomersComponent implements OnInit {
     // Object.assign(this, this.single);
 
   }
+  iconClick(e){
+    console.log("aaaaaa",e.row.data)
+        e.row.data.active=!e.row.data.active
+    console.log("222222222",e.row.data)
+    this.wsUpdate(e.row.data)
+  }
   public onSelect(event) {
     console.log(event);
   }
+
   ngOnInit(): void {
     this.getAllCustomers();
     this.getCustomersStats()
@@ -84,7 +93,37 @@ export class CustomersComponent implements OnInit {
       console.log(' this.single', this.single)
     });
   }
+  onToolbarPreparing(e) {
 
+      e.toolbarOptions.items.unshift(
+          {
+            location: 'after',
+            widget: 'dxButton',
+            options: {
+              hint: "Add",
+              icon: 'plus',
+              onClick: this.openAdd.bind(this)
+            }
+          })
+
+    // e.toolbarOptions.items.unshift(
+    //     {
+    //       location: 'after',
+    //       template: 'totalGroupCount'
+    //     },
+    //     {
+  8  //       location: 'after',
+    //       widget: 'dxButton',
+    //       options: {
+    //         hint: localStorage.getItem('refresh'),
+    //         icon: 'refresh',
+    //         onClick: this.refresh.bind(this),
+    //       }
+    //     })
+  }
+  openAdd(){
+    this.router.navigate(['/customers/add']);
+  }
   public editCustomer(customer: TemplateRef<any>){
     console.log("customer ",customer)
     this.customerService.editCustomer(customer).subscribe();
@@ -102,13 +141,16 @@ export class CustomersComponent implements OnInit {
     if(e.newData.job) param.job=e.newData.job
     if(e.newData.governorate) param.governorate=e.newData.governorate
     if(e.newData.email) param.email=e.newData.email
-    this.customerService.editCustomer(param).subscribe(res=>{
+   this.wsUpdate(param)
+
+
+  }
+  wsUpdate(data){
+    this.customerService.editCustomer(data).subscribe(res=>{
       console.log("ok")
     }),error=>{
-        console.log("error")
+      console.log("error")
     }
-
-
   }
   add(e){
     console.log("add ",e)

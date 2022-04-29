@@ -5,6 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ProfileComponent } from './profile.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { UserInfoComponent } from './user-info/user-info.component';
+import {DxPopupModule} from "devextreme-angular";
 
 export const routes = [
   {
@@ -24,10 +25,11 @@ export const routes = [
     ProjectsComponent, 
     UserInfoComponent
   ],
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    RouterModule.forChild(routes)
-  ]
+    imports: [
+        CommonModule,
+        ReactiveFormsModule,
+        RouterModule.forChild(routes),
+        DxPopupModule
+    ]
 })
 export class ProfileModule { }

@@ -14,6 +14,7 @@ import { SinistersComponent } from './pages/sinisters/sinisters.component';
 import { ClaimsCustomerComponent } from './pages/claims-customer/claims-customer.component';
 import { ClaimsEmployeeComponent } from './pages/claims-employee/claims-employee.component';
 import { UpdateclaimComponent } from './pages/updateclaim/updateclaim.component';
+import {AddComponent} from "./pages/customers/add/add.component";
 
 export const routes: Routes = [
   {
@@ -22,6 +23,7 @@ export const routes: Routes = [
     children:[
       { path: '', loadChildren: () => import('./pages/dashboard/dashboard.module').then(m => m.DashboardModule), data: { breadcrumb: 'Dashboard' }  },          
       { path: 'customers', component: CustomersComponent },
+      { path: 'customers/add', component: AddComponent },
       { path: "offers", component: OffersComponent},
       { path: "claims", component: ClaimsComponent},
       { path: "chats", component: ChatsComponent  },

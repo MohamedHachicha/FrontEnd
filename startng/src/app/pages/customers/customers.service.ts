@@ -39,4 +39,12 @@ export class CustomerService {
   showCustomersStat(): Observable<any> {
     return this.http.get("http://localhost:8087/PIDEV_GARANTIA/customerscorestat");
   }
+
+  addEmployee(data): Observable<any> {
+    return this.http.post("http://localhost:8087/PIDEV_GARANTIA/process_register_employee",data);
+  }
+
+  lockAccount() {
+
+  }
 }
