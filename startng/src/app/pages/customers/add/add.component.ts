@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {LoginService} from "../../login/login.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-add',
@@ -7,9 +10,59 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddComponent implements OnInit {
 
-  constructor() { }
+  public registrationForm = this.fb.group({
+    firstName: ['', Validators.required],
+    lastName: ['', Validators.required],
+    phoneNumber: ['', Validators.required],
+    cin: ['', Validators.required],
+    birthDate: ['', Validators.required],
+    email: ['', Validators.required],
+    password: ['', Validators.required],
+  });
 
-  ngOnInit(): void {
+  constructor(private loginService: LoginService,private fb: FormBuilder, private router: Router) {}
+
+  ngOnInit(): void {}
+
+  RegisterEmployee() {
+    let values = this.registrationForm.value
+    console.log("infor", values)
+
+    if (this.registrationForm.valid) {
+      this.loginService.registrationEmployee(values).subscribe(data => {
+        this.router.navigate(['login' ]);
+      });
+    }
   }
 
+
+  /* public onSubmit(values:Object):void {
+      if (this.form.valid) {
+          console.log(values);
+          this.router.navigate(['/login']);
+      }
+  }*/
+
+  ngAfterViewInit(){
+    document.getElementById('preloader').classList.add('hide');
+  }
+}
+
+
+
+export function emailValidator(control: FormControl): {[key: string]: any} {
+  var emailRegexp = /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/;
+  if (control.value && !emailRegexp.test(control.value)) {
+    return {invalidEmail: true};
+  }
+}
+
+export function matchingPasswords(passwordKey: string, passwordConfirmationKey: string) {
+  return (group: FormGroup) => {
+    let password= group.controls[passwordKey];
+    let passwordConfirmation= group.controls[passwordConfirmationKey];
+    if (password.value !== passwordConfirmation.value) {
+      return passwordConfirmation.setErrors({mismatchedPasswords: true})
+    }
+  }
 }
