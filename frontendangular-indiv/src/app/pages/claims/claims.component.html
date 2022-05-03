@@ -1,71 +1,100 @@
 <div class="card-header transparent border-0 text-muted px-1">
+  <h2>Reclamation</h2>
+  <p class="text-muted">
+    Please fill out the form below, customer service will get back to you as
+    soon as possible.
+  </p>
 
-<h2>Reclamation</h2>
-<p class="text-muted">Please fill out the form below, customer service will get back to you as soon as possible.</p>
-
-<div class="row ">
-    <div class="col-lg-6 mb-4  ">
-        <div widget class="card border-0 box-shadow">
-            <div class="card-header transparent border-0 text-muted ">
-               
-               <!--  <div class="widget-controls"> 
+  <div class="row">
+    <div class="col-lg-6 mb-4">
+      <div widget class="card border-0 box-shadow">
+        <div class="card-header transparent border-0 text-muted">
+          <!--  <div class="widget-controls"> 
                     <a data-widgster="expand" href="#" class="transition"><i class="fa fa-chevron-down"></i></a>
                     <a data-widgster="collapse" href="#" class="transition"><i class="fa fa-chevron-up"></i></a>
                     <a data-widgster="close" href="#" class="transition"><i class="fa fa-times"></i></a>
 
             </div> -->
-            <div class="card-body pt-0 widget-body "> 
-              <!-- <p class="text-left fs-13 text-gray">Basic Form Input with diffrent elements and styles.</p> -->
-               
-                <form>               
-                    <div class="relative w-full mb-3">
-                    <label
-                        class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                        htmlFor="grid-password"
-                    >
-                    Contract Type
-                    </label><br>
-                    <div>   
-                        <ss-multiselect-dropdown class="custom-multiselect" [options]="thirdControlOptions" [texts]="thirdControlTexts" [settings]="thirdControlSettings" [(ngModel)]="thirdControlModel"></ss-multiselect-dropdown>
-                    </div> 
-                </div>
-                <div class="relative w-full mb-3">
+          <div class="card-body pt-0 widget-body">
+            <!-- <p class="text-left fs-13 text-gray">Basic Form Input with diffrent elements and styles.</p> -->
 
+            <form>
+              <div class="relative w-full mb-3">
                 <label
-                        class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                        htmlFor="grid-password"
-                    >
-                    Claim Type
-                    </label><br>
+                  class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                  htmlFor="grid-password"
+                >
+                  Contract Type </label
+                ><br />
+                <div>
+                  <ss-multiselect-dropdown
+                    class="custom-multiselect"
+                    [options]="thirdControlOptions"
+                    [texts]="thirdControlTexts"
+                    [settings]="thirdControlSettings"
+                    [(ngModel)]="thirdControlModel"
+                  ></ss-multiselect-dropdown>
+                </div>
+              </div>
+              <div class="relative w-full mb-3">
+                <label
+                  class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                  htmlFor="grid-password"
+                >
+                  Claim Type </label
+                ><br />
                 <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                    <label class="btn btn-primary">
-                        <input type="radio" name="options" id="option1" autocomplete="off"> Reclamation
-                    </label>
-                    <label class="btn btn-primary active">
-                        <input type="radio" name="options" id="option2" autocomplete="off" checked> Complaint
-                    </label>
-                   
+                  <label class="btn btn-primary">
+                    <input
+                      type="radio"
+                      name="options"
+                      id="option1"
+                      autocomplete="off"
+                    />
+                    Reclamation
+                  </label>
+                  <label class="btn btn-primary active">
+                    <input
+                      type="radio"
+                      name="options"
+                      id="option2"
+                      autocomplete="off"
+                      checked
+                    />
+                    Complaint
+                  </label>
                 </div>
-            </div>
+              </div>
 
-                <div class="relative w-full mb-3">
-                    <label
-                        class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                        htmlFor="grid-password"
-                    >
-                     Message
-                    </label>
-                    <textarea id="textarea-input" name="textarea-input" rows="9" class="form-control" placeholder="Content.."></textarea>
-                </div>
-            
-    
-                <button type="button" class="btn btn-success btn-rounded w-100p mb-1 mr-1">Send</button>                </form> 
-            </div>
+              <div class="relative w-full mb-3">
+                <label
+                  class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                  htmlFor="grid-password"
+                >
+                  Message
+                </label>
+                <textarea
+                  id="textarea-input"
+                  name="textarea-input"
+                  rows="9"
+                  class="form-control"
+                  placeholder="Content.."
+                ></textarea>
+              </div>
+
+              <button
+                type="button"
+                class="btn btn-success btn-rounded w-100p mb-1 mr-1"
+              >
+                Send
+              </button>
+            </form>
+          </div>
         </div>
-    </div>
-    <div class="col-lg-6 mb-4">
+      </div>
+      <div class="col-lg-6 mb-4">
         <div widget class="card border-0 box-shadow">
-           <!--  <div class="card-header transparent border-0 text-muted">
+          <!--  <div class="card-header transparent border-0 text-muted">
                 <h5 class="mb-0">Input group</h5>
                 <div class="widget-controls"> 
                     <a data-widgster="expand" href="#" class="transition"><i class="fa fa-chevron-down"></i></a>
@@ -278,10 +307,10 @@
 
             </div>
         </div> -->
-    </div>
-</div>
+        </div>
+      </div>
 
-<!-- <div class="row">
+      <!-- <div class="row">
     <div class="col-12 mb-4">
         <div widget class="card border-0 box-shadow">
             <div class="card-header transparent border-0 text-muted">
@@ -767,9 +796,20 @@
     </div>    
 </div>
  -->
- <div class="card-header transparent border-0 text-muted px-1">
-
- <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [mapTypeControl]="true" >
-    <agm-marker [latitude]="lat" [longitude]="lng" [markerDraggable]="true"></agm-marker>
-</agm-map>
+      <div class="card-header transparent border-0 text-muted px-1">
+        <agm-map
+          [latitude]="lat"
+          [longitude]="lng"
+          [zoom]="zoom"
+          [mapTypeControl]="true"
+        >
+          <agm-marker
+            [latitude]="lat"
+            [longitude]="lng"
+            [markerDraggable]="true"
+          ></agm-marker>
+        </agm-map>
+      </div>
+    </div>
+  </div>
 </div>

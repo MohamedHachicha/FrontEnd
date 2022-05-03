@@ -1,1 +1,166 @@
-<p>credits works!</p>
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">New credit</h4>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div>
+        <div class="form-group">
+          <label class="control-label">Amount Credit : </label>
+          <input
+            class="form-control"
+            type="text"
+            name="nameBank"
+            [(ngModel)]="credit.amountCredit"
+          />
+        </div>
+        <div class="form-group">
+          <label class="control-label">Amount Remaining Credit : </label>
+          <input
+            class="form-control"
+            type="text"
+            name="descriptionBank"
+            [(ngModel)]="credit.amountRemainingCredit"
+          />
+        </div>
+        <div class="form-group">
+          <label class="control-label">Start Date : </label>
+          <input
+            class="form-control"
+            type="date"
+            name="Adress"
+            [(ngModel)]="credit.startDate"
+          />
+        </div>
+        <div class="form-group">
+          <label class="control-label">Last Due Date : </label>
+          <input
+            name="tmm"
+            class="form-control"
+            type="date"
+            [(ngModel)]="credit.lastDueDate"
+          />
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="saveCredit()">
+      Save
+    </button>
+  </div>
+</ng-template>
+<ng-template #content2 let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">New credit</h4>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div>
+        <div class="form-group">
+          <label class="control-label">Amount Credit : </label>
+          <input
+            class="form-control"
+            type="text"
+            name="nameBank"
+            [(ngModel)]="credit.amountCredit"
+          />
+        </div>
+        <div class="form-group">
+          <label class="control-label">Amount Remaining Credit : </label>
+          <input
+            class="form-control"
+            type="text"
+            name="descriptionBank"
+            [(ngModel)]="credit.amountRemainingCredit"
+          />
+        </div>
+        <div class="form-group">
+          <label class="control-label">Start Date : </label>
+          <input
+            class="form-control"
+            type="date"
+            name="Adress"
+            [(ngModel)]="credit.startDate"
+          />
+        </div>
+        <div class="form-group">
+          <label class="control-label">Last Due Date : </label>
+          <input
+            name="tmm"
+            class="form-control"
+            type="date"
+            [(ngModel)]="credit.lastDueDate"
+          />
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="updateCredit()">
+      Update
+    </button>
+  </div>
+</ng-template>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h2>Credit List</h2>
+  </div>
+  <div class="border">
+    <button class="btn btn-md btn-outline-primary" (click)="open(content)">
+      <i class="fa fa-user"></i>New Credit
+    </button>
+  </div>
+
+  <div class="panel-body">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Amount Credit</th>
+          <th>Amount Remaining Credit</th>
+          <th>start Date</th>
+          <th>Last Due Date</th>
+          <th>Marge Interet Bank</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let c of cr">
+          <td>{{ c.idCredit }}</td>
+          <td>{{ c.amountCredit }}</td>
+          <td>{{ c.amountRemainingCredit }}</td>
+          <td>{{ c.startDate }}</td>
+          <td>{{ c.lastDueDate }}</td>
+          <td>
+            <button (click)="deleteCredit(c.idCredit)" class="btn btn-danger">
+              Delete
+            </button>
+            <button
+              style="margin-left: 20px"
+              class="btn btn-success"
+              (click)="open2(content2, c)"
+            >
+              Update
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

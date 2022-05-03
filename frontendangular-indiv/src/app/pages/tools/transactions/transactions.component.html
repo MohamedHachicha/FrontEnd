@@ -1,1 +1,264 @@
-<p>transactions works!</p>
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">New Transaction</h4>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div>
+        <div class="form-group">
+          <label class="control-label">Description : </label>
+          <input
+            class="form-control"
+            type="text"
+            name="firstname"
+            [(ngModel)]="transactionCredit.description"
+          />
+        </div>
+        <div class="form-group">
+          <label class="control-label">Date Transaction : </label>
+          <input
+            class="form-control"
+            type="date"
+            name="lastname"
+            [(ngModel)]="transactionCredit.dateTransaction"
+          />
+        </div>
+        <div class="form-group">
+          <label class="control-label">Source Account Number : </label>
+          <input
+            class="form-control"
+            type="text"
+            name="email"
+            [(ngModel)]="transactionCredit.sourceAccountNumber"
+          />
+        </div>
+        <div class="form-group">
+          <label class="control-label">Destined Account Number : </label>
+          <input
+            name="phone"
+            class="form-control"
+            type="text"
+            [(ngModel)]="transactionCredit.destinedAccountNumber"
+          />
+        </div>
+        <div class="form-group">
+          <label class="control-label">Amount Transaction : </label>
+          <input
+            name="adress"
+            class="form-control"
+            type="text"
+            [(ngModel)]="transactionCredit.amountTransaction"
+          />
+        </div>
+        <div class="form-group">
+          <label class="control-label">Solde Compte Emetteur : </label>
+          <input
+            name="soldeCompteEmetteur"
+            class="form-control"
+            type="text"
+            [(ngModel)]="transactionCredit.soldeCompteEmetteur"
+          />
+        </div>
+        <div class="form-group">
+          <label class="control-label">Solde Compte Recepteur : </label>
+          <input
+            name="soldeCompteRecepteur"
+            class="form-control"
+            type="text"
+            [(ngModel)]="transactionCredit.soldeCompteRecepteur"
+          />
+        </div>
+        <label for="bank-select">Choose a Credit:</label>
+
+        <div class="form-group">
+          <select #selected class="form-control">
+            <option
+              *ngFor="let c of cr"
+              #Origin
+              [(ngModel)]="cr"
+              value="{{ c.idCredit }}"
+            >
+              {{ c.idCredit }}
+            </option>
+          </select>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-outline-dark"
+      (click)="saveTransactionCredit(selected.value)"
+    >
+      Save
+    </button>
+  </div>
+</ng-template>
+<ng-template #content2 let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Update Transaction</h4>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div>
+        <div class="form-group">
+          <label class="control-label">Description : </label>
+          <input
+            class="form-control"
+            type="text"
+            name="firstname"
+            [(ngModel)]="transactionCredit.description"
+          />
+        </div>
+        <div class="form-group">
+          <label class="control-label">Date Transaction : </label>
+          <input
+            class="form-control"
+            type="date"
+            name="lastname"
+            [(ngModel)]="transactionCredit.dateTransaction"
+          />
+        </div>
+        <div class="form-group">
+          <label class="control-label">Source Account Number : </label>
+          <input
+            class="form-control"
+            type="text"
+            name="email"
+            [(ngModel)]="transactionCredit.sourceAccountNumber"
+          />
+        </div>
+        <div class="form-group">
+          <label class="control-label">Destined Account Number : </label>
+          <input
+            name="phone"
+            class="form-control"
+            type="text"
+            [(ngModel)]="transactionCredit.destinedAccountNumber"
+          />
+        </div>
+        <div class="form-group">
+          <label class="control-label">Amount Transaction : </label>
+          <input
+            name="adress"
+            class="form-control"
+            type="text"
+            [(ngModel)]="transactionCredit.amountTransaction"
+          />
+        </div>
+        <div class="form-group">
+          <label class="control-label">Solde Compte Emetteur : </label>
+          <input
+            name="soldeCompteEmetteur"
+            class="form-control"
+            type="text"
+            [(ngModel)]="transactionCredit.soldeCompteEmetteur"
+          />
+        </div>
+        <div class="form-group">
+          <label class="control-label">Solde Compte Recepteur : </label>
+          <input
+            name="soldeCompteRecepteur"
+            class="form-control"
+            type="text"
+            [(ngModel)]="transactionCredit.soldeCompteRecepteur"
+          />
+        </div>
+        <label for="bank-select">Choose a Credit:</label>
+
+        <div class="form-group">
+          <select #selected class="form-control">
+            <option
+              *ngFor="let c of cr"
+              #Origin
+              [(ngModel)]="cr"
+              value="{{ c.idCredit }}"
+            >
+              {{ c.idCredit }}
+            </option>
+          </select>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-outline-dark"
+      (click)="updateTransactionCredit()"
+    >
+      Update
+    </button>
+  </div>
+</ng-template>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h2>Transactions List</h2>
+  </div>
+  <div class="border">
+    <button class="btn btn-md btn-outline-primary" (click)="open(content)">
+      <i class="fa fa-user"></i>New Transaction
+    </button>
+  </div>
+
+  <div class="panel-body">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>date Transaction</th>
+          <th>Description</th>
+          <th>source Account Number</th>
+          <th>destined Account Number</th>
+          <th>amount Transaction</th>
+          <th>solde Compte Emetteur</th>
+          <th>action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let c of tc">
+          <td>{{ c.idTransaction }}</td>
+          <td>{{ c.dateTransaction }}</td>
+          <td>{{ c.description }}</td>
+          <td>{{ c.sourceAccountNumber }}</td>
+          <td>{{ c.destinedAccountNumber }}</td>
+          <td>{{ c.amountTransaction }}</td>
+          <td>{{ c.soldeCompteEmetteur }}</td>
+          <td>
+            <button
+              (click)="deleteTransactionCredit(c.idTransaction)"
+              class="btn btn-danger"
+            >
+              Delete
+            </button>
+
+            <button
+              style="margin-left: 20px"
+              class="btn btn-success"
+              (click)="open2(content2, c)"
+            >
+              Update
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

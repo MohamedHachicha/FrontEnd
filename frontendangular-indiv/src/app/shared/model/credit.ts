@@ -5,24 +5,24 @@ import { TransactionCredit } from "./transaction-credit";
 import { VerificationCredit } from "./verification-credit";
 
 export class Credit {
-    idCredit!: number;
+  idCredit!: number;
 
-	amountCredit!: number;
+  amountCredit!: number;
 
-	amountRemainingCredit!:number;
+  amountRemainingCredit!: number;
 
-	startDate!: Date;
-	
-    lastDueDate!: Date;
-	
-    traitementCredit!:TraitementCredit;
-	
-    statutCredit!:StatutCredit;
+  startDate!: Date;
 
-	verificationCredit!:VerificationCredit;
-	
-	transactions!:Set<TransactionCredit>;
+  lastDueDate!: Date;
 
-    customerCredit!:CustomerAccount;
+  traitementCredit!: TraitementCredit;
 
+  statutCredit!: StatutCredit;
+
+  verificationCredit!: VerificationCredit;
+
+  transactions!: Set<TransactionCredit>;
+
+  customerCredit!: CustomerAccount;
+  constructor() {}
 }

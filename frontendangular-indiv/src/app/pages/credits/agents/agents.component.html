@@ -1,1 +1,28 @@
-<p>agents works!</p>
+<app-agents>test</app-agents>
+<div class="container">
+  <table class="table table-striped">
+    <tr>
+      <th>ID</th>
+      <th>PHONE</th>
+      <th>ADRESSE</th>
+
+      <th>nom</th>
+      <th>prenom</th>
+      <th>email</th>
+      <th>BANK</th>
+    </tr>
+    <tr *ngFor="let c of agent">
+      <td>{{ c.idAgent }}</td>
+      <td>{{ c.phoneAgent }}</td>
+      <td>{{ c.addressAgent }}</td>
+      <td>{{ c.FirstName }}</td>
+      <td>{{ c.LastName }}</td>
+      <td>{{ c.Email }}</td>
+      <td>{{ c.bankAgent }}</td>
+
+      <td>
+        <a (click)="onUpdateAgent(c.id)" class="clickable">Update</a>
+      </td>
+    </tr>
+  </table>
+</div>

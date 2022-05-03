@@ -1,1 +1,441 @@
-<p>agents works!</p>
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">New Agent</h4>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div>
+        <div class="form-group">
+          <label class="control-label">Firstname : </label>
+          <input
+            class="form-control"
+            type="text"
+            name="firstname"
+            [(ngModel)]="agent.firstName"
+          />
+        </div>
+        <div class="form-group">
+          <label class="control-label">LastName : </label>
+          <input
+            class="form-control"
+            type="text"
+            name="lastname"
+            [(ngModel)]="agent.lastName"
+          />
+        </div>
+        <div class="form-group">
+          <label class="control-label">Email : </label>
+          <input
+            class="form-control"
+            type="text"
+            name="email"
+            [(ngModel)]="agent.email"
+          />
+        </div>
+        <div class="form-group">
+          <label class="control-label">Phone number : </label>
+          <input
+            name="phone"
+            class="form-control"
+            type="text"
+            [(ngModel)]="agent.phoneAgent"
+          />
+        </div>
+        <div class="form-group">
+          <label class="control-label">Adress : </label>
+          <input
+            name="adress"
+            class="form-control"
+            type="text"
+            [(ngModel)]="agent.addressAgent"
+          />
+        </div>
+        <label for="bank-select">Choose a BANK:</label>
+
+        <div class="form-group">
+          <select #selected class="form-control">
+            <option
+              *ngFor="let c of bk"
+              #Origin
+              [(ngModel)]="bk"
+              value="{{ c.idBank }}"
+            >
+              {{ c.nameBank }}
+            </option>
+          </select>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-outline-dark"
+      (click)="saveAgent(selected.value)"
+    >
+      Save
+    </button>
+  </div>
+</ng-template>
+<ng-template #content2 let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Update Agent</h4>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div>
+        <div class="form-group">
+          <label class="control-label">Firstname : </label>
+          <input
+            class="form-control"
+            type="text"
+            name="firstname"
+            [(ngModel)]="agent.firstName"
+          />
+        </div>
+        <div class="form-group">
+          <label class="control-label">LastName : </label>
+          <input
+            class="form-control"
+            type="text"
+            name="lastname"
+            [(ngModel)]="agent.lastName"
+          />
+        </div>
+        <div class="form-group">
+          <label class="control-label">Email : </label>
+          <input
+            class="form-control"
+            type="text"
+            name="email"
+            [(ngModel)]="agent.email"
+          />
+        </div>
+        <div class="form-group">
+          <label class="control-label">Phone number : </label>
+          <input
+            name="phone"
+            class="form-control"
+            type="text"
+            [(ngModel)]="agent.phoneAgent"
+          />
+        </div>
+        <div class="form-group">
+          <label class="control-label">Adress : </label>
+          <input
+            name="adress"
+            class="form-control"
+            type="text"
+            [(ngModel)]="agent.addressAgent"
+          />
+        </div>
+        <label for="bank-select">Choose a BANK:</label>
+
+        <div class="form-group">
+          <select class="form-control">
+            <option
+              *ngFor="let c of bk"
+              #Origin
+              [(ngModel)]="bk"
+              value="{{ c.idBank }}"
+            >
+              {{ c.nameBank }}
+            </option>
+          </select>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="updateAgent()">
+      update
+    </button>
+  </div>
+</ng-template>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h2>Agent List</h2>
+  </div>
+  <div class="border">
+    <button class="btn btn-md btn-outline-primary" (click)="open(content)">
+      <i class="fa fa-user"></i>New Agent
+    </button>
+  </div>
+
+  <div class="panel-body">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>PHONE</th>
+          <th>ADRESSE</th>
+          <th>FIRSTNAME</th>
+          <th>LASTNAME</th>
+          <th>EMAIL</th>
+          <th colspan="3">ACTION</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let c of ag">
+          <td>{{ c.idAgent }}</td>
+          <td>{{ c.phoneAgent }}</td>
+          <td>{{ c.addressAgent }}</td>
+          <td>{{ c.firstName }}</td>
+          <td>{{ c.lastName }}</td>
+          <td>{{ c.email }}</td>
+          <td>
+            <button (click)="deleteAgent(c.idAgent)" class="btn btn-danger">
+              Delete
+            </button>
+
+            <button
+              style="margin-left: 20px"
+              class="btn btn-success"
+              (click)="open2(content2, c)"
+            >
+              Update
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+
+<!-- <div class="row mb-1">
+  <div class="col">
+      <div class="input-group mb-3 box-shadow"> 
+          <div class="input-group-prepend">
+              <span class="input-group-text border-top-0 border-left-0 border-bottom-0"><i class="fa fa-search"></i></span>
+          </div>                   
+          <input type="text" [(ngModel)]="searchText" placeholder="Search user by name..." class="form-control border-0">
+          <div class="input-group-append">
+              <span (click)="toggle('list')" class="input-group-text border-top-0 border-right-0 border-bottom-0"><i class="fa fa-list"></i></span>
+          </div>
+      </div>
+  </div>
+</div>
+<div *ngIf="type=='list'" class="row">
+  <div class="col-12">
+      <div class="table-responsive bg-white box-shadow">
+          <table class="table table-hover">
+              <thead>
+                  <tr> 
+                      <th></th>
+                      <th>Rate </th> 
+                      <th>Monthly Rate</th>                      
+                      <th>Repayment capacity</th>                        
+                      <th>Monthly payment</th>
+                      <th>Bank interest</th>
+                      <th>Principal</th>
+                      <th>Refund Amount</th>                        
+                      <th>Bank Total interest</th>
+                      <th>Date Simulation</th>
+
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let c of ls | UserSearchPipe : searchText | paginate: { itemsPerPage: 6, currentPage: p }">                        
+                  
+                      <td class="align-middle text-truncate">{{c.taux}} </td>
+                      <td class="align-middle text-truncate">{{c.mensuel}}</td>
+                      <td class="align-middle text-truncate">{{c.capaciteDeRemboursement}}</td>                        
+                      <td class="align-middle text-truncate">{{c.mensualite}}</td>
+                      <td class="align-middle text-truncate">{{c.interest}}</td>
+                      <td class="align-middle text-truncate">{{c.Principal}}</td>
+                      <td class="align-middle text-truncate">{{c.montantRembourse}}</td>
+                      <td class="align-middle text-truncate">{{c.interetTotale}}</td>
+                      <td class="align-middle text-truncate">{{c.dateStartSimulation | date:"dd MMMM, yyyy 'at' HH:mm"}}</td>
+                      <td class="align-middle">
+                          <div class="btn-group" role="group">
+                              <button class="btn btn-secondary btn-sm" (click)="deleteLoanSimulation(c.idLoan)"><i class="fa fa-trash"></i></button>
+                          </div>
+                      </td>
+                  </tr>
+              </tbody>
+          </table>
+      </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12">
+      <div class="bg-white text-center">
+          <pagination-controls autoHide="true" (pageChange)="p = $event" maxSize="3"></pagination-controls>
+      </div>        
+  </div>
+</div> -->
+
+
+<div class="row mb-1">
+    
+  <div class="col">
+      <div class="input-group mb-3 box-shadow"> 
+          <div class="input-group-prepend">
+              <span class="input-group-text border-top-0 border-left-0 border-bottom-0"><i class="fa fa-search"></i></span>
+          </div>
+          <input type="text" [(ngModel)]="searchText" placeholder="Search Sinister by type..." class="form-control border-0">
+          <button class="btn btn-primary" type="button">
+              Add Agent <span class="badge badge-pill badge-white text-primary ml-1"><i class="fa fa-warning"></i></span>
+          </button>
+      </div>
+  </div>
+</div>   
+  <div class="col-13">
+      <div class="table-responsive bg-white box-shadow">
+      <table class="table">
+          <thead class="thead-light">
+            <tr>
+              
+              <th scope="col">First Name</th>
+              <th scope="col">Last Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Address</th>
+              <th scope="col">Phone</th>
+              <th scope="col">Bank</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let c of ag  | paginate: { itemsPerPage: 5, currentPage: p }; let i = index;"class="col-xl-4 col-lg-6 mb-4">
+                
+          
+              <td>{{c.firstName}}</td>
+              <td>{{c.lastName}}</td>
+              <td>{{c.phoneAgent}}</td>
+              <td>{{c.email}}</td>
+              <td>{{c.addressAgent}}</td>
+              <td>{{p.sinisterStatus}}</td>
+             
+              <td class="align-middle">
+                  <div class="btn-group" role="group">
+                      <button class="btn btn-secondary btn-sm"  ><i class="fa fa-pencil"></i></button>
+                      <button class="btn btn-secondary btn-sm" (click)="deleteAgent(c.idAgent)"><i class="fa fa-trash"></i></button>
+                  </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+  </div>
+  <br>
+      <div widget class="card border-0 box-shadow">
+          <div class="col-12">
+              <div class="bg-white text-center">
+                  <pagination-controls autoHide="true" (pageChange)="p = $event" maxSize="3"></pagination-controls>
+              </div>        
+          </div>
+      </div>
+      <br>
+      <!-- <div class="col-14">              
+          <div widget class="card border-0 box-shadow">
+            <div class="card-header transparent border-0 text-muted">
+                <h5 class="mb-0">Help Center</h5> -->
+                      
+            <!-- </div>
+            <div class="card-body widget-body"> 
+                <div class="media">
+                    <img class="d-flex align-self-center mr-3" src="assets/img/profile/bruno.jpg" width="70" alt="Generic placeholder image">
+                    <div class="media-body">
+                        <h4 class="mt-0">Media heading</h4>
+                        For (technical) emergency issues you may of course reach us at : emergency@luxsms.lu <br> 
+                        Or over the phone at (+216) 44130018.<br>
+                    </div>
+                </div>
+            </div> -->
+        <!-- </div>
+    </div> -->
+
+
+
+
+<!-- ajout
+
+<div class="row ">
+  <div class="col-lg-6 mb-4">
+      <div widget class="card border-0 box-shadow">
+          <div class="card-header transparent border-0 text-muted">
+              <h2 class="mb-0">Sinister mangment</h2>
+              <div class="widget-controls"> 
+                  <a data-widgster="expand" href="#" class="transition"><i class="fa fa-chevron-down"></i></a>
+                  <a data-widgster="collapse" href="#" class="transition"><i class="fa fa-chevron-up"></i></a>
+                  <a data-widgster="close" href="#" class="transition"><i class="fa fa-times"></i></a>
+              </div>        
+          </div>
+          <div class="card-body pt-0 widget-body"> 
+              <p class="text-left fs-13 text-gray">Please fill out the form below,we kindly ask you to send us the requested information.</p>
+             
+              <form>
+                  <div class="form-group">
+                      <label for="input-5">Sinister type</label>
+                      <input type="text" class="form-control form-control-rounded" id="input-5">
+                  </div>
+                 
+                  <div>   
+                      <h6>Select Sinsiter place </h6>
+                      <ss-multiselect-dropdown class="custom-multiselect" [options]="thirdControlOptions" [texts]="thirdControlTexts" [settings]="thirdControlSettings" [(ngModel)]="thirdControlModel"></ss-multiselect-dropdown>
+                  </div> 
+                  <div class="form-group">
+                      <label for="input-6">With help text</label>
+                      <input type="text" class="form-control" id="input-6">
+                      <small class="text-muted">A block of help text that breaks onto a new line and may extend beyond one line.</small>
+                  </div>
+                  <div class="form-group">
+                      <label for="input-7">Delai declaration </label>
+                      <input type="email" class="form-control" id="input-7" disabled value="it should not exceed 2 days">
+                  </div>                    
+                  <div class="form-group">
+                      <label for="textarea-1">Sinister's Description</label>
+                      <textarea class="form-control" id="textarea-1"></textarea>
+                  </div>
+                  
+                 
+                  <div class="form-group">
+                      <label for="input-12">Declaration Date</label>
+                      <input type="date" class="form-control" value="2011-08-19" id="input-12">
+                  </div>
+                  <div class="form-group">
+                      <label for="input-12">Sinister Date</label>
+                      <input type="date" class="form-control" value="2011-08-19" id="input-12">
+                  </div>
+                  <div class="form-group">
+                      <label for="input-13">Month</label>
+                      <input type="month" class="form-control" value="2011-08" id="input-13">
+                  </div>
+                  <div class="form-group">
+                      <label for="input-14">Week</label>
+                      <input type="week" class="form-control" value="2011-W33" id="input-14">
+                  </div>
+                  
+                  <div class="form-group">
+                      <button (click)="addSinister(sinister)" class="btn btn-info w-100p mb-1 mr-1" type="button"  >Accept</button>
+                  </div> 
+                  
+              </form>
+          </div>
+      </div>
+  </div>    -->
+
+
+
+
+
+
+ 

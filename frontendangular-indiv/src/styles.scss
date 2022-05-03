@@ -232,3 +232,5 @@ $icon-font-path: "../node_modules/bootstrap-sass/assets/fonts/bootstrap/";
 ::-webkit-scrollbar-corner {
     background: transparent;
 }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

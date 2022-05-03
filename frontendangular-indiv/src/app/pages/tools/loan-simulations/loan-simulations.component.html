@@ -1,1 +1,171 @@
-<p>loan-simulations works!</p>
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">New Loan Simulation</h4>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div>
+        <div class="form-group">
+          <label class="control-label">Number of years : </label>
+          <input
+            class="form-control"
+            type="text"
+            name="firstname"
+            [(ngModel)]="nbrAnnee"
+          />
+        </div>
+        <div class="form-group">
+          <label class="control-label">Salary : </label>
+          <input
+            class="form-control"
+            type="text"
+            name="lastname"
+            [(ngModel)]="salaire"
+          />
+        </div>
+
+        <label for="bank-select">Choose a BANK:</label>
+
+        <div class="form-group">
+          <select #selected class="form-control">
+            <option
+              *ngFor="let c of bk"
+              #Origin
+              [(ngModel)]="bk"
+              value="{{ c.nameBank }}"
+            >
+              {{ c.nameBank }}
+            </option>
+          </select>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-outline-dark"
+      (click)="saveLoanSimulation(selected.value, nbrAnnee, salaire)"
+    >
+      Save
+    </button>
+  </div>
+</ng-template>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h2>Loan Simulation List</h2>
+  </div>
+  <div class="border">
+    <button class="btn btn-md btn-outline-primary" (click)="open(content)">
+      <i class="fa fa-user"></i>New LoanSimulation
+    </button>
+  </div>
+
+  <div class="panel-body">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>taux</th>
+          <th>mensuel</th>
+          <th>capaciteDeRemboursement</th>
+          <th>interet</th>
+          <th>interetTotale</th>
+          <th>action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let c of ls">
+          <td>{{ c.idLoan }}</td>
+          <td>{{ c.taux }}</td>
+          <td>{{ c.mensuel }}</td>
+          <td>{{ c.capaciteDeRemboursement }}</td>
+          <td>{{ c.interet }}</td>
+          <td>{{ c.interetTotale }}</td>
+          <td>
+            <button
+              (click)="deleteLoanSimulation(c.idLoan)"
+              class="btn btn-danger"
+            >
+              Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+
+<div class="row mb-1">
+  <div class="col">
+      <div class="input-group mb-3 box-shadow"> 
+          <div class="input-group-prepend">
+              <span class="input-group-text border-top-0 border-left-0 border-bottom-0"><i class="fa fa-search"></i></span>
+          </div>                   
+          <input type="text" [(ngModel)]="searchText" placeholder="Search user by name..." class="form-control border-0">
+          <div class="input-group-append">
+              <span (click)="toggle('list')" class="input-group-text border-top-0 border-right-0 border-bottom-0"><i class="fa fa-list"></i></span>
+          </div>
+      </div>
+  </div>
+</div>
+<div *ngIf="type=='list'" class="row">
+  <div class="col-12">
+      <div class="table-responsive bg-white box-shadow">
+          <table class="table table-hover">
+              <thead>
+                  <tr> 
+                      <th></th>
+                      <th>Rate </th> 
+                      <th>Monthly Rate</th>                      
+                      <th>Repayment capacity</th>                        
+                      <th>Monthly payment</th>
+                      <th>Bank interest</th>
+                      <th>Principal</th>
+                      <th>Refund Amount</th>                        
+                      <th>Bank Total interest</th>
+                      <th>Date Simulation</th>
+
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let c of ls | UserSearchPipe : searchText | paginate: { itemsPerPage: 6, currentPage: p }">                        
+                  
+                      <td class="align-middle text-truncate">{{c.taux}} </td>
+                      <td class="align-middle text-truncate">{{c.mensuel}}</td>
+                      <td class="align-middle text-truncate">{{c.capaciteDeRemboursement}}</td>                        
+                      <td class="align-middle text-truncate">{{c.mensualite}}</td>
+                      <td class="align-middle text-truncate">{{c.interest}}</td>
+                      <td class="align-middle text-truncate">{{c.Principal}}</td>
+                      <td class="align-middle text-truncate">{{c.montantRembourse}}</td>
+                      <td class="align-middle text-truncate">{{c.interetTotale}}</td>
+                      <td class="align-middle text-truncate">{{c.dateStartSimulation | date:"dd MMMM, yyyy 'at' HH:mm"}}</td>
+                      <td class="align-middle">
+                          <div class="btn-group" role="group">
+                              <button class="btn btn-secondary btn-sm" (click)="deleteLoanSimulation(c.idLoan)"><i class="fa fa-trash"></i></button>
+                          </div>
+                      </td>
+                  </tr>
+              </tbody>
+          </table>
+      </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12">
+      <div class="bg-white text-center">
+          <pagination-controls autoHide="true" (pageChange)="p = $event" maxSize="3"></pagination-controls>
+      </div>        
+  </div>
+</div>

@@ -1,19 +1,18 @@
 import { Bank } from "./bank";
 
 export class Agent {
+  idAgent!: number;
 
-    idAgent!:number;
-	
-	phoneAgent!:number;
-	
-	addressAgent!:string;
-	
-	FirstName!:string;
-	
-    LastName!:string;
-	
-	Email!:string;
-	
-    bankAgent!:Bank;
+  phoneAgent!: number;
 
+  addressAgent!: string;
+
+  firstName!: string;
+
+  lastName!: string;
+
+  email!: string;
+
+  bankAgent!: Bank;
+  constructor() {}
 }

@@ -1,21 +1,17 @@
-import { Agent } from "http";
+import { Agent } from "./agent";
 import { LoanSimulation } from "./loan-simulation";
 
 export class Bank {
-    idBank!:number; 
-	
-	nameBank!:string;
-	
-	descriptionBank!:string;
+  idBank!: number;
 
-	adresseBank!:string;
-	
-	tauxMoyenDuMarche!:number;
+  nameBank!: string;
 
-	margeInteretBank!:number;
-	
-	agentBank!:Agent;
-	
-	LoanSimulatorListBank!:Set<LoanSimulation>;
+  descriptionBank!: string;
 
+  adresseBank!: string;
+
+  tauxMoyenDuMarche!: number;
+
+  margeInteretBank!: number;
+  constructor() {}
 }

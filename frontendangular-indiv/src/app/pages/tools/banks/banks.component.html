@@ -1,1 +1,186 @@
-<p>banks works!</p>
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">New Bank</h4>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div>
+        <div class="form-group">
+          <label class="control-label">Name : </label>
+          <input
+            class="form-control"
+            type="text"
+            name="nameBank"
+            [(ngModel)]="bank.nameBank"
+          />
+        </div>
+        <div class="form-group">
+          <label class="control-label">Description : </label>
+          <input
+            class="form-control"
+            type="text"
+            name="descriptionBank"
+            [(ngModel)]="bank.descriptionBank"
+          />
+        </div>
+        <div class="form-group">
+          <label class="control-label">Adress : </label>
+          <input
+            class="form-control"
+            type="text"
+            name="Adress"
+            [(ngModel)]="bank.adresseBank"
+          />
+        </div>
+        <div class="form-group">
+          <label class="control-label">Taux Moyen Du Marche : </label>
+          <input
+            name="tmm"
+            class="form-control"
+            type="text"
+            [(ngModel)]="bank.tauxMoyenDuMarche"
+          />
+        </div>
+        <div class="form-group">
+          <label class="control-label">Marge Interet Bank : </label>
+          <input
+            name="mib"
+            class="form-control"
+            type="text"
+            [(ngModel)]="bank.margeInteretBank"
+          />
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="saveBank()">
+      Save
+    </button>
+  </div>
+</ng-template>
+<ng-template #content2 let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Update Bank</h4>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div>
+        <div class="form-group">
+          <label class="control-label">Name : </label>
+          <input
+            class="form-control"
+            type="text"
+            name="Name"
+            [(ngModel)]="bank.nameBank"
+          />
+        </div>
+        <div class="form-group">
+          <label class="control-label">Description : </label>
+          <input
+            class="form-control"
+            type="text"
+            name="Description"
+            [(ngModel)]="bank.descriptionBank"
+          />
+        </div>
+        <div class="form-group">
+          <label class="control-label">Adress : </label>
+          <input
+            class="form-control"
+            type="text"
+            name="Adress"
+            [(ngModel)]="bank.adresseBank"
+          />
+        </div>
+        <div class="form-group">
+          <label class="control-label">Taux Moyen Du Marche : </label>
+          <input
+            name="tmm"
+            class="form-control"
+            type="text"
+            [(ngModel)]="bank.tauxMoyenDuMarche"
+          />
+        </div>
+        <div class="form-group">
+          <label class="control-label">Marge Interet Bank : </label>
+          <input
+            name="mib"
+            class="form-control"
+            type="text"
+            [(ngModel)]="bank.margeInteretBank"
+          />
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="updateBank()">
+      Update
+    </button>
+  </div>
+</ng-template>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h2>Bank List</h2>
+  </div>
+  <div class="border">
+    <button class="btn btn-md btn-outline-primary" (click)="open(content)">
+      <i class="fa fa-user"></i>New Bank
+    </button>
+  </div>
+
+  <div class="panel-body">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nom</th>
+          <th>Description</th>
+          <th>Adresse</th>
+          <th>Taux Moyen Du Marche</th>
+          <th>Marge Interet Bank</th>
+          <th>action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let c of bk">
+          <td>{{ c.idBank }}</td>
+          <td>{{ c.nameBank }}</td>
+          <td>{{ c.descriptionBank }}</td>
+          <td>{{ c.adresseBank }}</td>
+          <td>{{ c.tauxMoyenDuMarche }}</td>
+          <td>{{ c.margeInteretBank }}</td>
+          <td>
+            <button (click)="deleteBank(c.idBank)" class="btn btn-danger">
+              Delete
+            </button>
+            <button
+              style="margin-left: 20px"
+              class="btn btn-success"
+              (click)="open2(content2, c)"
+            >
+              Update
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
