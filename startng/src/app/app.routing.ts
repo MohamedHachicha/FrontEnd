@@ -15,8 +15,10 @@ import { ClaimsCustomerComponent } from './pages/claims-customer/claims-customer
 import { ClaimsEmployeeComponent } from './pages/claims-employee/claims-employee.component';
 import { UpdateclaimComponent } from './pages/updateclaim/updateclaim.component';
 import {AddComponent} from "./pages/customers/add/add.component";
+
 import {MsgsComponent} from "./pages/msgs/msgs.component";
 import {AfficherOffersComponent} from "./pages/afficher-offers/afficher-offers.component";
+
 
 export const routes: Routes = [
   {
