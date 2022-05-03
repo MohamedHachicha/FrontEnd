@@ -1,0 +1,3 @@
+export enum SinisterStatus {
+    SUCCESSFULY_TREATED,IN_PROCESS,RESOLVED,REJECTED
+}
