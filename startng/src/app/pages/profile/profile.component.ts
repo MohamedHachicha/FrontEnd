@@ -11,13 +11,10 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
   }
-<<<<<<< Updated upstream
+
   popupUpdate=false
     update(){
       this.popupUpdate=true
     }
-  ngOnInit(){}
-=======
 
->>>>>>> Stashed changes
 }

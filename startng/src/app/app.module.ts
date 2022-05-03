@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
@@ -100,7 +100,8 @@ import {OfferComponent} from "./pages/offer/offer.component";
       }
     }),
     DevExtremeModule,
-    PieChartModule
+    PieChartModule,
+    ReactiveFormsModule
   ],
   declarations: [
       OfferComponent,
