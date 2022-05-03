@@ -47,6 +47,8 @@ export class ClaimsComponent implements OnInit {
     claim_contrat_type!:null,
     claim_visibility!:null,
     claim_date!:null,
+    claim_response!:null
+
     }
   }
   addclaim(p: Claim){

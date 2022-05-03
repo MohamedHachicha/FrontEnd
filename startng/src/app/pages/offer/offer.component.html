@@ -1,0 +1,29 @@
+<div class="card" style="width: 18rem;background-color: rgb(227, 232, 248);">
+    <div class="card-body" style="text-align: center;">
+
+        <div *ngIf="off.offer_categorie === 'Biens'">
+            <img src="\assets\img\offer\biens1.jpg" class="card-img-top" alt="...">
+        </div>
+        <div *ngIf="off.offer_categorie === 'Santé'">
+            <img src="\assets\img\offer\sant1.avif" class="card-img-top" alt="...">
+        </div>
+        <div *ngIf="off.offer_categorie === 'Retraite'">
+            <img src="\assets\img\offer\retraite.jpg" class="card-img-top" alt="...">
+        </div>
+        <div *ngIf="off.offer_categorie === 'Famille'">
+            <img src="\assets\img\offer\famille1.webp" class="card-img-top" alt="...">
+        </div>
+        <div *ngIf="off.offer_categorie === 'Argent'">
+            <img src="\assets\img\offer\argents2.jpg" class="card-img-top" alt="...">
+        </div>        
+        <h5 class="card-title">id : {{off.offer_id}}</h5>
+        <p class="card-text">offer_categorie : {{off.offer_categorie}}</p>
+        <p class="card-text">description : {{off.offer_description}}</p>
+        <p class="card-text">date expiration : {{off.offer_expiration_date| date:'yyyy/MM/dd'}}</p>
+        <p class="card-text">price : {{off.offer_price}}</p>
+
+        <!-- <button style="margin-right: 16px;" class="btn btn-primary " [disabled]="prod.quantity==0" (click)="sendNotif()">Buy</button>
+        <button class="btn btn-success" (click)="sendNotif1()">Like</button>
+        <a routerLink="{{prod.id}}">Show details</a> -->
+    </div>
+</div>

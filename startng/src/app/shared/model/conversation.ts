@@ -5,5 +5,7 @@ export class Conversation {
     conversation_visibility!:Boolean;
     conversation_type!:String;
     conversation_name!:String;
+    conversation_image!:String;
+    conversation_lastmessage!:String
     }
     

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {CustomerService} from "../customers/customers.service";
 
 @Component({
   selector: 'app-profile',
@@ -8,19 +7,17 @@ import {CustomerService} from "../customers/customers.service";
 })
 export class ProfileComponent implements OnInit {
 
-  public user
-  constructor(private customerService:CustomerService) {
-    this.getInfo()  }
-  getInfo(){
-    this.customerService.showLoggedCustomer(localStorage.getItem("mail")).subscribe(res=> {
-          this.user = res[0]
-          console.log("user",this.user)
-        }
-    );
+  constructor() { }
+
+  ngOnInit() {
   }
+<<<<<<< Updated upstream
   popupUpdate=false
     update(){
       this.popupUpdate=true
     }
   ngOnInit(){}
+=======
+
+>>>>>>> Stashed changes
 }

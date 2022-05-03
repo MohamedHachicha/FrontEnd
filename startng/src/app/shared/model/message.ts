@@ -1,3 +1,5 @@
+import { Conversation } from "./conversation";
+
 export class Message {
     message_id!: Number; 
    contenu_message!:String ;
@@ -7,5 +9,6 @@ export class Message {
    nbre_unlike_message!:Number;
    conv_id!:Number;
    message_date!:Date;
+   conversation !:Conversation;
    }
    

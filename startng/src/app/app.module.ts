@@ -55,23 +55,23 @@ import { ChatsComponent } from './pages/chats/chats.component';
 import { ContractsComponent } from './pages/contracts/contracts.component';
 import { ProvisionsComponent } from './pages/provisions/provisions.component';
 import { SinistersComponent } from './pages/sinisters/sinisters.component';
-
-import { BanksComponent } from './pages/credits/banks/banks.component';
-import { AgentsComponent } from './pages/credits/agents/agents.component';
-import { LoanSimulationsComponent } from './pages/credits/loan-simulations/loan-simulations.component';
-import { CreditsComponent } from './pages/credits/credits/credits.component';
-import { TransactionsComponent } from './pages/credits/transactions/transactions.component';
-import {DevExtremeModule} from "devextreme-angular";
-import {PieChartModule} from "@swimlane/ngx-charts";
 import { ClaimsCustomerComponent } from './pages/claims-customer/claims-customer.component';
 import { ClaimsEmployeeComponent } from './pages/claims-employee/claims-employee.component';
 import { UpdateclaimComponent } from './pages/updateclaim/updateclaim.component';
+<<<<<<< Updated upstream
 import { AddComponent } from './pages/customers/add/add.component';
+=======
+import { MsgsComponent } from './pages/msgs/msgs.component';
+import { AfficherOffersComponent } from './pages/afficher-offers/afficher-offers.component';
+import { OfferComponent } from './pages/offer/offer.component';
+import {  DxDataGridModule, DxTemplateModule } from 'devextreme-angular';
+import {DevExtremeModule} from "devextreme-angular";
+import {PieChartModule} from "@swimlane/ngx-charts";
+>>>>>>> Stashed changes
 
+ 
 
-
-
-@NgModule({
+@NgModule({  
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -79,6 +79,8 @@ import { AddComponent } from './pages/customers/add/add.component';
     PerfectScrollbarModule,
     NgbModule,
     MultiselectDropdownModule,
+    DxTemplateModule,
+    DxDataGridModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAO7Mg2Cs1qzo_3jkKkZAKY6jtwIlm41-I'
     }),
@@ -86,7 +88,7 @@ import { AddComponent } from './pages/customers/add/add.component';
       provide: DateAdapter,
       useFactory: adapterFactory
     }),
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot(), 
     PipesModule,
     AppRoutingModule,
     HttpClientModule,
@@ -130,8 +132,15 @@ import { AddComponent } from './pages/customers/add/add.component';
     ClaimsCustomerComponent,
     ClaimsEmployeeComponent,
     UpdateclaimComponent,
+<<<<<<< Updated upstream
     AddComponent,
 
+=======
+    MsgsComponent,
+    AfficherOffersComponent,
+    OfferComponent,
+    
+>>>>>>> Stashed changes
   ],
   providers: [ 
     AppSettings,

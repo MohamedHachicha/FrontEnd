@@ -312,4 +312,5 @@ export class MailboxService {
     public getMail(id: number | string) {
         return Mails.find(mail => mail.id === +id);
     }
+   
 }
