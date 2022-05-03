@@ -1,0 +1,25 @@
+<p>msgs works!</p>
+
+<!-- <div _ngcontent-daf-c22="" class="mail-view d-none d-md-block col-md-9 col-lg-7 bg-white"> -->
+     
+<div *ngFor="let c of listmsgs">
+    <li class="list-group-item">
+     <!-- <img src="\assets\img\avatars\avatar-1.png" alt="">  -->
+        <div class="message">
+          {{c.contenu_message}}
+        </div>
+        <div class="timeform">
+          <i class="fa fa-clock-o" aria-hidden="true"></i> <span class="timestamp">at {{c.message_date | date : 'dd/MM/yyyy' }}</span>
+        </div>
+      </li>
+     
+</div>   
+<!-- </div>  -->
+<!-- message_id!: Number; 
+contenu_message!:String ;
+message_visibility!:boolean; 
+nbre_like_message!:Number; 
+id_sender!:Number ;
+nbre_unlike_message!:Number;
+conv_id!:Number;
+message_date!:Date; -->

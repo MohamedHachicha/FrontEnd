@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Claim } from 'src/app/shared/model/claim';
-import { ClaimService } from 'src/app/shared/services/claim-service';
+import { ClaimService } from 'src/app/shared/service/claim-service';
 
 @Component({
   selector: 'app-claims-employee',
@@ -41,6 +41,8 @@ export class ClaimsEmployeeComponent implements OnInit {
     claim_contrat_type!:null,
     claim_visibility!:null,
     claim_date!:null,
+    claim_response!:null
+
     }
   }
   getAllClaims(){

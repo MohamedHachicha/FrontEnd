@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { HttpClient} from '@angular/common/http';
+import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { Claim } from '../model/claim';
 import { Observable } from 'rxjs';
 
@@ -13,25 +13,31 @@ export class ClaimService {
   constructor(private httpClient: HttpClient) { }
 
   getAllClaims() {
-    return this.httpClient.get(`${this.API_URL}/retrieve-visible`)
+    return this.httpClient.get(`${this.API_URL}/retrieve-visible`,
+    {headers: new HttpHeaders().append("Authorization","Bearer "+localStorage.getItem('token'))})
   }
   addClaim(claim : Claim): Observable<Object> {
-    return this.httpClient.post(`${this.API_URL}/add-Claim`, claim)
+    return this.httpClient.post(`${this.API_URL}/add-Claim`, claim,
+    {headers: new HttpHeaders().append("Authorization","Bearer "+localStorage.getItem('token'))})
   }
   editClaim(claim : any){
-    return this.httpClient.put(`${this.API_URL}/modify-Claim`, claim)
+    return this.httpClient.put(`${this.API_URL}/modify-Claim`, claim,
+    {headers: new HttpHeaders().append("Authorization","Bearer "+localStorage.getItem('token'))})
   }
   deleteClaim(idclaim : Number)  {
-    return  this.httpClient.delete(`${this.API_URL}/remove-Claim/${idclaim}`)
+    return  this.httpClient.delete(`${this.API_URL}/remove-Claim/${idclaim}`,
+    {headers: new HttpHeaders().append("Authorization","Bearer "+localStorage.getItem('token'))})
   }
   archiveClaim(idclaim : Number) :Observable<Object> {
-    return  this.httpClient.put(`${this.API_URL}/archive-Claim`,idclaim)
+    return  this.httpClient.put(`${this.API_URL}/archive-Claim`,idclaim,
+    {headers: new HttpHeaders().append("Authorization","Bearer "+localStorage.getItem('token'))})
   }
   desarchiveClaim(idclaim : Number) :Observable<Object> {
-    return  this.httpClient.put(`${this.API_URL}/desarchive-Claim`,idclaim)
+    return  this.httpClient.put(`${this.API_URL}/desarchive-Claim`,idclaim,
+    {headers: new HttpHeaders().append("Authorization","Bearer "+localStorage.getItem('token'))})
 
   }
   treatClaim(idclaim : any,reponse:any): Observable<Object>{
-    return this.httpClient.put(`${this.API_URL}  /Treat_claim`, idclaim,reponse)
+    return this.httpClient.put(`${this.API_URL}/Treat_claim`, idclaim,reponse)
   }
 }

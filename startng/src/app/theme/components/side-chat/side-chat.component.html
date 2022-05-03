@@ -31,7 +31,7 @@
         </div>
 
         <div class="chat-talk-list pt-2" perfectScrollbar>
-            <div *ngFor="let talk of talks" class="media p-1 mb-1 border-0"> 
+            <div *ngFor="let talk of chats" class="media p-1 mb-1 border-0"> 
                 <img *ngIf="talk.side=='left'" class="d-flex mr-3 rounded" src="{{ talk.image }}">        
                 <div class="media-body rounded pl-2 pr-2 {{talk.side}}">
                     <span class="d-block talk-text">{{talk.text}}</span>

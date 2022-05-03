@@ -11,6 +11,7 @@ export class Claim {
     claim_contrat_type!:ClaimContratType;
     claim_visibility!:Boolean;
     claim_date!:Date;
+    claim_response!:String;
    // customerClaim:CustomerAccount[] ;
     }
     

@@ -21,8 +21,8 @@ export class PagesComponent implements OnInit {
     public settings: Settings;
     constructor(public appSettings:AppSettings, public router:Router){        
         this.settings = this.appSettings.settings; 
-        if(sessionStorage["green"]) {
-            this.settings.theme.skin = sessionStorage["green"];
+        if(sessionStorage["skin"]) {
+            this.settings.theme.skin = sessionStorage["skin"];
         }     
     }
 

@@ -32,7 +32,7 @@ export const menuItemsCustomer=[
 export const verticalMenuItems = [
   new Menu (1, 'ADMIN_NAV.DASHBOARD', '/', null, 'tachometer', null, false, 0),
     new Menu (14, 'My Customers', '/customers', null, 'users', null, false, 0),
-    new Menu (2, 'Chat', '/chats', null, 'comments', null, false, 0),
+    new Menu (2, 'Chat', '/mailbox', null, 'comments', null, false, 0),
     new Menu (3, 'Contacts', '/contracts', null, 'file', null, false, 0),
     new Menu (4, 'Provisions', '/provisions', null, 'laptop', null, false, 0),
     new Menu (5, 'Sinisters', '/sinisters', null, 'warning', null, false,0 ),
@@ -100,7 +100,7 @@ export const verticalMenuItems = [
 export const horizontalMenuItems = [
   new Menu (1, 'ADMIN_NAV.DASHBOARD', '/', null, 'tachometer', null, false, 0),
     new Menu (14, 'My Customers', '/customers', null, 'users', null, false, 0),
-    new Menu (2, 'Chat', '/chats', null, 'comments', null, false, 0),
+    new Menu (2, 'Chat', '/mailbox', null, 'comments', null, false, 0),
     new Menu (3, 'Contacts', '/contracts', null, 'file', null, false, 0),
     new Menu (4, 'Provisions', '/provisions', null, 'laptop', null, false, 0),
     new Menu (5, 'Sinisters', '/sinisters', null, 'warning', null, false,0 ),
