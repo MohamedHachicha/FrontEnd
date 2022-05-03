@@ -1,21 +1,37 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { IMultiSelectOption, IMultiSelectSettings, IMultiSelectTexts } from 'angular-2-dropdown-multiselect';
-import { SinisterService } from 'src/app/shared/sinister.service';
-import { MenuService } from '../../theme/components/menu/menu.service';
-import { FormGroup, FormControl, FormBuilder, Validators} from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { IMultiSelectOption, IMultiSelectSettings, IMultiSelectTexts } from 'angular-2-dropdown-multiselect';
+import { ToastrService } from 'ngx-toastr';
 import { Sinister } from 'src/app/shared/model/sinister';
-
-
+import { SinisterService } from 'src/app/shared/sinister.service';
 
 @Component({
-  selector: 'app-sinisters',
-  templateUrl: './sinisters.component.html',
-  styleUrls: ['./sinisters.component.scss'],
-  encapsulation: ViewEncapsulation.None,
-  providers: [ SinisterService,MenuService ]
+  selector: 'app-update-sinister',
+  templateUrl: './update-sinister.component.html',
+  styleUrls: ['./update-sinister.component.scss']
 })
-export class SinistersComponent implements OnInit {
+export class UpdateSinisterComponent implements OnInit {
+  public p:any;
+  public searchText: string;
+  public menuSelectSettings: IMultiSelectSettings = {
+    enableSearch: true,
+    checkedStyle: 'fontawesome',
+    buttonClasses: 'btn btn-secondary btn-block',
+    dynamicTitleMaxItems: 0,
+    displayAllSelectedText: true,
+    showCheckAll: true,
+    showUncheckAll: true
+};
+public menuSelectTexts: IMultiSelectTexts = {
+    checkAll: 'Select all',
+    uncheckAll: 'Unselect all',
+    checked: 'menu item selected',
+    checkedPlural: 'menu items selected',
+    searchPlaceholder: 'Find menu item...',
+    defaultTitle: 'Select menu items for user',
+    allSelected: 'All selected',
+};
+  
   public firstControlModel: number[];
     public firstControlOptions: IMultiSelectOption[] = [
         { id: 1, name: 'Option 1' },
@@ -73,6 +89,8 @@ export class SinistersComponent implements OnInit {
 
 
     public thirdControlModel: number[];
+
+   
     public thirdControlSettings: IMultiSelectSettings = {
         enableSearch: true,
         checkedStyle: 'checkboxes',
@@ -89,6 +107,8 @@ export class SinistersComponent implements OnInit {
         defaultTitle: 'Select contract type',
         allSelected: 'All selected',
     };
+   
+    
     public thirdControlOptions: IMultiSelectOption[] = [
       { id: 1, name: 'Ariana'},
       { id: 2, name: 'Béja' },
@@ -116,7 +136,7 @@ export class SinistersComponent implements OnInit {
       { id: 24, name: 'Zaghouan ' }
 
     ];
-  Sinister: { id: any; sinisterStatus: any; sinisterPlace: any; declarationDate: any; sinisterDate: any; delaiDeclaration: any; IndemnisationDate: any; sinisterDescription: any; chargeSinister: any; causeRejet: any; sinisterType: any; };
+  Sinister: { id: any; sinisterStatus: any; sinisterPlace: any; declarationDate: any; sinisterDate: any; delaiDeclaration: any; IndemnisationDate: any; sinisterDescription: any; chargeSinister: any; causeRejet: any; sinisterType: any;  sinisterIndemnity:any};
   id!:any;
   listSinisters:any;
   form : boolean = false;
@@ -126,7 +146,10 @@ export class SinistersComponent implements OnInit {
    zoom: number = 7;
    closeResult! : string;
 
-  constructor(private sinisterService : SinisterService, private modalService:NgbModal) { }
+  constructor(private sinisterService : SinisterService, 
+    private modalService:NgbModal,
+    public toastrService: ToastrService
+    ) { }
   ngOnInit(): void {
    
      this.getAllSinister();
@@ -144,6 +167,7 @@ export class SinistersComponent implements OnInit {
       chargeSinister:null ,
       causeRejet:null ,
       sinisterType:null ,
+      sinisterIndemnity:null ,
      }
 
   
@@ -157,13 +181,11 @@ export class SinistersComponent implements OnInit {
      // this.form = false;
     console.log(s)});
   }
-  editSinisterSinister(sinister : Sinister){
-    this.sinisterService.editSinister(sinister).subscribe();
-  }
+  
   deleteSinister(idSinister : Number){
     this.sinisterService.deleteSinister(idSinister).subscribe(() => this.getAllSinister())
   }
-  
+
   open(content: any) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
@@ -187,6 +209,14 @@ export class SinistersComponent implements OnInit {
     cancel(){
       this.form = false;
     }
+
+
+
+
+
+
+    
   
 
 }
+  

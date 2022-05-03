@@ -1,0 +1,161 @@
+
+<!--<div class="card card-info border-0 box-shadow">
+    <div class="card-header text-white text-center">
+        <h4>Update your sinister:</h4>
+    </div>
+    </div>
+<div class="row ">
+    <div class="col-12">
+        <div widget class="card border-0 box-shadow">
+            <div class="card-header transparent border-0 text-muted">
+                <h2 class="mb-0">Sinister mangment</h2>
+                <div class="widget-controls"> 
+                    <a data-widgster="expand" href="#" class="transition"><i class="fa fa-chevron-down"></i></a>
+                    <a data-widgster="collapse" href="#" class="transition"><i class="fa fa-chevron-up"></i></a>
+                    <a data-widgster="close" href="#" class="transition"><i class="fa fa-times"></i></a>
+                </div>        
+            </div>
+            <div class="card-body pt-0 widget-body"> 
+                <p class="text-left fs-13 text-gray">Please fill out the form below,we kindly ask you to send us the requested information.</p>
+               
+                <form>
+                    <div class="form-group">
+                        <label for="input-5">Sinister type</label>
+                        <input type="text" class="form-control form-control-rounded" id="input-5">
+                    </div>
+                   
+                    <div>   
+                        <h6>Select Sinsiter place </h6>
+                        <ss-multiselect-dropdown class="custom-multiselect" [options]="thirdControlOptions" [texts]="thirdControlTexts" [settings]="thirdControlSettings" [(ngModel)]="thirdControlModel"></ss-multiselect-dropdown>
+                    </div> 
+                    <br>
+                    <div class="form-group">
+                        <label for="input-7">Delai declaration </label>
+                        <input type="email" class="form-control" id="input-7" disabled value="it should not exceed 2 days">
+                    </div>                    
+                    <div class="form-group">
+                        <label for="textarea-1">Sinister's Description</label>
+                        <textarea class="form-control" id="textarea-1"></textarea>
+                    </div>
+                    
+                   
+                    <div class="form-group">
+                        <label for="input-12">Declaration Date</label>
+                        <input type="date" class="form-control" value="2011-08-19" id="input-12" disabled value="you cannot change the date">
+                    </div>
+                    <div class="form-group">
+                        <label for="input-12">Sinister Date</label>
+                        <input type="date" class="form-control" value="2011-08-19" id="input-12" disabled value="you cannot change the date">
+                    </div>
+                    <div class="form-group">
+                        <label for="input-13">Month</label>
+                        <input type="month" class="form-control" value="2011-08" id="input-13" disabled value="you cannot change the date">
+                    </div>
+                    <div class="form-group">
+                        <label for="input-14">Week</label>
+                        <input type="week" class="form-control" value="2011-W33" id="input-14" disabled value="you cannot change the date">
+                    </div>
+                    
+                    <div class="form-group">
+                        <button (click)="addSinister(sinister)" class="btn btn-info w-100p mb-1 mr-1" type="button"  > 
+                            <span class="badge badge-pill badge-white text-primary ml-1">
+                                <i class="fa fa-handshake-o"></i></span> Accept </button>
+                       
+                    
+                    <button class="btn btn-danger w-100p mb-1 mr-1" type="button" [routerLink]="['/list-sinister']">
+                        <span class="badge badge-pill badge-white text-primary ml-1">
+                            <i class="fa fa-mail-reply"></i></span> Back </button>
+                    </div> 
+                </form>
+            </div>
+        </div>
+    </div>    -->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card card-info border-0 box-shadow">
+<div class="card-header text-white text-center">
+    <h4>Add your sinister:</h4>
+</div>
+</div>
+            <button class="btn btn-round btn-sm btn-success" (click)="open(mymodal1)">Add new sinister</button>
+            <br><br>
+            <ng-template #mymodal1 let-modal1>
+                <div class="modal-header">
+                    <h4 class="modal-title" id="modal-basic-title" >Add new sinister</h4>
+                    <br>
+                    <button type="button" class="close" aria-label="Close" (click)="modal1.dismiss('Cross click')">
+                        <span aria-hidden="true" (click)="cancel()">×</span>
+                    </button>
+    
+                </div>
+                <div class="center">
+                <form>
+                    <div class="form-group">
+                        <label for="input-5">Sinister type</label>
+                        <input type="text"    class="form-control form-control-rounded"    [(ngModel)]="sinister.sinisterType" 
+                          id="sinisterType"  [ngModelOptions]="{standalone : true}">
+                    </div>
+                    <div>   
+                        <h6>Select Sinsiter place </h6>
+                        <select _ngcontent-krx-c178="" id="exampleSelect1" 
+                        class="form-control ng-pristine ng-valid ng-touched" ngModel
+                        [ngModelOptions]="{standalone : true}">
+                            <option _ngcontent-krx-c178="">tunis</option>
+                            <option _ngcontent-krx-c178="">sfax</option>
+                            <option _ngcontent-krx-c178="">ben arous</option>
+                            <option _ngcontent-krx-c178="">sousse</option>
+                            <option _ngcontent-krx-c178="">nabeul</option>
+                            <option _ngcontent-krx-c178="">mannouba</option>
+                            <option _ngcontent-krx-c178="">ariana</option>
+                            <option _ngcontent-krx-c178="">bizerte</option></select>
+                    </div> 
+                   
+                   
+                    <div class="form-group">
+                        <label for="input-12">Sinister Date</label>
+                        <input type="date"   [(ngModel)]="sinister.sinisterDate"  class="form-control"  id="sinisterDate"  [ngModelOptions]="{standalone : true}">
+                    </div>
+                
+                    <div class="form-group">
+                        <label for="input-12">Declaration Date</label>
+                        <input type="date"  [(ngModel)]="sinister.declarationDate"   class="form-control"  id="declarationDate"  [ngModelOptions]="{standalone : true}">
+                    </div>
+                    <div class="form-group">
+                        <label for="input-7">Delai declaration </label>
+                        <input type="email"   class="form-control" id="input-7" disabled 
+                        value="it should not exceed 2 days"  >
+                    </div>   
+                    <div>   
+                        <h6>affect Sinsiter to customer </h6>
+                        <select _ngcontent-krx-c178="" id="exampleSelect1" class="form-control ng-pristine ng-valid ng-touched">
+                            <option _ngcontent-krx-c178="">tunis</option>
+                            <option _ngcontent-krx-c178="">sfax</option><option _ngcontent-krx-c178="">Habitation</option>
+                            <option _ngcontent-krx-c178="">ben arous</option>
+                            <option _ngcontent-krx-c178="">sousse</option>
+                            <option _ngcontent-krx-c178="">nabeul</option>
+                            <option _ngcontent-krx-c178="">mannouba</option>
+                            <option _ngcontent-krx-c178="">ariana</option>
+                            <option _ngcontent-krx-c178="">bizerte</option></select>
+                    </div> 
+                    <div class="form-group">
+                        <label for="input-5">Charge sinsiter</label>
+                        <input type="text"    class="form-control form-control-rounded"    [(ngModel)]="sinister.chargeSinister" 
+                          id="sinisterType"  [ngModelOptions]="{standalone : true}">
+                    </div>
+                    <br>
+                    <button type="button" class="btn btn-info w-100p mb-1 mr-1" (click)="addSinister(sinister)" (click)="modal1.close('Save click')">Add</button> 
+                    <button type="button" class="btn btn-info" (click)="modal1.close('Save click')" >Cancel</button>
+                </form>
+            </div>
+            </ng-template>
+
+
+
+
+
+ 
+
+
+
+
+

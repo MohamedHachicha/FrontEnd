@@ -10,7 +10,10 @@ import { ClaimsComponent } from './pages/claims/claims.component';
 import { ChatsComponent } from './pages/chats/chats.component';
 import { ContractsComponent } from './pages/contracts/contracts.component';
 import { ProvisionsComponent } from './pages/provisions/provisions.component';
-import { SinistersComponent } from './pages/sinisters/sinisters.component';
+import { AddSinisterComponent } from './pages/sinister/add-sinister/add-sinister.component';
+import { UpdateSinisterComponent } from './pages/sinister/update-sinister/update-sinister.component';
+import { ListSinisterComponent } from './pages/sinister/list-sinister/list-sinister.component';
+
 
 
 export const routes: Routes = [
@@ -25,7 +28,9 @@ export const routes: Routes = [
       { path: "chats", component: ChatsComponent  },
       { path: "contracts", component: ContractsComponent},
       { path: "provisions", component: ProvisionsComponent},  
-      { path: "sinisters", component: SinistersComponent },
+      { path: "list-sinister", component: ListSinisterComponent },
+      { path: "add-sinister", component: AddSinisterComponent },
+      { path: "update-sinister", component: UpdateSinisterComponent },
       { path: 'membership', loadChildren: () => import('./pages/membership/membership.module').then(m => m.MembershipModule), data: { breadcrumb: 'Membership' } },
       { path: 'ui', loadChildren: () => import('./pages/ui/ui.module').then(m => m.UiModule), data: { breadcrumb: 'UI' } },
       { path: 'form-elements', loadChildren: () => import('./pages/form-elements/form-elements.module').then(m => m.FormElementsModule), data: { breadcrumb: 'Form Elements' } },

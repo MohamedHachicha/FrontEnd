@@ -6,7 +6,7 @@ export const verticalMenuItems = [
     new Menu (2, 'Chat', '/chats', null, 'comments', null, false, 0), 
     new Menu (3, 'Contacts', '/contracts', null, 'file', null, false, 0), 
     new Menu (4, 'Provisions', '/provisions', null, 'laptop', null, false, 0),   
-    new Menu (5, 'Sinisters', '/sinisters', null, 'warning', null, false,0 ),
+    new Menu (5, 'Sinister', '/list-sinister', null, 'warning', null, false,0 ),
     new Menu (6, 'credits', null, null, 'euro', null, true, 0),  
     new Menu (7, 'Our Banks', '/tools/banks', null, 'warning', null, false,6 ),  
     new Menu (8, 'Our Agents', '/tools/agents', null, 'euro', null, false, 6), 
@@ -15,7 +15,7 @@ export const verticalMenuItems = [
     new Menu (11, 'Our Transactions', '/tools/transactions', null, 'file-text-o', null, false, 6), 
     new Menu (12, 'Offers', '/offers', null, 'gift', null, false, 0),
     new Menu (13, 'Claims', '/claims', null, 'file-text-o', null, false, 0),
-
+   
     //new Menu (8, 'Icons', '/ui/icons', null, 'font-awesome', null, false, 0), 
 
   /*   new Menu (1, 'ADMIN_NAV.DASHBOARD', '/', null, 'tachometer', null, false, 0),
@@ -75,7 +75,9 @@ export const horizontalMenuItems = [
     new Menu (2, 'Chat', '/chats', null, 'comments', null, false, 0), 
     new Menu (3, 'Contacts', '/contracts', null, 'file', null, false, 0), 
     new Menu (4, 'Provisions', '/provisions', null, 'laptop', null, false, 0),   
-    new Menu (5, 'Sinisters', '/sinisters', null, 'warning', null, false,0 ),
+    
+    new Menu (5, 'Sinister', '/list-sinister', null, 'warning', null, false,0 ),
+  
     new Menu (6, 'Credits', null, null, 'euro', null, true, 0),  
     new Menu (7, 'Our Banks', '/tools/banks', null, 'warning', null, false,6 ),  
     new Menu (8, 'Our Agents', '/tools/agents', null, 'euro', null, false, 6), 

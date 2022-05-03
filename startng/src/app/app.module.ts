@@ -1,7 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
@@ -25,6 +26,7 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
 import { ToastrModule } from 'ngx-toastr';
 import { PipesModule } from './theme/pipes/pipes.module';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 import { AppRoutingModule } from './app.routing';
 import { AppSettings } from './app.settings';
@@ -54,7 +56,10 @@ import { ClaimsComponent } from './pages/claims/claims.component';
 import { ChatsComponent } from './pages/chats/chats.component';
 import { ContractsComponent } from './pages/contracts/contracts.component';
 import { ProvisionsComponent } from './pages/provisions/provisions.component';
-import { SinistersComponent } from './pages/sinisters/sinisters.component';
+
+import { AddSinisterComponent } from './pages/sinister/add-sinister/add-sinister.component';
+import { UpdateSinisterComponent } from './pages/sinister/update-sinister/update-sinister.component';
+import { ListSinisterComponent } from './pages/sinister/list-sinister/list-sinister.component';
 
 
  
@@ -64,8 +69,10 @@ import { SinistersComponent } from './pages/sinisters/sinisters.component';
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
     PerfectScrollbarModule,
     NgbModule,
+    NgxPaginationModule,
     MultiselectDropdownModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAO7Mg2Cs1qzo_3jkKkZAKY6jtwIlm41-I'
@@ -112,7 +119,9 @@ import { SinistersComponent } from './pages/sinisters/sinisters.component';
     ChatsComponent,
     ContractsComponent,
     ProvisionsComponent,
-    SinistersComponent,
+    AddSinisterComponent,
+    UpdateSinisterComponent,
+    ListSinisterComponent,
     
   ],
   providers: [ 

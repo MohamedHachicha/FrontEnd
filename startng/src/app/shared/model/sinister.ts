@@ -2,11 +2,13 @@ import { SinisterStatus } from "./sinister-status";
 
 export class Sinister {
 
-    id: number ; 
+    idSinister: any ; 
     sinisterStatus: SinisterStatus ;
     sinisterPlace: string ;
     declarationDate:Date ;
     sinisterDate:Date ;
+    tempDeclarationDate:string ;
+    tempSinisterDate:string ;
 
     delaiDeclaration:number ;
     IndemnisationDate:Date ;
@@ -14,6 +16,12 @@ export class Sinister {
     chargeSinister:number ;
     causeRejet:string ;
     sinisterType:string ;
+    sinisterIndemnity:number;
+  profile: any;
+  static sinisterType: any;
+  static sinisterPlace: any;
+  S_customerAccount:any;
+
 
     
 

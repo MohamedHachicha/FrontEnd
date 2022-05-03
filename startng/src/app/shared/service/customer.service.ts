@@ -1,12 +1,11 @@
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
-import {Sinister} from './model/sinister';
 
 @Injectable({
     providedIn: 'root'
 })
-export class SinisterService {
+export class CustomerService {
 
     readonly API_URL = '/api/PIDEV_GARANTIA';
 
