@@ -60,13 +60,15 @@ import { BanksComponent } from './pages/credits/banks/banks.component';
 import { AgentsComponent } from './pages/credits/agents/agents.component';
 import { LoanSimulationsComponent } from './pages/credits/loan-simulations/loan-simulations.component';
 import { CreditsComponent } from './pages/credits/credits/credits.component';
-import { TransactionsComponent } from './pages/credits/transactions/transactions.component';
 import {DevExtremeModule} from "devextreme-angular";
 import {PieChartModule} from "@swimlane/ngx-charts";
 import { ClaimsCustomerComponent } from './pages/claims-customer/claims-customer.component';
 import { ClaimsEmployeeComponent } from './pages/claims-employee/claims-employee.component';
 import { UpdateclaimComponent } from './pages/updateclaim/updateclaim.component';
 import { AddComponent } from './pages/customers/add/add.component';
+import {MsgsComponent} from "./pages/msgs/msgs.component";
+import {AfficherOffersComponent} from "./pages/afficher-offers/afficher-offers.component";
+import {OfferComponent} from "./pages/offer/offer.component";
 
 
 
@@ -102,6 +104,9 @@ import { AddComponent } from './pages/customers/add/add.component';
         ReactiveFormsModule
     ],
   declarations: [
+      OfferComponent,
+      AfficherOffersComponent,
+      MsgsComponent,
     AppComponent,
     PagesComponent,
     HeaderComponent,
@@ -118,6 +123,7 @@ import { AddComponent } from './pages/customers/add/add.component';
     FlagsMenuComponent,
     SideChatComponent,
     FavoritesComponent,
+    BlankComponent,
     BlankComponent,
     SearchComponent,
     NotFoundComponent,
@@ -138,6 +144,7 @@ import { AddComponent } from './pages/customers/add/add.component';
     AppSettings,
     { provide: PERFECT_SCROLLBAR_CONFIG, useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG }
   ],
-  bootstrap: [ AppComponent ]
+  bootstrap: [ AppComponent ],
+    exports:[OfferComponent]
 })
-export class AppModule { } 
+export class AppModule { }

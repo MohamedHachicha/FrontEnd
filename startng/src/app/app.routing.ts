@@ -15,6 +15,8 @@ import { ClaimsCustomerComponent } from './pages/claims-customer/claims-customer
 import { ClaimsEmployeeComponent } from './pages/claims-employee/claims-employee.component';
 import { UpdateclaimComponent } from './pages/updateclaim/updateclaim.component';
 import {AddComponent} from "./pages/customers/add/add.component";
+import {MsgsComponent} from "./pages/msgs/msgs.component";
+import {AfficherOffersComponent} from "./pages/afficher-offers/afficher-offers.component";
 
 export const routes: Routes = [
   {
@@ -33,6 +35,9 @@ export const routes: Routes = [
       { path: "claimscustomer", component: ClaimsCustomerComponent },
       { path: "claimsemployee", component: ClaimsEmployeeComponent },
       { path: "updateclaim", component: UpdateclaimComponent },
+      { path: 'msgs/:id', component: MsgsComponent },
+      
+      { path: 'AfficheOffers', component: AfficherOffersComponent },
 
       { path: 'membership', loadChildren: () => import('./pages/membership/membership.module').then(m => m.MembershipModule), data: { breadcrumb: 'Membership' } },
       { path: 'ui', loadChildren: () => import('./pages/ui/ui.module').then(m => m.UiModule), data: { breadcrumb: 'UI' } },
@@ -41,7 +46,7 @@ export const routes: Routes = [
       { path: 'tools', loadChildren: () => import('./pages/tools/tools.module').then(m => m.ToolsModule), data: { breadcrumb: 'Tools' } },
       { path: 'calendar', loadChildren: () => import('./pages/calendar/app-calendar.module').then(m => m.AppCalendarModule), data: { breadcrumb: 'Calendar' } },
       { path: 'mailbox', loadChildren: () => import('./pages/mailbox/mailbox.module').then(m => m.MailboxModule), data: { breadcrumb: 'Mailbox' } },
-     // { path: 'credits', loadChildren: () => import('./pages/credits/credits.module').then(m => m.CreditsModule)},
+      { path: 'credits', loadChildren: () => import('./pages/credits/credits-module').then(m => m.CreditsModule)},
       { path: 'charts', loadChildren: () => import('./pages/charts/charts.module').then(m => m.ChartsModule), data: { breadcrumb: 'Charts' } },
       { path: 'dynamic-menu', loadChildren: () => import('./pages/dynamic-menu/dynamic-menu.module').then(m => m.DynamicMenuModule), data: { breadcrumb: 'Dynamic Menu' }  },  
       { path: 'profile', loadChildren: () => import('./pages/profile/profile.module').then(m => m.ProfileModule), data: { breadcrumb: 'Profile' }  },         

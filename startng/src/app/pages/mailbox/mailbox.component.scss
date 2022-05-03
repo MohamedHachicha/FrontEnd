@@ -72,3 +72,17 @@ $mailbox-scroll-height: 440px;
        border-top: 3px solid #f5f5f5;
     }
 }
+.chat-conversation .conversation-list .ctext-wrap-content {
+    padding: 12px 20px;
+    background-color: #7269ef;
+    border-radius: 8px 8px 8px 0;
+    color: #fff;
+    position: relative;
+}
+*, :after, :before {
+    box-sizing: border-box;
+}
+user agent stylesheet
+div {
+    display: block;
+}

@@ -1,1 +1,181 @@
-<p>offers works!</p>
+<div class="row">
+    <div class="row">
+        <div class="col-md-12">
+            <button class="btn btn-round btn-sm btn-success" (click)="open(mymodal1)">Add new offer</button>
+            <button class="btn btn-round btn-sm btn-success" routerLink="/AfficheOffers">Display offers</button>
+
+            <br><br>
+            <ng-template #mymodal1 let-modal1>
+                <div class="modal-header">
+                    <h4 class="modal-title" id="modal-basic-title">Add new offer</h4>
+                    <button type="button" class="close" aria-label="Close" (click)="modal1.dismiss('Cross click')">
+                        <span aria-hidden="true" (click)="cancel()">×</span>
+                    </button>
+
+                </div>
+                <div class="center">
+                    <form>
+                        <div class="card-body pt-0 widget-body ">
+                            <p class="text-muted"></p>
+
+                            <!-- <p class="text-left fs-13 text-gray">Basic Form Input with diffrent elements and styles.</p> -->
+                            <div class="relative w-full mb-3">
+                                <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                                    htmlFor="grid-password">
+                                    Offer Category
+                                </label><br>
+                                <!-- //Famille,Biens,Argent,Retraite,Santé; -->
+                                <select id="exampleSelect1" [(ngModel)]="offer.offer_categorie"
+                                    [ngModelOptions]="{standalone : true}" class="form-control">
+                                    <option>Famille</option>
+                                    <option>Biens</option>
+                                    <option>Argent</option>
+                                    <option>Retraite</option>
+                                    <option>Santé</option>
+                                </select>
+
+                            </div>
+                            {{offer.offer_categorie}}
+                            <div class="relative w-full mb-3">
+                                <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                                                htmlFor="grid-password">
+                                                Offer price
+                                            </label><br>
+                                <input type="text" [(ngModel)]="offer.offer_price" [ngModelOptions]="{standalone : true}">
+
+                            </div>
+                            {{offer.offer_price}}<br>
+
+                            <div class="relative w-full mb-3">
+                                <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                                    htmlFor="grid-password">
+                                    Offer Description
+                                </label>
+                                <textarea id="textarea-input" name="textarea-input" rows="9" class="form-control"
+                                    placeholder="Content.." [(ngModel)]="offer.offer_description" [ngModelOptions]="{standalone : true}"></textarea>
+                            </div>
+                            {{offer.offer_description}}<br>
+                        </div>
+
+                        <div class="relative w-full mb-3">
+                            <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                                htmlFor="grid-password">
+                                Date Expiration
+                            </label>
+                            <input type="date"  id="input-12" class="form-control"
+                                [(ngModel)]="offer.offer_expiration_date" [ngModelOptions]="{standalone : true}">
+                        </div>
+                        {{offer.offer_expiration_date}}<br>
+                
+        <button type="button" class="btn btn-success" (click)="addoffer(offer)"
+            (click)="modal1.close('Save click')">Add</button>
+        <button type="button" class="btn btn-info" (click)="modal1.close('Save click')">Cancel</button>
+        </form>
+    </div>
+    </ng-template>
+    <div class="row">
+        <div class="card" class="text-center">
+            <table class="table">
+                <thead style="background-color: rgb(192, 183, 183);">
+                    <th>offer_id</th>
+                    <th>offer_description</th>
+                    <th>offer_expiration_date</th>
+                    <th>offer_categorie</th>
+                    <th>Offer_visibility</th>
+                    <th>expired</th>
+                    <th>offer_price</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor='let p of listOffers'>
+                        <td>{{p.offer_id}}</td>
+                        <td>{{p.offer_description}}</td>
+                        <td>{{p.offer_expiration_date| date:'yyyy/MM/dd'}}</td>
+                        <td>{{p.offer_categorie}}</td>
+                        <td>{{p.offer_visibility}}</td>
+                        <td>{{p.expired}}</td>
+                        <td>{{p.offer_price}}</td>
+                        <td><button type="button" class="btn btn-outline-primary" (click)="open(mymodal)">edit</button>
+                            <ng-template #mymodal let-modal>
+                                <div class="modal-header">
+                                    <h4 class="modal-title" id="modal-basic-title">Edit</h4>
+                                    <button type="button" class="close" aria-label="Close"
+                                        (click)="modal.dismiss('Cross click')">
+                                        <span aria-hidden="true" (click)="cancel()">×</span>
+
+                                    </button>
+
+                                </div>
+                                <div>
+                                    <form>
+                                        <div class="card-body pt-0 widget-body ">
+                                            <p class="text-muted"></p>
+                
+                                            <!-- <p class="text-left fs-13 text-gray">Basic Form Input with diffrent elements and styles.</p> -->
+                                            <div class="relative w-full mb-3">
+                                                <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                                                    htmlFor="grid-password">
+                                                    Offer Category
+                                                </label><br>
+                                                <!-- //Famille,Biens,Argent,Retraite,Santé; -->
+                                                <select id="exampleSelect1" [(ngModel)]="p.offer_categorie"
+                                                    [ngModelOptions]="{standalone : true}" class="form-control">
+                                                    <option>Famille</option>
+                                                    <option>Biens</option>
+                                                    <option>Argent</option>
+                                                    <option>Retraite</option>
+                                                    <option>Santé</option>
+                                                </select>
+                
+                                            </div>
+                                            {{p.offer_categorie}}
+                                            <div class="relative w-full mb-3">
+                                                <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                                                                htmlFor="grid-password">
+                                                                Offer price
+                                                            </label><br>
+                                                <input type="text" [(ngModel)]="p.offer_price" [ngModelOptions]="{standalone : true}">
+                
+                                            </div>
+                                            {{p.offer_price}}<br>
+                
+                                            <div class="relative w-full mb-3">
+                                                <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                                                    htmlFor="grid-password">
+                                                    Offer Description
+                                                </label>
+                                                <textarea id="textarea-input" name="textarea-input" rows="9" class="form-control"
+                                                    placeholder="Content.." [(ngModel)]="p.offer_description" [ngModelOptions]="{standalone : true}"></textarea>
+                                            </div>
+                                            {{p.offer_description}}<br>
+                                        </div>
+                
+                                        <div class="relative w-full mb-3">
+                                            <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                                                htmlFor="grid-password">
+                                                Date Expiration
+                                            </label>
+                                            <input type="date"  id="input-12" class="form-control"
+                                                [(ngModel)]="p.offer_expiration_date" [ngModelOptions]="{standalone : true}">
+                                        </div>
+                                        {{p.offer_expiration_date}}<br>
+                                        <div class="modal-footer">
+
+                                            <button type="button" class="btn btn-info"
+                                                (click)="modal.close('Save click')" (click)="cancel()">Cancel</button>
+                                            <button class="btn btn-success" (click)="editOffer(p)" (click)="cancel()"
+                                                (click)="modal.close('Save click')">Validate</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </ng-template>
+                            <button type="button" class="btn btn-outline-danger"
+                                (click)="deleteOffer(p.offer_id)">delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</div>
+</div>

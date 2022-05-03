@@ -1,670 +1,266 @@
-<div class="card-header transparent border-0 text-muted px-1">
-
-    <h2>Reclamation</h2>
-
-    <div class="row mb-4 align-items-star">
-        <div class="col-lg-8 order-first  ">
-            <div widget class="card border-0 box-shadow">
-                <div class="card-header transparent border-0 text-muted ">
-                    <div class="card-body pt-0 widget-body ">
-                        <p class="text-muted">Please fill out the form below, customer service will get back to you as
-                            soon as possible.</p>
-
-                        <!-- <p class="text-left fs-13 text-gray">Basic Form Input with diffrent elements and styles.</p> -->
-                        <div class="relative w-full mb-3">
-                            <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                                   htmlFor="grid-password">
-                                Contract Type
-                            </label><br>
-                            <!-- automobile,vie,Habitation,epargne,Retraite,Chefdefamille,Santé,avenirdemesenfants,materielinformatique; -->
-
-                            <select id="exampleSelect1" [(ngModel)]="claim.claim_contrat_type" class="form-control">
-                                <option>automobile</option>
-                                <option>vie</option>
-                                <option>Habitation</option>
-                                <option>epargne</option>
-                                <option>Retraite</option>
-                                <option>Chefdefamille</option>
-                                <option>Santé</option>
-                                <option>avenirdemesenfants</option>
-                                <option>materielinformatique</option>
-
-                            </select>
-
-                        </div>
-                        {{claim.claim_contrat_type}}
-                        <div class="relative w-full mb-3">
-
-                            <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                                   htmlFor="grid-password">
-                                Claim Type
-                            </label><br>
-                            <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                                <label class="btn btn-primary">
-                                    <input type="radio" name="options" id="option1" autocomplete="off"
-                                           [(ngModel)]="claim.claim_type" value="Reclamation"> Reclamation
-                                </label>
-                                <label class="btn btn-primary active">
-                                    <input type="radio" name="options" id="option2" autocomplete="off" checked
-                                           [(ngModel)]="claim.claim_type" value="Complaint"> Complaint
-                                </label>
-                            </div>
-                            {{claim.claim_type}}<br>
-
-                            <div class="relative w-full mb-3">
-                                <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                                       htmlFor="grid-password">
-                                    Message
-                                </label>
-                                <textarea id="textarea-input" name="textarea-input" rows="9" class="form-control"
-                                          placeholder="Content.." [(ngModel)]="claim.claim_description"></textarea>
-                            </div>
-                            {{claim.claim_description}}<br>
-                            <input type="text" id="input-1" class="form-control" [(ngModel)]="id">
-                            {{id}}
-                            <button type="button" (click)=" deleteClaim(id)"
-                                    class="btn btn-success btn-rounded w-100p mb-1 mr-1">Send</button>
-                            <button type="button" class="btn btn-info btn-rounded w-100p mb-1 mr-1"
-                                    routerLink="/claimscustomer">My Claims</button>
-                            <button type="button" class="btn btn-info btn-rounded w-100p mb-1 mr-1"
-                                    routerLink="/claimsemployee">Display claims</button>
-                            <button type="button" (click)="addclaim(claim)"
-                                    class="btn btn-success btn-rounded w-100p mb-1 mr-1">Send</button>
-                            <button type="button" class="btn btn-info btn-rounded w-100p mb-1 mr-1"
-                                    routerLink="/updateclaim">update claim</button>
-
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-
-        <div class="col-lg-4 order-last" style="height: 50%;">
-            <div widget class="card border-0 box-shadow">
-                <div class=" py-4 field--name-bp-text field--type-text-long field--label-hidden field--item">
-                    <div class="bloc-sidebar-contact bloc-sidebar-contact-2">
-                        <div class="paragraph__column">
-
-
-                            <div
-                                    class="field field--name-bp-text field--type-text-long field--label-hidden field--item">
-                                <div class="bloc-sidebar-contact bloc-sidebar-contact-3">
-                                    <h5><i class="fa fa-map-marker" aria-hidden="true"></i> <span>Nos services</span>
-                                    </h5>
-                                    <p><span>Direction générale</span><br> <a
-                                            style="color: rgb(23, 23, 156);">dg@Garantía.tn</a></p>
-                                    <p><span>Département Marketing</span><br> <a
-                                            style="color: rgb(23, 23, 156);">marketing@Garantía.tn</a></p>
-                                    <p><span>Service réassurance</span> <br><a
-                                            style="color: rgb(23, 23, 156);">reassurance@Garantía.tn</a></p>
-                                    <p><span>Département ressources humaines</span> <br><a
-                                            style="color: rgb(23, 23, 156);">grh@Garantía.tn</a></p>
-                                    <p><span>Service formation et Recrutement</span><br> <a
-                                            style="color: rgb(23, 23, 156);">formation@Garantía.tn</a></p>
-
-
-                                    <p><span>Département financier</span> <br><a
-                                            style="color: rgb(23, 23, 156);">financier@Garantía.tn</a></p>
-                                    <p><span>Département commercial</span> <br><a
-                                            style="color: rgb(23, 23, 156);">departement.commercial@Garantía.tn</a></p>
-                                    <p><span>Délégué de protection de données (DPO)</span><br> <a
-                                            style="color: rgb(23, 23, 156);">dpo@Garantía.tn</a></p>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <h2>Horaires d’ouverture</h2>
-
-    <div class="container">
+<div style="text-align: center;">
+    <div class="row" style="margin-left: 2%;margin-right: 2%;">
         <div class="row">
-            <div class="col order-last">
-                <h4>Hiver</h4>
-                <p><strong>Lundi-Vendredi</strong></p>
-                <p>08:00-12:00 <br>
-                    13:00-17:30</p>
-                <p><strong>Samedi</strong></p>
-                <p>08:00-12:00</p>
-            </div>
-            <div class="col">
-                <h4>été</h4>
-                <p><strong>Lundi-Vendredi</strong></p>
-                <p>07:00-13:00</p>
-                <p><strong>Samedi</strong></p>
-                <p>08:00-12:00</p>
-            </div>
-            <div class="col order-first">
-                <h4>ramadan</h4>
-                <p><strong>Lundi-Vendredi</strong></p>
-                <p>08:00-14:00</p>
-                <p><strong>Samedi</strong></p>
-                <p>08:00-12:00</p>
-            </div>
-        </div>
-    </div>
-    <div class="paragraph paragraph--type--bp-simple paragraph--view-mode--default "
-         style="background-color: aliceblue;">
-        <div class="paragraph__column">
-
-
-            <div class="field field--name-bp-text field--type-text-long field--label-hidden field--item">
-                <div class="bloc-sidebar-contact bloc-sidebar-contact-1">
-                    <h5><i aria-hidden="true" class="fa fa-map-marker"></i> <span>Adresse</span></h5>
-
-                    <h4>Siège des assurances Garantía</h4>
-
-                    <p> 18, rue de l'Usine - ZI Aéroport Charguia II 2035 Ariana Tunisie</p>
-
-                    <p>Tél. : (+216) 71 94 15 41 (LG)</p>
-
-                    <p>Fax : (+216) 71 94 18 89</p>
-
-                    <p>Email: <a href="mailto:Garantiaentreprise@gmail.com">Garantiaentreprise@gmail.com</a></p>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</div>
-
-
-<!--
- <div class="row">
-    <div class="col-12 mb-4">
-        <div widget class="card border-0 box-shadow">
-            <div class="card-header transparent border-0 text-muted">
-                <h5 class="mb-0">Checkboxes and Radio Buttons</h5>
-                <div class="widget-controls">
-                    <a data-widgster="expand" href="#" class="transition"><i class="fa fa-chevron-down"></i></a>
-                    <a data-widgster="collapse" href="#" class="transition"><i class="fa fa-chevron-up"></i></a>
-                    <a data-widgster="close" href="#" class="transition"><i class="fa fa-times"></i></a>
-                </div>
-            </div>
-            <div class="card-body pt-0 pb-0 widget-body">
-                <div class="row mt-2">
-                    <div class="col-md-4 mb-3">
-                        <h6>Custom checkbox</h6>
-                        <div class="form-group">
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="checkboxDefault" checked>
-                                <label class="custom-control-label" for="checkboxDefault">Custom</label>
-                            </div>
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input checkbox-primary" id="checkboxPrimary" checked>
-                                <label class="custom-control-label" for="checkboxPrimary">Primary</label>
-                            </div>
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input checkbox-success" id="checkboxSuccess" checked>
-                                <label class="custom-control-label" for="checkboxSuccess">Success</label>
-                            </div>
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input checkbox-info" id="checkboxInfo" checked>
-                                <label class="custom-control-label" for="checkboxInfo">Info</label>
-                            </div>
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input checkbox-warning" id="checkboxWarning" checked>
-                                <label class="custom-control-label" for="checkboxWarning">Warning</label>
-                            </div>
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input checkbox-danger" id="checkboxDanger" checked>
-                                <label class="custom-control-label" for="checkboxDanger">Danger</label>
-                            </div>
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input checkbox-dark-gray" id="checkboxMain" checked>
-                                <label class="custom-control-label" for="checkboxMain">Dark gray</label>
-                            </div>
-                        </div>
+            <div class="col-md-12">
+                <br><br>
+                <ng-template #mymodal1 let-modal1>
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="modal-basic-title">Add new claim</h4>
+                        <button type="button" class="close" aria-label="Close" (click)="modal1.dismiss('Cross click')">
+                            <span aria-hidden="true" (click)="cancel()">×</span>
+                        </button>
+    
                     </div>
-                    <div class="col-md-4 mb-3">
-                        <h6>Circled checkbox</h6>
-                        <div class="form-group">
-                            <div class="custom-control custom-checkbox checkbox-circle">
-                                <input type="checkbox" class="custom-control-input" id="checkboxDefault2" checked>
-                                <label class="custom-control-label" for="checkboxDefault2">Custom</label>
-                            </div>
-                            <div class="custom-control custom-checkbox checkbox-circle">
-                                <input type="checkbox" class="custom-control-input checkbox-primary" id="checkboxPrimary2" checked>
-                                <label class="custom-control-label" for="checkboxPrimary2">Primary</label>
-                            </div>
-                            <div class="custom-control custom-checkbox checkbox-circle">
-                                <input type="checkbox" class="custom-control-input checkbox-success" id="checkboxSuccess2" checked>
-                                <label class="custom-control-label" for="checkboxSuccess2">Success</label>
-                            </div>
-                            <div class="custom-control custom-checkbox checkbox-circle">
-                                <input type="checkbox" class="custom-control-input checkbox-info" id="checkboxInfo2" checked>
-                                <label class="custom-control-label" for="checkboxInfo2">Info</label>
-                            </div>
-                            <div class="custom-control custom-checkbox checkbox-circle">
-                                <input type="checkbox" class="custom-control-input checkbox-warning" id="checkboxWarning2" checked>
-                                <label class="custom-control-label" for="checkboxWarning2">Warning</label>
-                            </div>
-                            <div class="custom-control custom-checkbox checkbox-circle">
-                                <input type="checkbox" class="custom-control-input checkbox-danger" id="checkboxDanger2" checked>
-                                <label class="custom-control-label" for="checkboxDanger2">Danger</label>
-                            </div>
-                            <div class="custom-control custom-checkbox checkbox-circle">
-                                <input type="checkbox" class="custom-control-input checkbox-dark-gray" id="checkboxMain2" checked>
-                                <label class="custom-control-label" for="checkboxMain2">Dark gray</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <h6>Custom radio buttons</h6>
-                        <div class="form-group">
-                            <div class="custom-control custom-radio">
-                                <input type="radio" name="radio" class="custom-control-input" id="radioDefault">
-                                <label class="custom-control-label" for="radioDefault">Custom</label>
-                            </div>
-                            <div class="custom-control custom-radio">
-                                <input type="radio" name="radio" class="custom-control-input radio-primary" id="radioPrimary">
-                                <label class="custom-control-label" for="radioPrimary">Primary</label>
-                            </div>
-                            <div class="custom-control custom-radio">
-                                <input type="radio" name="radio" class="custom-control-input radio-success" id="radioSuccess" checked>
-                                <label class="custom-control-label" for="radioSuccess">Success</label>
-                            </div>
-                            <div class="custom-control custom-radio">
-                                <input type="radio" name="radio" class="custom-control-input radio-info" id="radioInfo">
-                                <label class="custom-control-label" for="radioInfo">Info</label>
-                            </div>
-                            <div class="custom-control custom-radio">
-                                <input type="radio" name="radio" class="custom-control-input radio-warning" id="radioWarning">
-                                <label class="custom-control-label" for="radioWarning">Warning</label>
-                            </div>
-                            <div class="custom-control custom-radio">
-                                <input type="radio" name="radio" class="custom-control-input radio-danger" id="radioDanger">
-                                <label class="custom-control-label" for="radioDanger">Danger</label>
-                            </div>
-                            <div class="custom-control custom-radio">
-                                <input type="radio" name="radio" class="custom-control-input radio-dark-gray" id="radioMain">
-                                <label class="custom-control-label" for="radioMain">Dark gray</label>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="row mb-4">
-    <div class="col">
-        <div widget class="card border-0 box-shadow">
-            <div class="card-header transparent border-0 text-muted">
-                <h5 class="mb-0">Selects</h5>
-                <div class="widget-controls">
-                    <a data-widgster="expand" href="#" class="transition"><i class="fa fa-chevron-down"></i></a>
-                    <a data-widgster="collapse" href="#" class="transition"><i class="fa fa-chevron-up"></i></a>
-                    <a data-widgster="close" href="#" class="transition"><i class="fa fa-times"></i></a>
-                </div>
-            </div>
-            <div class="card-body pt-0 widget-body">
-
-                <div class="row">
-                    <div class="col-lg-6 mb-4">
-
-                        <div class="form-group">
-                            <label for="exampleSelect1">Basic select</label>
-                            <select class="form-control" id="exampleSelect1">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="exampleSelect3">Custom select</label>
-                            <select class="form-control custom-select" id="exampleSelect3">
-                                <option selected>Open this select menu</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="exampleSelect2">Multiple select</label>
-                            <select multiple class="form-control" id="exampleSelect2">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                            </select>
-                        </div>
-
-                    </div>
-                    <div class="col-lg-6">
-
-                        <p class="text-left fs-13 text-gray">Customizable dropdown multiselect in AngularX, TypeScript with bootstrap css. More information: <a href="https://github.com/softsimon/angular-2-dropdown-multiselect" target="_blank">Angular 2 Dropdown Multiselect</a></p>
-                        <div class=" mb-4">
-                            <h6>Default</h6>
-                            <ss-multiselect- [options]="firstControlOptions" [(ngModel)]="firstControlModel" (ngModelChange)="onChange()"></ss-multiselect-dropdown>
-                        </div>
-                        <div class="mb-4">
-                            <h6>Select all/none</h6>
-                            <ss-multiselect-dropdown [options]="secondControlOptions" [texts]="secondControlTexts" [settings]="secondControlSettings" [(ngModel)]="secondControlModel"></ss-multiselect-dropdown>
-                        </div>
-                        <div>
-                            <h6>Select with search filter</h6>
-                            <ss-multiselect-dropdown class="custom-multiselect" [options]="thirdControlOptions" [texts]="thirdControlTexts" [settings]="thirdControlSettings" [(ngModel)]="thirdControlModel"></ss-multiselect-dropdown>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="row mb-4">
-    <div class="col">
-        <div widget class="card border-0 box-shadow">
-            <div class="card-header transparent border-0 text-muted">
-                <h5 class="mb-0">Datepicker</h5>
-                <div class="widget-controls">
-                    <a data-widgster="expand" href="#" class="transition"><i class="fa fa-chevron-down"></i></a>
-                    <a data-widgster="collapse" href="#" class="transition"><i class="fa fa-chevron-up"></i></a>
-                    <a data-widgster="close" href="#" class="transition"><i class="fa fa-times"></i></a>
-                </div>
-            </div>
-            <div class="card-body pt-0 widget-body">
-                <p class="text-left fs-13 text-gray">A lightweight and highly configurable datepicker directive. More information: <a href="https://ng-bootstrap.github.io/#/components/datepicker" target="_blank">ng-bootstrap datepicker</a></p>
-
-                <div class="row">
-                    <div class="col-lg-4 mb-4">
-                        <h6>Basic datepicker</h6>
-                        <ngb-datepicker #dp [(ngModel)]="model" (navigate)="date = $event.next"></ngb-datepicker>
-                        <hr/>
-                        <button class="btn btn-sm btn-outline-primary" (click)="selectToday()">Select Today</button>
-                        <button class="btn btn-sm btn-outline-primary" (click)="dp.navigateTo()">To current month</button>
-                        <button class="btn btn-sm btn-outline-primary" (click)="dp.navigateTo({year: 2013, month: 2})">To Feb 2013</button>
-                        <hr/>
-                        <pre>Month: {{ date.month }}.{{ date.year }}</pre>
-                        <pre>Model: {{ model | json }}</pre>
-                    </div>
-                    <div class="col-lg-8 mb-4">
-                        <h6>Multiple months</h6>
-                        <ngb-datepicker [displayMonths]="displayMonths" [navigation]="navigation"></ngb-datepicker>
-                        <hr/>
-                        <div class="form-group d-inline-block align-top">
-                            <div class="input-group">
-                                <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [displayMonths]="displayMonths" [navigation]="navigation" ngbDatepicker #d="ngbDatepicker">
-                                <div class="input-group-append" (click)="d.toggle()">
-                                    <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                    <div class="center">
+                        <form>
+                            <div class="card-body pt-0 widget-body ">
+                                <p class="text-muted">Please fill out the form below, customer service will get back to you as
+                                    soon as possible.</p>
+        
+                                <!-- <p class="text-left fs-13 text-gray">Basic Form Input with diffrent elements and styles.</p> -->
+                                <div class="relative w-full mb-3">
+                                    <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                                        htmlFor="grid-password">
+                                        Contract Type
+                                    </label><br>
+                                <textarea id="textarea-input" name="textarea-input" rows="9" class="form-control"
+                                    placeholder="Content.." [(ngModel)]="claim.claim_contrat_type"></textarea>
+                                    <!-- automobile,vie,Habitation,epargne,Retraite,Chefdefamille,Santé,avenirdemesenfants,materielinformatique; -->
+        
+                                    <!-- <select id="exampleSelect1" [(ngModel)]="claim.claim_contrat_type" class="form-control">
+                                        <option>automobile</option>
+                                        <option>vie</option>
+                                        <option>Habitation</option>
+                                        <option>epargne</option>
+                                        <option>Retraite</option>
+                                        <option>Chefdefamille</option>
+                                        <option>Santé</option>
+                                        <option>avenirdemesenfants</option>
+                                        <option>materielinformatique</option>
+        
+                                    </select> -->
+        
+                                </div>
+                                {{claim.claim_contrat_type}}
+                                <div class="relative w-full mb-3">
+        
+                                    <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                                        htmlFor="grid-password">
+                                        Claim Type
+                                    </label><br>
+                                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                        <label class="btn btn-primary">
+                                            <input type="radio" name="options" id="option1" autocomplete="off"
+                                                [(ngModel)]="claim.claim_type" value="Reclamation"> Reclamation
+                                        </label>
+                                        <label class="btn btn-primary active">
+                                            <input type="radio" name="options" id="option2" autocomplete="off" checked
+                                                [(ngModel)]="claim.claim_type" value="Complaint"> Complaint
+                                        </label>
+                                    </div>
+                                    {{claim.claim_type}}<br>
+        
+                                    <div class="relative w-full mb-3">
+                                        <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                                            htmlFor="grid-password">
+                                            Message
+                                        </label>
+                                        <textarea id="textarea-input" name="textarea-input" rows="9" class="form-control"
+                                            placeholder="Content.." [(ngModel)]="claim.claim_description"></textarea>
+                                    </div>
+                                    {{claim.claim_description}}<br>
+                                    <input type="text" id="input-1" class="form-control" [(ngModel)]="id">
+                                    {{id}}
+                                    <button type="button" (click)=" deleteClaim(id)"
+                                        class="btn btn-success btn-rounded w-100p mb-1 mr-1">Send</button>
+                                    <button type="button" class="btn btn-info btn-rounded w-100p mb-1 mr-1"
+                                        routerLink="/claimscustomer">My Claims</button>
+                                    <button type="button" class="btn btn-info btn-rounded w-100p mb-1 mr-1"
+                                        routerLink="/claimsemployee">Display claims</button>
+                                    <button type="button" (click)="addclaim(claim)"
+                                        class="btn btn-success btn-rounded w-100p mb-1 mr-1">Send</button>
+                                    <button type="button" class="btn btn-info btn-rounded w-100p mb-1 mr-1"
+                                        routerLink="/updateclaim">update claim</button>
+        
+        
                                 </div>
                             </div>
-                        </div>
-                        <select class="custom-select mw-100 w-25" [(ngModel)]="displayMonths">
-                            <option [ngValue]="1">One month</option>
-                            <option [ngValue]="2">Two months</option>
-                            <option [ngValue]="3">Three months</option>
-                        </select>
-                        <select class="custom-select mw-100 w-25" [(ngModel)]="navigation">
-                            <option value="none">Without navigation</option>
-                            <option value="select">With select boxes</option>
-                            <option value="arrows">Without select boxes</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-lg-4 mb-4">
-                        <h6>Datepicker in a popup</h6>
-                        <form class="form-inline">
-                            <div class="form-group">
-                                <div class="input-group">
-                                <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="modelPopup" ngbDatepicker #p="ngbDatepicker">
-                                <div class="input-group-append" (click)="p.toggle()">
-                                    <span class="input-group-text"><i class="fa fa-calendar"></i></span>
-                                </div>
-                                </div>
-                            </div>
+                            <button type="button" class="btn btn-success" (click)="addclaim(claim)"
+                                (click)="modal1.close('Save click')">Add</button>
+                            <button type="button" class="btn btn-info" (click)="modal1.close('Save click')">Cancel</button>
                         </form>
-                        <hr/>
-                        <pre>Model: {{ modelPopup | json }}</pre>
                     </div>
-                    <div class="col-lg-4 mb-4">
-                        <h6>Custom day view</h6>
-                        <p class="text-left fs-13 text-gray">This datepicker uses a custom template to display days. All week-ends are displayed with an orange background.</p>
-                        <form class="form-inline">
-                            <div class="form-group">
-                                <div class="input-group">
-                                <input class="form-control" placeholder="yyyy-mm-dd"
-                                        name="dp" [(ngModel)]="modelCustom" ngbDatepicker [dayTemplate]="customDay" [markDisabled]="isDisabled" #dc="ngbDatepicker">
-                                <div class="input-group-append" (click)="dc.toggle()" >
-                                     <span class="input-group-text"><i class="fa fa-calendar"></i></span>
-                                </div>
-                                </div>
-                            </div>
-                        </form>
-                        <ng-template #customDay let-date="date" let-currentMonth="currentMonth" let-selected="selected" let-disabled="disabled">
-                            <span class="custom-day" [class.weekend]="isWeekend(date)" [class.bg-primary]="selected" [class.hidden]="date.month !== currentMonth" [class.text-muted]="disabled">
-                                {{ date.day }}
-                            </span>
-                        </ng-template>
+                </ng-template>
+               
+                <div _ngcontent-axt-c6="" class="card-body">
+                    <div _ngcontent-axt-c6="" class="d-sm-flex align-items-center mb-4">
+                        <h4 _ngcontent-axt-c6="" class="card-title mb-sm-0">Claims </h4>
+                        <a _ngcontent-axt-c6="" class="text-dark ml-auto mb-3 mb-sm-0" href="#"> View all Claims</a>
                     </div>
-                    <div class="col-lg-4">
-                        <h6>Disabled datepicker</h6>
-                        <ngb-datepicker [(ngModel)]="modelDisabled" [disabled]="disabled"></ngb-datepicker>
-                        <hr/>
-                        <button class="btn btn-sm btn-outline-{{disabled ? 'danger' : 'success'}}" (click)="disabled = !disabled">
-                            {{ disabled ? "Disabled" : "Enabled"}}
-                        </button>
+                    <div _ngcontent-axt-c6="" class="table-responsive border rounded p-1">
+                        <table _ngcontent-axt-c6="" class="table">
+                            <thead _ngcontent-axt-c6="">
+                                <tr _ngcontent-axt-c6="" style="background-color: antiquewhite;">
+                
+                                    <th _ngcontent-axt-c6="" class="font-weight-bold">claim_id</th>
+                                    <th _ngcontent-axt-c6="" class="font-weight-bold">claim_description</th>
+                                    <th _ngcontent-axt-c6="" class="font-weight-bold">claim_state</th>
+                                    <th _ngcontent-axt-c6="" class="font-weight-bold">claim_type</th>
+                                    <th _ngcontent-axt-c6="" class="font-weight-bold">claim_contrat_type</th>
+                                    <th _ngcontent-axt-c6="" class="font-weight-bold">claim_visibility</th>
+                                    <th _ngcontent-axt-c6="" class="font-weight-bold">claim_date</th>
+                                </tr>
+                            </thead>
+                            <tbody _ngcontent-axt-c6="">
+                                <tr _ngcontent-axt-c6="" *ngFor='let p of listClaims'>
+                                    <td>{{p.claim_id}}</td>
+                                                    <td _ngcontent-axt-c6="">{{p.claim_description}}</td>
+                                                    <td _ngcontent-axt-c6="">{{p.claim_state}}</td>
+                                                    <td _ngcontent-axt-c6="">{{p.claim_type}}</td>
+                                                    <td _ngcontent-axt-c6="">{{p.claim_contrat_type}}</td>
+                                                    <td _ngcontent-axt-c6="">{{p.claim_visibility}}</td>
+                                                    <td _ngcontent-axt-c6="">{{p.claim_date}}</td>
 
-                    </div>
-                </div>
+                                                    <td>
+                                                        <button _ngcontent-ahs-c14=""  (click)="open(mymodal)" class="btn btn-primary btn-rounded btn-fw" type="button">edit</button>
+                                                    <ng-template #mymodal let-modal>
+                                                        <div class="modal-header">
+                                                            <h4 class="modal-title" id="modal-basic-title">Edit</h4>
+                                                            <button type="button" class="close" aria-label="Close"
+                                                                (click)="modal.dismiss('Cross click')">
+                                                                <span aria-hidden="true" (click)="cancel()">×</span>
+                
+                                                            </button>
+                
+                                                        </div>
+                                                        <div>
+                                                            <form>
+                                                                <div class="modal-body">
+                
+                                                                    <div class="relative w-full mb-3">
+                                                                        <label
+                                                                            class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                                                                            htmlFor="grid-password">
+                                                                            Contract Type
+                                                                        </label><br>
+                                                                        <!-- automobile,vie,Habitation,epargne,Retraite,Chefdefamille,Santé,avenirdemesenfants,materielinformatique; -->
+              
+                                                                        <textarea id="textarea-input" name="textarea-input" rows="9" class="form-control"
+                                                                        placeholder="Content.." [(ngModel)]="claim.claim_contrat_type"></textarea>
+                                                                    </div>
+                                                                    {{claim.claim_contrat_type}}
+                                                                    <div class="relative w-full mb-3">
+                
+                                                                        <label
+                                                                            class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                                                                            htmlFor="grid-password">
+                                                                            Claim Type
+                                                                        </label><br>
+                                                                        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                                                            <label class="btn btn-primary">
+                                                                                <input type="radio" name="options" id="option1"
+                                                                                    autocomplete="off" [(ngModel)]="claim.claim_type"
+                                                                                    value="Reclamation"> Reclamation
+                                                                            </label>
+                                                                            <label class="btn btn-primary active">
+                                                                                <input type="radio" name="options" id="option2"
+                                                                                    autocomplete="off" checked
+                                                                                    [(ngModel)]="claim.claim_type" value="Complaint">
+                                                                                Complaint
+                                                                            </label>
+                                                                        </div>
+                                                                        {{claim.claim_type}}<br>
+                
+                                                                        <div class="relative w-full mb-3">
+                                                                            <label
+                                                                                class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                                                                                htmlFor="grid-password">
+                                                                                Message
+                                                                            </label>
+                                                                            <textarea id="textarea-input" name="textarea-input" rows="9"
+                                                                                class="form-control" placeholder="Content.."
+                                                                                [(ngModel)]="claim.claim_description"></textarea>
+                                                                        </div>
+                                                                        {{claim.claim_description}}<br>
+                                                                        <input type="text" id="input-1" class="form-control"
+                                                                            [(ngModel)]="id">
+                                                                        {{id}}
+                                                                        <!-- <button type="button" (click)=" deleteClaim(id)" class="btn btn-success btn-rounded w-100p mb-1 mr-1">Send</button>                
+                                                                    <button type="button" class="btn btn-info btn-rounded w-100p mb-1 mr-1"routerLink="/claimscustomer">My Claims</button>
+                                                                    <button type="button" class="btn btn-info btn-rounded w-100p mb-1 mr-1"routerLink="/claimsemployee">Display claims</button>
+                                                                    <button type="button"  (click)="addclaim(claim)"class="btn btn-success btn-rounded w-100p mb-1 mr-1">Send</button> 
+                                                                    <button type="button" class="btn btn-info btn-rounded w-100p mb-1 mr-1"routerLink="/updateclaim">update claim</button> -->
+                
+                
+                                                                    </div>
+                                                                </div>
+                
+                                                                <div class="modal-footer">
+                
+                                                                    <button type="button" class="btn btn-info"
+                                                                        (click)="modal.close('Save click')"
+                                                                        (click)="cancel()">Cancel</button>
+                                                                    <button class="btn btn-success" (click)="editClaim(claim)"
+                                                                        (click)="modal.close('Save click')">Validate</button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </ng-template>
+                                    
+                                                        <button _ngcontent-ahs-c14=""  (click)="open(mymodal2)" class="btn btn-success btn-rounded btn-fw" type="button">Treat</button>
+                                                    <ng-template #mymodal2 let-modal>
+                                                        <div class="modal-header">
+                                                            <h4 class="modal-title" id="modal-basic-title">Treatment</h4>
+                                                            <button type="button" class="close" aria-label="Close"
+                                                                (click)="modal.dismiss('Cross click')">
+                                                                <span aria-hidden="true" (click)="cancel()">×</span>
+                
+                                                            </button>
+                
+                                                        </div>
+                                                        <div>
+                                                            <form>
+                                                                <div class="modal-body">
+                
+                                                                    <div class="relative w-full mb-3">
+                                                                        <label
+                                                                            class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                                                                            htmlFor="grid-password">Response </label><br>
+                                                                        <!-- automobile,vie,Habitation,epargne,Retraite,Chefdefamille,Santé,avenirdemesenfants,materielinformatique; -->
+              
+                                                                        <textarea id="textarea-input" name="textarea-input" rows="9" class="form-control"
+                                                                        placeholder="Content.."></textarea>
+                                                                    </div>
+                                                                </div>
+                
+                                                                <div class="modal-footer">
+                
+                                                                    <button type="button" class="btn btn-info"
+                                                                        (click)="modal.close('Save click')"
+                                                                        (click)="cancel()">Cancel</button>
+                                                                    <button class="btn btn-success" 
+                                                                        (click)="modal.close('Save click')">Validate</button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </ng-template>
+                                                    <button _ngcontent-ahs-c14="" class="btn btn-danger btn-rounded btn-fw" (click)="deleteClaim(p.claim_id)" type="button">delete</button>
 
+                                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                
+                </div> 
             </div>
         </div>
     </div>
-</div>
-
-<div class="row mb-4">
-    <div class="col">
-        <div widget class="card border-0 box-shadow">
-            <div class="card-header transparent border-0 text-muted">
-                <h5 class="mb-0">Timepicker</h5>
-                <div class="widget-controls">
-                    <a data-widgster="expand" href="#" class="transition"><i class="fa fa-chevron-down"></i></a>
-                    <a data-widgster="collapse" href="#" class="transition"><i class="fa fa-chevron-up"></i></a>
-                    <a data-widgster="close" href="#" class="transition"><i class="fa fa-times"></i></a>
-                </div>
-            </div>
-            <div class="card-body pt-0 widget-body">
-                <p class="text-left fs-13 text-gray">A lightweight & configurable timepicker directive. More information: <a href="https://ng-bootstrap.github.io/#/components/timepicker" target="_blank">ng-bootstrap timepicker</a></p>
-
-                <div class="row">
-                    <div class="col-lg-4 col-md-6 mb-4">
-                        <h6>Basic timepicker</h6>
-                        <ngb-timepicker [(ngModel)]="time"></ngb-timepicker>
-                        <hr class="mt-5">
-                        <pre>Selected time: {{time | json}}</pre>
-                    </div>
-                    <div class="col-lg-4 col-md-6 mb-4">
-                        <h6>Meridian</h6>
-                        <ngb-timepicker [(ngModel)]="timeMeridian" [meridian]="meridian"></ngb-timepicker>
-                        <button class="btn btn-sm btn-outline-{{meridian ? 'success' : 'danger'}}" (click)="meridian = !meridian">
-                            Meridian - {{meridian ? "ON" : "OFF"}}
-                        </button>
-                        <hr>
-                        <pre>Selected time: {{timeMeridian | json}}</pre>
-                    </div>
-                    <div class="col-lg-4 col-md-6 mb-4">
-                        <h6>Basic timepicker</h6>
-                        <ngb-timepicker [(ngModel)]="timeSeconds" [seconds]="seconds"></ngb-timepicker>
-                        <button class="btn btn-sm btn-outline-{{seconds ? 'success' : 'danger'}}" (click)="seconds = !seconds">
-                            Seconds - {{seconds ? "ON" : "OFF"}}
-                        </button>
-                        <hr>
-                        <pre>Selected time: {{timeSeconds | json}}</pre>
-                    </div>
-                    <div class="col-lg-4 col-md-6 mb-4">
-                        <h6>Spinners</h6>
-                        <ngb-timepicker [(ngModel)]="timeSpinners" [spinners]="spinners"></ngb-timepicker>
-                        <button class="mt-3 btn btn-sm btn-outline-{{spinners ? 'success' : 'danger'}}" (click)="spinners = !spinners">
-                            Spinners - {{spinners ? "ON" : "OFF"}}
-                        </button>
-                    </div>
-                    <div class="col-lg-6 col-md-6 mb-4">
-                        <h6>Custom steps</h6>
-                        <ngb-timepicker [(ngModel)]="timeCustomSteps" [seconds]="true" [hourStep]="hourStep" [minuteStep]="minuteStep" [secondStep]="secondStep"></ngb-timepicker>
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <label for="changeHourStep">Hour Step</label>
-                                <input id="changeHourStep" type="number" class="form-control form-control-sm" [(ngModel)]="hourStep" />
-                            </div>
-                            <div class="col-sm-3">
-                                <label for="changeMinuteStep">Minute Step</label>
-                                <input id="changeMinuteStep" type="number" class="form-control form-control-sm" [(ngModel)]="minuteStep" />
-                            </div>
-                            <div class="col-sm-3">
-                                <label for="changeSecondStep">Second Step</label>
-                                <input id="changeSecondStep" type="number" class="form-control form-control-sm" [(ngModel)]="secondStep" />
-                            </div>
-                        </div>
-                        <hr>
-                        <pre>Selected time: {{timeCustomSteps | json}}</pre>
-                    </div>
-                </div>
-
-            </div>
-        </div>
     </div>
-</div>
-
-<div class="row mb-4">
-    <div class="col">
-        <div widget class="card border-0 box-shadow">
-            <div class="card-header transparent border-0 text-muted">
-                <h5 class="mb-0">Rating</h5>
-                <div class="widget-controls">
-                    <a data-widgster="expand" href="#" class="transition"><i class="fa fa-chevron-down"></i></a>
-                    <a data-widgster="collapse" href="#" class="transition"><i class="fa fa-chevron-up"></i></a>
-                    <a data-widgster="close" href="#" class="transition"><i class="fa fa-times"></i></a>
-                </div>
-            </div>
-            <div class="card-body pt-0 widget-body">
-                <p class="text-left fs-13 text-gray">Rating directive that will take care of visualising a star rating bar. More information: <a href="https://ng-bootstrap.github.io/#/components/rating" target="_blank">ng-bootstrap rating</a></p>
-
-                <div class="row">
-                    <div class="col-lg-4 col-md-6 mb-4">
-                        <h6>Basic demo</h6>
-                        <ngb-rating [(rate)]="currentRate"></ngb-rating>
-                        <hr>
-                        <pre>Rate: <b>{{currentRate}}</b></pre>
-                    </div>
-                    <div class="col-lg-4 col-md-6 mb-4">
-                        <h6>Events and readonly ratings</h6>
-                        <ngb-rating [(rate)]="selected" (hover)="hovered=$event" (leave)="hovered=0" [readonly]="readonly"></ngb-rating>
-                        <hr>
-                        <pre>Selected: <b>{{selected}}</b><br>Hovered: <b>{{hovered}}</b></pre>
-                        <button class="btn btn-sm btn-outline-{{readonly ? 'danger' : 'success'}}" (click)="readonly = !readonly">
-                            {{ readonly ? "readonly" : "editable"}}
-                        </button>
-                    </div>
-                    <div class="col-lg-4 col-md-6 mb-4">
-                        <h6>Custom star template</h6>
-                        <p class="text-left fs-13 text-gray">Custom rating template provided as child element</p>
-                        <ngb-rating [(rate)]="currentRateCustom">
-                        <ng-template let-fill="fill">
-                            <span class="star" [class.filled]="fill === 100">&#9733;</span>
-                        </ng-template>
-                        </ngb-rating>
-                        <hr>
-                        <pre>Rate: <b>{{currentRateCustom}}</b></pre>
-                    </div>
-                    <div class="col-md-6 mb-4">
-                        <h6>Custom decimal rating</h6>
-                        <p class="text-left fs-13 text-gray">Custom rating template provided via a variable. Shows fine-grained rating display</p>
-                        <ng-template #t let-fill="fill">
-                            <span *ngIf="fill === 100" class="star full">&hearts;</span>
-                            <span *ngIf="fill === 0" class="star">&hearts;</span>
-                            <span *ngIf="fill < 100 && fill > 0" class="star">
-                                <span class="half" [style.width.%]="fill">&hearts;</span>&hearts;
-                            </span>
-                        </ng-template>
-                        <ngb-rating [(rate)]="currentRateDecimal" [starTemplate]="t" [readonly]="true" max="5"></ngb-rating>
-                        <hr>
-                        <pre>Rate: <b>{{currentRateDecimal}}</b></pre>
-                        <button class="btn btn-sm btn-outline-primary" (click)="currentRateDecimal = 1.35">1.35</button>
-                        <button class="btn btn-sm btn-outline-primary" (click)="currentRateDecimal = 4.72">4.72</button>
-                    </div>
-                    <div class="col-md-6">
-                        <h6>Form integration</h6>
-                        <p class="text-left fs-13 text-gray">NgModel and reactive forms can be used without the 'rate' binding</p>
-                        <div class="form-group" [class.has-success]="ctrlFormIntegration.valid" [class.has-danger]="ctrlFormIntegration.invalid">
-                            <ngb-rating [formControl]="ctrlFormIntegration"></ngb-rating>
-                            <div class="form-control-feedback">
-                                <div *ngIf="ctrlFormIntegration.valid">Thanks!</div>
-                                <div *ngIf="ctrlFormIntegration.errors">Please rate us</div>
-                            </div>
-                        </div>
-                        <hr>
-                        <pre>Model: <b>{{ ctrlFormIntegration.value }}</b></pre>
-                        <button class="btn btn-sm btn-outline-{{ ctrlFormIntegration.disabled ? 'danger' : 'success'}}" (click)="toggle()">
-                            {{ ctrlFormIntegration.disabled ? "control disabled" : " control enabled" }}
-                        </button>
-                        <button class="btn btn-sm btn-outline-primary" (click)="ctrlFormIntegration.setValue(null)">Clear</button>
-                    </div>
-                </div>
-
-            </div>
+    <!-- <div _ngcontent-mlq-c7="" class="card">
+        <div _ngcontent-mlq-c7="" class="card-body">
+          <h4 _ngcontent-mlq-c7="" class="card-title">Tinymce Editor</h4>
+          <editor _ngcontent-mlq-c7="" _nghost-mlq-c8=""><textarea id="tiny-angular_71253419321651095767126" style="display: none;" aria-hidden="true"></textarea><div role="application" class="tox tox-tinymce" aria-disabled="false" style="visibility: hidden; height: 500px;"><div class="tox-editor-container"><div data-alloy-vertical-dir="toptobottom" class="tox-editor-header"><div role="group" class="tox-toolbar-overlord" aria-disabled="false"><div role="group" class="tox-toolbar__primary"><div title="" role="toolbar" data-alloy-tabstop="true" tabindex="-1" class="tox-toolbar__group"><button aria-label="Undo" title="Undo" type="button" tabindex="-1" class="tox-tbtn" aria-disabled="false"><span class="tox-icon tox-tbtn__icon-wrap"><svg width="24" height="24" focusable="false"><path d="M6.4 8H12c3.7 0 6.2 2 6.8 5.1.6 2.7-.4 5.6-2.3 6.8a1 1 0 01-1-1.8c1.1-.6 1.8-2.7 1.4-4.6-.5-2.1-2.1-3.5-4.9-3.5H6.4l3.3 3.3a1 1 0 11-1.4 1.4l-5-5a1 1 0 010-1.4l5-5a1 1 0 011.4 1.4L6.4 8z" fill-rule="nonzero"></path></svg></span></button><button aria-label="Redo" title="Redo" type="button" tabindex="-1" class="tox-tbtn tox-tbtn--disabled" aria-disabled="true"><span class="tox-icon tox-tbtn__icon-wrap"><svg width="24" height="24" focusable="false"><path d="M17.6 10H12c-2.8 0-4.4 1.4-4.9 3.5-.4 2 .3 4 1.4 4.6a1 1 0 11-1 1.8c-2-1.2-2.9-4.1-2.3-6.8.6-3 3-5.1 6.8-5.1h5.6l-3.3-3.3a1 1 0 111.4-1.4l5 5a1 1 0 010 1.4l-5 5a1 1 0 01-1.4-1.4l3.3-3.3z" fill-rule="nonzero"></path></svg></span></button></div><div title="" role="toolbar" data-alloy-tabstop="true" tabindex="-1" class="tox-toolbar__group"><button title="Blocks" aria-label="Blocks" aria-haspopup="true" type="button" tabindex="-1" unselectable="on" class="tox-tbtn tox-tbtn--select tox-tbtn--bespoke" aria-expanded="false" style="user-select: none;"><span class="tox-tbtn__select-label">Paragraph</span><div class="tox-tbtn__select-chevron"><svg width="10" height="10" focusable="false"><path d="M8.7 2.2c.3-.3.8-.3 1 0 .4.4.4.9 0 1.2L5.7 7.8c-.3.3-.9.3-1.2 0L.2 3.4a.8.8 0 010-1.2c.3-.3.8-.3 1.1 0L5 6l3.7-3.8z" fill-rule="nonzero"></path></svg></div></button></div><div title="" role="toolbar" data-alloy-tabstop="true" tabindex="-1" class="tox-toolbar__group"><button aria-label="Bold" title="Bold" type="button" tabindex="-1" class="tox-tbtn tox-tbtn--enabled" aria-disabled="false" aria-pressed="true"><span class="tox-icon tox-tbtn__icon-wrap"><svg width="24" height="24" focusable="false"><path d="M7.8 19c-.3 0-.5 0-.6-.2l-.2-.5V5.7c0-.2 0-.4.2-.5l.6-.2h5c1.5 0 2.7.3 3.5 1 .7.6 1.1 1.4 1.1 2.5a3 3 0 01-.6 1.9c-.4.6-1 1-1.6 1.2.4.1.9.3 1.3.6s.8.7 1 1.2c.4.4.5 1 .5 1.6 0 1.3-.4 2.3-1.3 3-.8.7-2.1 1-3.8 1H7.8zm5-8.3c.6 0 1.2-.1 1.6-.5.4-.3.6-.7.6-1.3 0-1.1-.8-1.7-2.3-1.7H9.3v3.5h3.4zm.5 6c.7 0 1.3-.1 1.7-.4.4-.4.6-.9.6-1.5s-.2-1-.7-1.4c-.4-.3-1-.4-2-.4H9.4v3.8h4z" fill-rule="evenodd"></path></svg></span></button><button aria-label="Italic" title="Italic" type="button" tabindex="-1" class="tox-tbtn" aria-disabled="false" aria-pressed="false"><span class="tox-icon tox-tbtn__icon-wrap"><svg width="24" height="24" focusable="false"><path d="M16.7 4.7l-.1.9h-.3c-.6 0-1 0-1.4.3-.3.3-.4.6-.5 1.1l-2.1 9.8v.6c0 .5.4.8 1.4.8h.2l-.2.8H8l.2-.8h.2c1.1 0 1.8-.5 2-1.5l2-9.8.1-.5c0-.6-.4-.8-1.4-.8h-.3l.2-.9h5.8z" fill-rule="evenodd"></path></svg></span></button><div aria-pressed="false" aria-label="Background color" title="Background color" role="button" aria-haspopup="true" tabindex="-1" unselectable="on" class="tox-split-button" aria-disabled="false" aria-expanded="false" aria-describedby="aria_7360361881691651095768629" style="user-select: none;"><span role="presentation" class="tox-tbtn" aria-disabled="false"><span class="tox-icon tox-tbtn__icon-wrap"><svg width="24" height="24" focusable="false"><g fill-rule="evenodd"><path id="tox-icon-highlight-bg-color__color" d="M3 18h18v3H3z" fill="#000000"></path><path fill-rule="nonzero" d="M7.7 16.7H3l3.3-3.3-.7-.8L10.2 8l4 4.1-4 4.2c-.2.2-.6.2-.8 0l-.6-.7-1.1 1.1zm5-7.5L11 7.4l3-2.9a2 2 0 012.6 0L18 6c.7.7.7 2 0 2.7l-2.9 2.9-1.8-1.8-.5-.6"></path></g></svg></span></span><span role="presentation" class="tox-tbtn tox-split-button__chevron" aria-disabled="false"><svg width="10" height="10" focusable="false"><path d="M8.7 2.2c.3-.3.8-.3 1 0 .4.4.4.9 0 1.2L5.7 7.8c-.3.3-.9.3-1.2 0L.2 3.4a.8.8 0 010-1.2c.3-.3.8-.3 1.1 0L5 6l3.7-3.8z" fill-rule="nonzero"></path></svg></span><span aria-hidden="true" id="aria_7360361881691651095768629" style="display: none;">To open the popup, press Shift+Enter</span></div></div><div title="" role="toolbar" data-alloy-tabstop="true" tabindex="-1" class="tox-toolbar__group"><button aria-label="Align left" title="Align left" type="button" tabindex="-1" class="tox-tbtn" aria-disabled="false" aria-pressed="false"><span class="tox-icon tox-tbtn__icon-wrap"><svg width="24" height="24" focusable="false"><path d="M5 5h14c.6 0 1 .4 1 1s-.4 1-1 1H5a1 1 0 110-2zm0 4h8c.6 0 1 .4 1 1s-.4 1-1 1H5a1 1 0 110-2zm0 8h8c.6 0 1 .4 1 1s-.4 1-1 1H5a1 1 0 010-2zm0-4h14c.6 0 1 .4 1 1s-.4 1-1 1H5a1 1 0 010-2z" fill-rule="evenodd"></path></svg></span></button><button aria-label="Align center" title="Align center" type="button" tabindex="-1" class="tox-tbtn tox-tbtn--enabled" aria-disabled="false" aria-pressed="true"><span class="tox-icon tox-tbtn__icon-wrap"><svg width="24" height="24" focusable="false"><path d="M5 5h14c.6 0 1 .4 1 1s-.4 1-1 1H5a1 1 0 110-2zm3 4h8c.6 0 1 .4 1 1s-.4 1-1 1H8a1 1 0 110-2zm0 8h8c.6 0 1 .4 1 1s-.4 1-1 1H8a1 1 0 010-2zm-3-4h14c.6 0 1 .4 1 1s-.4 1-1 1H5a1 1 0 010-2z" fill-rule="evenodd"></path></svg></span></button><button aria-label="Align right" title="Align right" type="button" tabindex="-1" class="tox-tbtn" aria-disabled="false" aria-pressed="false"><span class="tox-icon tox-tbtn__icon-wrap"><svg width="24" height="24" focusable="false"><path d="M5 5h14c.6 0 1 .4 1 1s-.4 1-1 1H5a1 1 0 110-2zm6 4h8c.6 0 1 .4 1 1s-.4 1-1 1h-8a1 1 0 010-2zm0 8h8c.6 0 1 .4 1 1s-.4 1-1 1h-8a1 1 0 010-2zm-6-4h14c.6 0 1 .4 1 1s-.4 1-1 1H5a1 1 0 010-2z" fill-rule="evenodd"></path></svg></span></button><button aria-label="Justify" title="Justify" type="button" tabindex="-1" class="tox-tbtn" aria-disabled="false" aria-pressed="false"><span class="tox-icon tox-tbtn__icon-wrap"><svg width="24" height="24" focusable="false"><path d="M5 5h14c.6 0 1 .4 1 1s-.4 1-1 1H5a1 1 0 110-2zm0 4h14c.6 0 1 .4 1 1s-.4 1-1 1H5a1 1 0 110-2zm0 4h14c.6 0 1 .4 1 1s-.4 1-1 1H5a1 1 0 010-2zm0 4h14c.6 0 1 .4 1 1s-.4 1-1 1H5a1 1 0 010-2z" fill-rule="evenodd"></path></svg></span></button></div><div role="toolbar" data-alloy-tabstop="true" tabindex="-1" class="tox-toolbar__group"><button aria-label="More..." title="More..." aria-haspopup="true" type="button" tabindex="-1" data-alloy-tabstop="true" class="tox-tbtn" aria-expanded="false"><span class="tox-icon tox-tbtn__icon-wrap"><svg width="24" height="24" focusable="false"><path d="M6 10a2 2 0 00-2 2c0 1.1.9 2 2 2a2 2 0 002-2 2 2 0 00-2-2zm12 0a2 2 0 00-2 2c0 1.1.9 2 2 2a2 2 0 002-2 2 2 0 00-2-2zm-6 0a2 2 0 00-2 2c0 1.1.9 2 2 2a2 2 0 002-2 2 2 0 00-2-2z" fill-rule="nonzero"></path></svg></span></button></div></div></div><div class="tox-anchorbar"></div></div><div class="tox-sidebar-wrap"><div class="tox-edit-area"><iframe id="tiny-angular_71253419321651095767126_ifr" frameborder="0" allowtransparency="true" title="Rich Text Area" class="tox-edit-area__iframe"></iframe></div><div role="complementary" class="tox-sidebar"><div data-alloy-tabstop="true" tabindex="-1" class="tox-sidebar__slider tox-sidebar--sliding-closed" style="width: 0px;"><div class="tox-sidebar__pane-container"></div></div></div></div></div><div class="tox-statusbar"><div class="tox-statusbar__text-container"><div role="navigation" data-alloy-tabstop="true" class="tox-statusbar__path" aria-disabled="false"><div role="button" data-index="0" tab-index="-1" aria-level="1" tabindex="-1" class="tox-statusbar__path-item" aria-disabled="false">p</div><div aria-hidden="true" class="tox-statusbar__path-divider"> » </div><div role="button" data-index="1" tab-index="-1" aria-level="2" tabindex="-1" class="tox-statusbar__path-item" aria-disabled="false">strong</div></div><button type="button" tabindex="-1" data-alloy-tabstop="true" class="tox-statusbar__wordcount">1 words</button><span class="tox-statusbar__branding"><a href="https://www.tiny.cloud/?utm_campaign=editor_referral&amp;utm_medium=poweredby&amp;utm_source=tinymce&amp;utm_content=v5" rel="noopener" target="_blank" tabindex="-1" aria-label="Powered by Tiny">Powered by Tiny</a></span></div><div title="Resize" data-alloy-tabstop="true" tabindex="-1" class="tox-statusbar__resize-handle"><svg width="10" height="10" focusable="false"><g fill-rule="nonzero"><path d="M8.1 1.1A.5.5 0 119 2l-7 7A.5.5 0 111 8l7-7zM8.1 5.1A.5.5 0 119 6l-3 3A.5.5 0 115 8l3-3z"></path></g></svg></div></div><div aria-hidden="true" class="tox-throbber" style="display: none;"></div></div></editor>
         </div>
-    </div>
-</div>
-
-<div class="row">
-     <div class="col">
-
-        <div widget class="card border-0 box-shadow">
-            <div class="card-header  transparent border-0 text-muted">
-                <h5 class="mb-0">Uploads</h5>
-                <div class="widget-controls">
-                    <a data-widgster="expand" href="#" class="transition"><i class="fa fa-chevron-down"></i></a>
-                    <a data-widgster="collapse" href="#" class="transition"><i class="fa fa-chevron-up"></i></a>
-                    <a data-widgster="fullscreen" href="#" class="transition"><i class="fa fa-expand"></i></a>
-                    <a data-widgster="restore" href="#" class="transition"><i class="fa fa-compress"></i></a>
-                    <a data-widgster="close" href="#" class="transition"><i class="fa fa-times"></i></a>
-                </div>
-            </div>
-            <div class="card-body widget-body">
-
-                <div class="row">
-                    <div class="col-lg-4 mb-4">
-                        <h6>File upload</h6>
-                        <app-file-uploader></app-file-uploader>
-
-                        <h6>Image upload</h6>
-                        <app-image-uploader></app-image-uploader>
-                    </div>
-
-                    <div class="col-lg-8 mb-4">
-                        <h6 class="text-center">Multiple Image Uploader</h6>
-                        <app-multiple-image-uploader></app-multiple-image-uploader>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-    </div>
-</div>
- -->
-<div class="card-header transparent border-0 text-muted px-1">
-
-    <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [mapTypeControl]="true">
-        <agm-marker [latitude]="lat" [longitude]="lng" [markerDraggable]="true"></agm-marker>
-    </agm-map>
-</div>
+      </div> -->
+     
